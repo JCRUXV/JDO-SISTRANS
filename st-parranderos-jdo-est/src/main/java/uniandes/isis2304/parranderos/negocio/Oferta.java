@@ -24,7 +24,7 @@ import java.util.List;
  *
  * @author Germán Bravo
  */
-public class Bebedor implements VOBebedor
+public class Oferta implements VOOferta
 {
 	/* ****************************************************************
 	 * 			Atributos
@@ -37,31 +37,52 @@ public class Bebedor implements VOBebedor
 	/**
 	 * El nombre del bebedor
 	 */
-	private String nombre;
+	private String tipo;
 	
 	/**
 	 * La ciudad del bebedor
 	 */
-	private String ciudad;
+	private long capacidad;
 	
 	/**
 	 * El presupuesto del bebedor (ALTO, MEDIO, BAJO)
 	 */
-	private String presupuesto;
+	private String ubicacion;
 	
 	/**
 	 * Las visitas realizadas por el bebedor. 
 	 * Cada visita es una tripleta de objetos [Bar, Timestamp, String], que representan el bar, la fecha 
 	 * y el horario en que el bebedor realizó la visita
 	 */
-	private List<Object []> visitasRealizadas;
+	private long vivienda;
 
 	/**
 	 * Las bebidas que le gustan el bebedor. 
 	 * Cada visita es una pareja de objetos [Bebida, String], que representan la bebida y el nombre del 
 	 * tipo de bebida que le gustan al bebedor 
 	 */
-	private List<Object []> bebidasQueLeGustan;
+	private String disponibilidad;
+	
+	
+	
+	
+	private Timestamp fecha_inicial;
+	
+	
+	
+	
+	private long cant_dias;
+	
+	
+	
+	private long precio;
+	
+	
+	
+	private long operador;
+	
+	
+	
 	
 	/* ****************************************************************
 	 * 			Métodos
@@ -69,14 +90,18 @@ public class Bebedor implements VOBebedor
 	/**
 	 * Constructor por defecto
 	 */
-	public Bebedor() 
+	public Oferta() 
 	{
 		this.id = 0;
-		this.nombre = "";
-		this.ciudad = "";
-		this.presupuesto = "";
-		visitasRealizadas = new LinkedList<Object []> ();
-		bebidasQueLeGustan = new LinkedList<Object []> ();
+		this.tipo = "";
+		this.capacidad = 0;
+		this.cant_dias = 0;
+		this.disponibilidad = "";
+		this.fecha_inicial = new Timestamp(0);
+		this.precio=0;
+		this.operador=0;
+		this.ubicacion="";
+		this.vivienda=0;
 	}
 
 	/**
@@ -86,149 +111,123 @@ public class Bebedor implements VOBebedor
 	 * @param ciudad - La ciudad del bebedor
 	 * @param presupuesto - El presupuesto del bebedor (ALTO, MEDIO, BAJO)
 	 */
-	public Bebedor(long id, String nombre, String ciudad, String presupuesto) 
-	{
-		this.id = id;
-		this.nombre = nombre;
-		this.ciudad = ciudad;
-		this.presupuesto = presupuesto;
-		
-		// Estos valores no se conocen en el momento de la construcción del bebedor
-		visitasRealizadas = new LinkedList<Object []> ();
-		bebidasQueLeGustan = new LinkedList<Object []> ();
-	}
 
-	/**
-	 * @return El id del bebedor
-	 */
-	public long getId() 
-	{
-		return id;
-	}
-
-	/**
-	 * @param id - El nuevo id del bebedor
-	 */
-	public void setId(long id) 
-	{
-		this.id = id;
-	}
-
-	/**
-	 * @return El nombre del bebedor
-	 */
-	public String getNombre() 
-	{
-		return nombre;
-	}
-
-	/**
-	 * @param nombre - El nuevo nombre del bebedor
-	 */
-	public void setNombre(String nombre) 
-	{
-		this.nombre = nombre;
-	}
-
-	/**
-	 * @return La ciudad del bebedor
-	 */
-	public String getCiudad() 
-	{
-		return ciudad;
-	}
-
-	/**
-	 * @param ciudad - La nueva ciudad del bebedor
-	 */
-	public void setCiudad(String ciudad) 
-	{
-		this.ciudad = ciudad;
-	}
-
-	/**
-	 * @return El presupuesto del bebedor
-	 */
-	public String getPresupuesto() 
-	{
-		return presupuesto;
-	}
-
-	/**
-	 * @param presupuesto - El nuevo presupuesto del bebedor
-	 */
-	public void setPresupuesto(String presupuesto) 
-	{
-		this.presupuesto = presupuesto;
-	}
-
-	/**
-	 * @return La lista de visitasRealizadas por el bebedor 
-	 */
-	public List<Object []> getVisitasRealizadas() 
-	{
-		return visitasRealizadas;
-	}
-
-	/**
-	 * @param visitasRealizadas - La nueva lista de visitas del bebedor
-	 */
-	public void setVisitasRealizadas (List<Object []> visitasRealizadas) 
-	{
-		this.visitasRealizadas = visitasRealizadas;
-	}
-
-	/**
-	 * @return Las bebidasQueLeGustan al bebedor
-	 */
-	public List<Object[]> getBebidasQueLeGustan() 
-	{
-		return bebidasQueLeGustan;
-	}
-
-	/**
-	 * @param bebidasQueLeGustan - La nueva lista de bebidas que le gustan al bebedor
-	 */
-	public void setBebidasQueLeGustan(List<Object[]> bebidasQueLeGustan) 
-	{
-		this.bebidasQueLeGustan = bebidasQueLeGustan;
-	}
 
 	/**
 	 * @return Una cadena de caracteres con la información básica del bebedor
 	 */
+
+
+
+	public Oferta(long id, String tipo, long capacidad, String ubicacion, long vivienda, String disponibilidad,
+			Timestamp fecha_inicial, long cant_dias, long precio, long operador) {
+		super();
+		this.id = id;
+		this.tipo = tipo;
+		this.capacidad = capacidad;
+		this.ubicacion = ubicacion;
+		this.vivienda = vivienda;
+		this.disponibilidad = disponibilidad;
+		this.fecha_inicial = fecha_inicial;
+		this.cant_dias = cant_dias;
+		this.precio = precio;
+		this.operador = operador;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public long getCapacidad() {
+		return capacidad;
+	}
+
+	public void setCapacidad(long capacidad) {
+		this.capacidad = capacidad;
+	}
+
+	public String getUbicacion() {
+		return ubicacion;
+	}
+
+	public void setUbicacion(String ubicacion) {
+		this.ubicacion = ubicacion;
+	}
+
+	public long getVivienda() {
+		return vivienda;
+	}
+
+	public void setVivienda(long vivienda) {
+		this.vivienda = vivienda;
+	}
+
+	public String getDisponibilidad() {
+		return disponibilidad;
+	}
+
+	public void setDisponibilidad(String disponibilidad) {
+		this.disponibilidad = disponibilidad;
+	}
+
+	public Timestamp getFecha_inicial() {
+		return fecha_inicial;
+	}
+
+	public void setFecha_inicial(Timestamp fecha_inicial) {
+		this.fecha_inicial = fecha_inicial;
+	}
+
+	public long getCant_dias() {
+		return cant_dias;
+	}
+
+	public void setCant_dias(long cant_dias) {
+		this.cant_dias = cant_dias;
+	}
+
+	public long getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(long precio) {
+		this.precio = precio;
+	}
+
+	public long getOperador() {
+		return operador;
+	}
+
+	public void setOperador(long operador) {
+		this.operador = operador;
+	}
+	
 	@Override
 	public String toString() 
 	{
-		return "Bebedor [id=" + id + ", nombre=" + nombre + ", ciudad=" + ciudad + ", presupuesto=" + presupuesto + "]";
+		return "Oferta [id=" + id + ", tipo=" + tipo + ", capacidad=" + capacidad + ", ubicacion=" + ubicacion + ", vivienda=" + vivienda + ", disponibilidad=" + disponibilidad +", fecha_inicial=" + fecha_inicial + ", cant_dias=" + cant_dias + ", precio=" + precio + ", operador=" + operador + " ]";
 	}
+	
+	
+	
 
 	/**
 	 * @return Una cadena de caracteres con la información COMPLEtA del bebedor.
 	 * Además de la información básica, contiene las visitas realizadas (una por línea) y 
 	 * las bebidas que le gustan al bebedor (una por línea)
 	 */
-	public String toStringCompleto () 
-	{
-		String resp =  this.toString();
-		resp += "\n --- Visitas realizadas\n";
-		int i = 1;
-		for (Object [] visita : visitasRealizadas)
-		{
-			Bar bar = (Bar) visita [0];
-			Timestamp fecha = (Timestamp) visita [1];
-			String horario = (String) visita [2];
-			resp += i++ + ". " + "[" +bar.toString() + ", fecha= " + fecha + ", horario= " + horario + "]\n";
-		}
-		resp += "\n\n --- Bebidas que le gustan\n";
-		i = 1;
-		for (Object [] gusta : bebidasQueLeGustan)
-		{
-			Bebida bebida = (Bebida) gusta [0];
-			String tipoBebida = (String) gusta [1];
-			resp += i++ + ". " + "[" + bebida.toString() + ", Tipo Bebida= " + tipoBebida + "]\n";
-		}
-		return resp;
-	}
+
 
 }

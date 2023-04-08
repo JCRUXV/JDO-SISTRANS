@@ -21,7 +21,7 @@ package uniandes.isis2304.parranderos.negocio;
  * 
  * @author Germán Bravo
  */
-public interface VOSirven 
+public interface VOCliente 
 {
 	/* ****************************************************************
 	 * 			Métodos
@@ -29,17 +29,16 @@ public interface VOSirven
 	/**
 	 * @return El idBar
 	 */
-	public long getIdBar();
+	public long getcodigo();
 
 	/**
 	 * @return El idBebida
 	 */
-	public long getIdBebida();
 
 	/**
 	 * @return El horario en que el bar sirve la bebida
 	 */
-	public String getHorario();
+	public String getvinculacion();
 
 	/** 
 	 * @return Una cadena con la información básica

@@ -15,6 +15,7 @@
 
 package uniandes.isis2304.parranderos.negocio;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -23,7 +24,7 @@ import java.util.List;
  * 
  * @author Germán Bravo
  */
-public interface VOBebedor 
+public interface VOOferta 
 {
 	/* ****************************************************************
 	 * 			Métodos
@@ -36,27 +37,47 @@ public interface VOBebedor
 	/**
 	 * @return El nombre del bebedor
 	 */
-	public String getNombre();
+	public String getTipo();
 
 	/**
 	 * @return La ciudad del bebedor
 	 */
-	public String getCiudad();
+	public long getCapacidad();
 
 	/**
 	 * @return El presupuesto del bebedor
 	 */
-	public String getPresupuesto();
+	public String getUbicacion();
+	
+	
+	public long getVivienda();
+	
+	
+	public String getDisponibilidad();
+	
+	
+	public Timestamp getFecha_inicial();
+	
+	
+	public long getCant_dias();
+	
+	
+	public long getPrecio();
+	
+	
+	public long getOperador();
+	
+	
+	
+	
+	
+	
+	
 
 	/**
 	 * @return La lista de visitasRealizadas por el bebedor 
 	 */
-	public List<Object []> getVisitasRealizadas();
-
-	/**
-	 * @return Las bebidasQueLeGustan al bebedor
-	 */
-	public List<Object[]> getBebidasQueLeGustan();
+	
 
 	/**
 	 * @return Una cadena de caracteres con la información básica del bebedor
@@ -69,6 +90,5 @@ public interface VOBebedor
 	 * Además de la información básica, contiene las visitas realizadas (una por línea) y 
 	 * las bebidas que le gustan al bebedor (una por línea)
 	 */
-	public String toStringCompleto ();
-
+	
 }

@@ -25,7 +25,7 @@ package uniandes.isis2304.parranderos.negocio;
  * 
  * @author Germán Bravo
  */
-public class Sirven implements VOSirven
+public class Cliente implements VOCliente
 {
 	/* ****************************************************************
 	 * 			Atributos
@@ -33,17 +33,16 @@ public class Sirven implements VOSirven
 	/**
 	 * El identificador del bar que sirve la bebida
 	 */
-	private long idBar;
+	private long codigo;
 	
 	/**
 	 * El identificador de la bebida que es servida en el bar
 	 */
-	private long idBebida;
 	
 	/**
 	 * El horario en que sirve la bebida en el bar (DIURNO, NOCTURNO, TODOS)
 	 */
-	private String horario;
+	private String vinculacion;
 
 	/* ****************************************************************
 	 * 			Métodos
@@ -51,11 +50,10 @@ public class Sirven implements VOSirven
 	/**
 	 * Constructor por defecto
 	 */
-	public Sirven () 
+	public Cliente () 
 	{
-		this.idBar = 0;
-		this.idBebida = 0;
-		this.horario = "";
+		this.codigo = 0;
+		this.vinculacion = "";
 	}
 
 	/**
@@ -64,59 +62,27 @@ public class Sirven implements VOSirven
 	 * @param idBebida - El identificador de la bebida. Debe existir una bebida con dicho identificador
 	 * @param horario - El horario en el que el bar sirve la bebida (DIURNO, NOCTURNO, TODOS)
 	 */
-	public Sirven (long idBar, long idBebida, String horario) 
-	{
-		this.idBar = idBar;
-		this.idBebida = idBebida;
-		this.horario = horario;
+	public Cliente(long codigo, String vinculacion) {
+		
+		this.codigo = codigo;
+		this.vinculacion = vinculacion;
+	}
+	
+
+	public long getCodigo() {
+		return codigo;
 	}
 
-	/**
-	 * @return El idBar
-	 */
-	public long getIdBar() 
-	{
-		return idBar;
+	public void setCodigo(long codigo) {
+		this.codigo = codigo;
 	}
 
-	/**
-	 * @param idBar - El nuevo identificador de bar. Debe existir un bar con dicho identificador
-	 */
-	public void setIdBar(long idBar) 
-	{
-		this.idBar = idBar;
+	public String getVinculacion() {
+		return vinculacion;
 	}
 
-	/**
-	 * @return El idBebida
-	 */
-	public long getIdBebida() 
-	{
-		return idBebida;
-	}
-
-	/**
-	 * @param idBebida - El nuevo identificador de bebida. Debe existir una bebida con dicho identificador
-	 */
-	public void setIdBebida(long idBebida) 
-	{
-		this.idBebida = idBebida;
-	}
-
-	/**
-	 * @return El horario en que el bar sirve la bebida
-	 */
-	public String getHorario() 
-	{
-		return horario;
-	}
-
-	/**
-	 * @param horario - El nuevo horario en que el bar sirve la bebida (DIURNO, NOCTURNO, TODOS)
-	 */
-	public void setHorario(String horario) 
-	{
-		this.horario = horario;
+	public void setVinculacion(String vinculacion) {
+		this.vinculacion = vinculacion;
 	}
 
 	/** 
@@ -125,6 +91,20 @@ public class Sirven implements VOSirven
 	@Override
 	public String toString() 
 	{
-		return "Sirven [idBar=" + idBar + ", idBebida=" + idBebida + ", horario=" + horario + "]";
+		return "Cliente [codigo=" + codigo + ",  vinculacion=" + vinculacion + "]";
 	}
+
+	@Override
+	public long getcodigo() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public String getvinculacion() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 }
