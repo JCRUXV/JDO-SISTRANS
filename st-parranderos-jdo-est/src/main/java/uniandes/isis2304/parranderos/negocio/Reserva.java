@@ -32,10 +32,7 @@ public class Reserva implements VOReserva
 	 */
 	private long id;
 	
-	/**
-	 * El nombre de la bebida
-	 */
-	private long costo;
+
 	
 	/**
 	 * El identificador del tipo de bebida de la bebida. Debe existir en la tabla de tipoBebida
@@ -67,7 +64,6 @@ public class Reserva implements VOReserva
 	public Reserva() 
 	{
 		this.id = 0;
-		this.costo = 0;
 		this.fecha = new Timestamp(0);
 		this.duracion = 0;
 		this.numero_p = 0;
@@ -86,7 +82,6 @@ public class Reserva implements VOReserva
 	public Reserva(long id, long costo, Timestamp fecha, int duracion, int numero_p, int oferta, int cliente) 
 	{
 		this.id = id;
-		this.costo = costo;
 		this.fecha = fecha;
 		this.duracion = duracion;
 		this.numero_p= numero_p;
@@ -110,21 +105,7 @@ public class Reserva implements VOReserva
 		this.id = id;
 	}
 
-	/**
-	 * @return El nombre de la bebida
-	 */
-	public long getCosto() 
-	{
-		return costo;
-	}
-
-	/**
-	 * @param nombre - El nuevo nombre de la bebida
-	 */
-	public void setCosto(long costo) 
-	{
-		this.costo = costo;
-	}
+	
 
 	/**
 	 * @return El id del Tipo de Bebida
@@ -202,7 +183,7 @@ public class Reserva implements VOReserva
 	@Override
 	public String toString() 
 	{
-		return "Bebida [id=" + id + ", costo=" + costo + ", fecha=" + fecha + ", duracion=" + duracion + ", numero_p=" + numero_p + ", oferta=" + oferta + ", cliente=" + cliente + "]";
+		return "Bebida [id=" + id +  ", fecha=" + fecha + ", duracion=" + duracion + ", numero_p=" + numero_p + ", oferta=" + oferta + ", cliente=" + cliente + "]";
 	}
 
 }

@@ -32,10 +32,7 @@ public interface VOReserva
 	 */
 	public long getId();
 
-	/**
-	 * @return El nombre de la bebida
-	 */
-	public long getCosto();
+	
 
 	/**
 	 * @return El id del Tipo de Bebida

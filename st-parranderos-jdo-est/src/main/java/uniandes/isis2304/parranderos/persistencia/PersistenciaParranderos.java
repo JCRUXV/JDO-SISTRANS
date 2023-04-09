@@ -101,7 +101,7 @@ public class PersistenciaParranderos
 	/**
 	 * Atributo para el acceso a la tabla BAR de la base de datos
 	 */
-	private SQLBar sqlBar;
+	private SQLOferta sqlOferta;
 	
 	/**
 	 * Atributo para el acceso a la tabla BEBIDA de la base de datos
@@ -221,7 +221,7 @@ public class PersistenciaParranderos
 	{
 		sqlTipoBebida = new SQLTipoBebida(this);
 		sqlBebida = new SQLBebida(this);
-		sqlBar = new SQLBar(this);
+		sqlOferta = new SQLOferta(this);
 		sqlBebedor = new SQLBebedor(this);
 		sqlGustan = new SQLGustan(this);
 		sqlSirven = new SQLSirven (this);
@@ -983,7 +983,7 @@ public class PersistenciaParranderos
 	 * @param sedes - El número de sedes del bar en la ciudad (Mayor que 0)
 	 * @return El objeto Bar adicionado. null si ocurre alguna Excepción
 	 */
-	public Bar adicionarBar(String nombre, String ciudad, String presupuesto, int sedes) 
+	public Bar adicionarOferta(String nombre, String ciudad, String presupuesto, int sedes) 
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -991,7 +991,7 @@ public class PersistenciaParranderos
         {
             tx.begin();
             long idBar = nextval ();
-            long tuplasInsertadas = sqlBar.adicionarBar(pm, idBar, nombre, ciudad, presupuesto, sedes);
+            long tuplasInsertadas = sqlOferta.adicionarBar(pm, idBar, nombre, ciudad, presupuesto, sedes);
             tx.commit();
 
             log.trace ("Inserción de Bar: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
@@ -1020,14 +1020,14 @@ public class PersistenciaParranderos
 	 * @param nombreBar - El nombre del bar
 	 * @return El número de tuplas eliminadas. -1 si ocurre alguna Excepción
 	 */
-	public long eliminarBarPorNombre (String nombreBar) 
+	public long eliminarOfertaPorNombre (String nombreBar) 
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
         try
         {
             tx.begin();
-            long resp = sqlBar.eliminarBaresPorNombre(pm, nombreBar);
+            long resp = sqlOferta.eliminarBaresPorNombre(pm, nombreBar);
             tx.commit();
 
             return resp;
@@ -1054,14 +1054,14 @@ public class PersistenciaParranderos
 	 * @param idBar - El identificador del bar
 	 * @return El número de tuplas eliminadas. -1 si ocurre alguna Excepción
 	 */
-	public long eliminarBarPorId (long idBar) 
+	public long eliminarOfertaPorId (long idBar) 
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
         try
         {
             tx.begin();
-            long resp = sqlBar.eliminarBarPorId (pm, idBar);
+            long resp = sqlOferta.eliminarBarPorId (pm, idBar);
             tx.commit();
 
             return resp;
@@ -1086,9 +1086,9 @@ public class PersistenciaParranderos
 	 * Método que consulta todas las tuplas en la tabla BAR
 	 * @return La lista de objetos BAR, construidos con base en las tuplas de la tabla BAR
 	 */
-	public List<Bar> darBares ()
+	public List<Bar> darOfertas ()
 	{
-		return sqlBar.darBares (pmf.getPersistenceManager());
+		return this.sqlOferta.darOfertas (pmf.getPersistenceManager());
 	}
  
 	/**
@@ -1096,9 +1096,9 @@ public class PersistenciaParranderos
 	 * @param nombreBar - El nombre del bar
 	 * @return La lista de objetos BAR, construidos con base en las tuplas de la tabla BAR
 	 */
-	public List<Bar> darBaresPorNombre (String nombreBar)
+	public List<Bar> darOfertasPorPropietario(String nombreBar)
 	{
-		return sqlBar.darBaresPorNombre (pmf.getPersistenceManager(), nombreBar);
+		return sqlOferta.darOfertasPorPropietario (pmf.getPersistenceManager(), codigo);
 	}
  
 	/**
@@ -1106,9 +1106,9 @@ public class PersistenciaParranderos
 	 * @param idBar - El identificador del bar
 	 * @return El objeto BAR, construido con base en la tuplas de la tabla BAR, que tiene el identificador dado
 	 */
-	public Bar darBarPorId (long idBar)
+	public Bar darOfertaPorId (long idBar)
 	{
-		return sqlBar.darBarPorId (pmf.getPersistenceManager(), idBar);
+		return sqlOferta.darOfertaPorId (pmf.getPersistenceManager(), idBar);
 	}
  
 	/**
