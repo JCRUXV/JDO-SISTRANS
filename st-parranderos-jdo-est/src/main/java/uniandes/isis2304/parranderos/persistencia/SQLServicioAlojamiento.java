@@ -68,11 +68,11 @@ class SQLServicioAlojamiento
 		return (long) q.executeUnique();
 	}
 
-    public ServicioAlojamiento darServicioAlojamientoPorId (PersistenceManager pm, long id) 
+    public ServicioAlojamiento darServicioAlojamientoPorOfertaServicio (PersistenceManager pm, long oferta,long servicio) 
     {
-        Query q = pm.newQuery(SQL, "SELECT * FROM SERVICIO_ALOJAMIENTO WHERE ID = ?");
+        Query q = pm.newQuery(SQL, "SELECT * FROM SERVICIO_ALOJAMIENTO WHERE OFERTA = ? AND SERVICIO = ?");
         q.setResultClass(ServicioAlojamiento.class);
-        q.setParameters(id);
+        q.setParameters(oferta,servicio);
         return (ServicioAlojamiento) q.executeUnique();
     }
 

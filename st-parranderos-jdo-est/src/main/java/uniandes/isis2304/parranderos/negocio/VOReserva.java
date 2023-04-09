@@ -15,9 +15,7 @@
 
 package uniandes.isis2304.parranderos.negocio;
 
-
-
-
+import java.sql.Date;
 
 /**
  * Interfaz para los métodos get de BEBIDA.
@@ -37,19 +35,19 @@ public interface VOReserva
 	/**
 	 * @return El id del Tipo de Bebida
 	 */
-	public java.sql.Timestamp getFecha();
+	public Date getFecha();
 
 	/**
 	 * @return El gradoAlcohol de la bebida
 	 */
-	public int getDuracion();
+	public long  getDuracion();
 
-	public int getNumero_p();
+	public long getNumero_p();
 
-	public int getOferta();
+	public long  getOferta();
 
 
-	public int getCliente();
+	public long  getCliente();
 
 	/**
 	 * @return Una cadena con la información básica de la bebida

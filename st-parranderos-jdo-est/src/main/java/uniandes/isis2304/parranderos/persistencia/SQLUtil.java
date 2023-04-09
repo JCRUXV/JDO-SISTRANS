@@ -61,13 +61,7 @@ class SQLUtil
 	 * @param pm - El manejador de persistencia
 	 * @return El número de secuencia generado
 	 */
-	public long nextval (PersistenceManager pm)
-	{
-        Query q = pm.newQuery(SQL, "SELECT "+ pp.darSeqParranderos () + ".nextval FROM DUAL");
-        q.setResultClass(Long.class);
-        long resp = (long) q.executeUnique();
-        return resp;
-	}
+	
 
 	/**
 	 * Crea y ejecuta las sentencias SQL para cada tabla de la base de datos - EL ORDEN ES IMPORTANTE 
@@ -77,13 +71,13 @@ class SQLUtil
 	 */
 	public long [] limpiarParranderos (PersistenceManager pm)
 	{
-        Query qGustan = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaGustan ());          
-        Query qSirven = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaSirven ());
-        Query qVisitan = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaVisitan ());
-        Query qBebida = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaBebida ());
-        Query qTipoBebida = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaTipoBebida ());
-        Query qBebedor = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaBebedor ());
-        Query qBar = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaBar ());
+        Query qGustan = pm.newQuery(SQL, "DELETE FROM CLIENTE" );          
+        Query qSirven = pm.newQuery(SQL, "DELETE FROM OPERADOR" );
+        Query qVisitan = pm.newQuery(SQL, "DELETE FROM OPERADOR_PN" );
+        Query qBebida = pm.newQuery(SQL, "DELETE FROM RESERVA" );
+        Query qTipoBebida = pm.newQuery(SQL, "DELETE FROM SERVICIO" );
+        Query qBebedor = pm.newQuery(SQL, "DELETE FROM OFERTA" );
+        Query qBar = pm.newQuery(SQL, "DELETE FROM SERVICIO_ALOJAMIENTO") ;
 
         long gustanEliminados = (long) qGustan.executeUnique ();
         long sirvenEliminados = (long) qSirven.executeUnique ();

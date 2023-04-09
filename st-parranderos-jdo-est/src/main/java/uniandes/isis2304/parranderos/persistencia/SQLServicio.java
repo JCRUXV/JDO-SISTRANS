@@ -54,10 +54,10 @@ class SQLServicio
 	 * @param capacidad - La capacidad del servicio
 	 * @return El número de tuplas insertadas
 	 */
-	public long adicionarServicio (PersistenceManager pm, long codigo, String nombre, String descripcion)
+	public long adicionarServicio (PersistenceManager pm, String nombre, String descripcion)
 	{
-		Query q = pm.newQuery(SQL, "INSERT INTO SERVICIO (CODIGO, NOMBRE, DESCRIPCION) values (?, ?, ?)");
-		q.setParameters(codigo, nombre, descripcion);
+		Query q = pm.newQuery(SQL, "INSERT INTO SERVICIO ( NOMBRE, DESCRIPCION) values (?, ?, ?)");
+		q.setParameters( nombre, descripcion);
 		return (long) q.executeUnique();
 	}
 
@@ -88,4 +88,11 @@ class SQLServicio
 		q.setResultClass(Servicio.class);
 		return (List<Servicio>) q.executeList();
 	}
+
+    public long darId (PersistenceManager pm) 
+    {
+        Query q = pm.newQuery(SQL, "SELECT MAX(id) id FROM Servicio ");
+        q.setResultClass(long.class);
+        return (long) q.executeUnique();
+    }
 }

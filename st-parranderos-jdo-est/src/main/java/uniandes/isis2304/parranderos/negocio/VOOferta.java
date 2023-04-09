@@ -15,7 +15,8 @@
 
 package uniandes.isis2304.parranderos.negocio;
 
-import java.sql.Timestamp;
+import java.sql.Date;
+
 
 /**
  * Interfaz para los métodos get de BEBEDOR.
@@ -55,7 +56,7 @@ public interface VOOferta
 	public String getDisponibilidad();
 	
 	
-	public Timestamp getFecha_inicial();
+	public Date getFecha_inicial();
 	
 	
 	public long getCant_dias();

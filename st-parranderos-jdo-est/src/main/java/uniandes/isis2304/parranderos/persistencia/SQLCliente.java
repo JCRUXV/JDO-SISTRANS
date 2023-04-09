@@ -79,5 +79,13 @@ class SQLCliente
 	q.setParameters(CODIGO);
 	return (Cliente) q.executeUnique();
 }
+
+public long Uso (PersistenceManager pm, long CODIGO) 
+{
+	Query q = pm.newQuery(SQL, "SELECT COUNT(*) cant FROM RESERVA WHERE CLIENTE = ?");
+	q.setResultClass(long.class);
+	q.setParameters(CODIGO);
+	return (long) q.executeUnique();
+}
 }
 

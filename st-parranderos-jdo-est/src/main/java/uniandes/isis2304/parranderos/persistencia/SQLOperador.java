@@ -59,13 +59,20 @@ class SQLOperador
         return (long) q.executeUnique();
 	}
 
-    public Operador darReservaPorId (PersistenceManager pm, long id) 
+    public Operador darOperadorPorId (PersistenceManager pm, long id) 
     {
         Query q = pm.newQuery(SQL, "SELECT * FROM Operador WHERE id = ?");
         q.setResultClass(Operador.class);
         q.setParameters(id);
         return (Operador) q.executeUnique();
     }
+
+    public long darId (PersistenceManager pm) 
+{
+	Query q = pm.newQuery(SQL, "SELECT MAX(id) id FROM Operador ");
+	q.setResultClass(long.class);
+	return (long) q.executeUnique();
+}
     
 
 }

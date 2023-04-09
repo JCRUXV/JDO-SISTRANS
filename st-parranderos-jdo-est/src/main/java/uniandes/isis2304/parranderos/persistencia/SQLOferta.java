@@ -89,15 +89,28 @@ public Oferta darOfertaPorId (PersistenceManager pm, long idOferta)
 	return (Oferta) q.executeUnique();
 }
 
+public long darId (PersistenceManager pm) 
+{
+	Query q = pm.newQuery(SQL, "SELECT MAX(id) id FROM OFERTA ");
+	q.setResultClass(long.class);
+	return (long) q.executeUnique();
+}
+
 public void actualizarFechaInicial(PersistenceManager pm, long idOferta, Date nuevaFechaInicial) {
     Query q = pm.newQuery(SQL, "UPDATE OFERTA SET fecha_inicial = ? WHERE id = ?");
     q.setParameters(nuevaFechaInicial, idOferta);
     q.executeUnique();
 }
 
-public void actualizarDisponibilidad(PersistenceManager pm, long idOferta) {
+public void actualizarDisponibilidad1(PersistenceManager pm, long idOferta) {
     Query q = pm.newQuery(SQL, "UPDATE OFERTA SET fecha_inicial = ? WHERE id = ?");
     q.setParameters("NO DISPONIBLE", idOferta);
+    q.executeUnique();
+}
+
+public void actualizarDisponibilidad2(PersistenceManager pm, long idOferta) {
+    Query q = pm.newQuery(SQL, "UPDATE OFERTA SET fecha_inicial = ? WHERE id = ?");
+    q.setParameters("DISPONIBLE ", idOferta);
     q.executeUnique();
 }
 
@@ -108,6 +121,14 @@ public List<Oferta> darOfertas (PersistenceManager pm)
 		Query q = pm.newQuery(SQL, "SELECT * FROM OFERTA WHERE DISPONIBILIDAD = ?" );
 		q.setResultClass(Oferta.class);
 		q.setParameters("DISPONIBLE ");
+		return (List<Oferta>) q.executeList();
+	}
+
+	public List<Oferta> darOfertasPorPropietario (PersistenceManager pm, long propietario)
+	{
+		Query q = pm.newQuery(SQL, "SELECT * FROM OFERTA WHERE OPERADOR = ?" );
+		q.setResultClass(Oferta.class);
+		q.setParameters(propietario);
 		return (List<Oferta>) q.executeList();
 	}
 
@@ -122,13 +143,7 @@ public List<Oferta> darOfertas (PersistenceManager pm)
 		return (List<Oferta>) q.executeList();
 	}
 
-/**
- * Crea y ejecuta la sentencia SQL para encontrar la información de LAS OFERTAS de la 
- * base de datos de Parranderos, por su costo
- * @param pm - El manejador de persistencia
- * @param costo - El costo de las ofertas
- * @return Una lista de objetos OFERTA que tienen el costo dado
- */
+
 public List<Oferta> darOfertasPorCosto (PersistenceManager pm, double costo) 
 {
 	Query q = pm.newQuery(SQL, "SELECT * FROM OFERTA WHERE costo = ?");

@@ -15,7 +15,8 @@
 
 package uniandes.isis2304.parranderos.negocio;
 
-import java.sql.Timestamp;
+import java.sql.Date;
+
 
 /**
  * Clase para modelar el concepto BEBIDA del negocio de los Parranderos
@@ -37,23 +38,23 @@ public class Reserva implements VOReserva
 	/**
 	 * El identificador del tipo de bebida de la bebida. Debe existir en la tabla de tipoBebida
 	 */
-	private Timestamp fecha;
+	private Date fecha;
 
 	
 	
 	/**
 	 * El grado de alcohol de la bebida (Mayor que 0)
 	 */
-	private int duracion;
+	private long duracion;
 
 
-	private int numero_p;
+	private long  numero_p;
 
 
-	private int oferta;
+	private long  oferta;
 
 
-	private int cliente;
+	private long  cliente;
 
 	/* ****************************************************************
 	 * 			Métodos
@@ -64,7 +65,7 @@ public class Reserva implements VOReserva
 	public Reserva() 
 	{
 		this.id = 0;
-		this.fecha = new Timestamp(0);
+		this.fecha = new Date(0);
 		this.duracion = 0;
 		this.numero_p = 0;
 		this.oferta=0;
@@ -79,7 +80,7 @@ public class Reserva implements VOReserva
 	 * @param tipo - El identificador del tipo de bebida
 	 * @param gradoAlcohol - El graddo de alcohol de la bebida (Mayor que 0)
 	 */
-	public Reserva(long id, long costo, Timestamp fecha, int duracion, int numero_p, int oferta, int cliente) 
+	public Reserva(long id, long costo, Date fecha, long duracion, long numero_p, long oferta, long cliente) 
 	{
 		this.id = id;
 		this.fecha = fecha;
@@ -110,7 +111,7 @@ public class Reserva implements VOReserva
 	/**
 	 * @return El id del Tipo de Bebida
 	 */
-	public Timestamp getFecha() 
+	public Date getFecha() 
 	{
 		return fecha;
 	}
@@ -118,56 +119,56 @@ public class Reserva implements VOReserva
 	/**
 	 * @param tipoBebida El nuevo identificador de tipo de bebida
 	 */
-	public void setFecha(Timestamp fecha) 
+	public void setFecha(Date fecha) 
 	{
 		this.fecha = fecha;
 	}
 
 
-	public int getDuracion()
+	public long getDuracion()
 	{
 		return duracion;
 	}
 
 
-	public void setDuracion(int duracion)
+	public void setDuracion(long duracion)
 	{
 		this.duracion = duracion;
 	}
 
 
-	public int getNumero_p()
+	public long getNumero_p()
 	{
 		return numero_p;
 	}
 
 
-	public void setNumero_p(int numero_p)
+	public void setNumero_p(long numero_p)
 	{
 		this.numero_p = numero_p;
 	}
 
 
 
-	public int getOferta()
+	public long getOferta()
 	{
 		return oferta;
 	}
 
 
-	public void setOferta(int oferta)
+	public void setOferta(long oferta)
 	{
 		this.oferta = oferta;
 	}
 
 
-	public int getCliente()
+	public long getCliente()
 	{
 		return cliente;
 	}
 
 
-	public void setCliente(int cliente)
+	public void setCliente(long cliente)
 	{
 		this.cliente = cliente;
 	}

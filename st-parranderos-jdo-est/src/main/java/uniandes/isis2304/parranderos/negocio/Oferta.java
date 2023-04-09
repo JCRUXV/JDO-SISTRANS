@@ -15,7 +15,8 @@
 
 package uniandes.isis2304.parranderos.negocio;
 
-import java.sql.Timestamp;
+import java.sql.Date;
+
 
 
 /**
@@ -65,7 +66,7 @@ public class Oferta implements VOOferta
 	
 	
 	
-	private Timestamp fecha_inicial;
+	private Date fecha_inicial;
 	
 	
 	
@@ -96,7 +97,7 @@ public class Oferta implements VOOferta
 		this.capacidad = 0;
 		this.cant_dias = 0;
 		this.disponibilidad = "";
-		this.fecha_inicial = new Timestamp(0);
+		this.fecha_inicial = new Date(0);
 		this.precio=0;
 		this.operador=0;
 		this.ubicacion="";
@@ -119,7 +120,7 @@ public class Oferta implements VOOferta
 
 
 	public Oferta(long id, String tipo, long capacidad, String ubicacion, long vivienda, String disponibilidad,
-			Timestamp fecha_inicial, long cant_dias, long precio, long operador) {
+			Date fecha_inicial, long cant_dias, long precio, long operador) {
 		super();
 		this.id = id;
 		this.tipo = tipo;
@@ -181,11 +182,11 @@ public class Oferta implements VOOferta
 		this.disponibilidad = disponibilidad;
 	}
 
-	public Timestamp getFecha_inicial() {
+	public  Date getFecha_inicial() {
 		return fecha_inicial;
 	}
 
-	public void setFecha_inicial(Timestamp fecha_inicial) {
+	public void setFecha_inicial(Date fecha_inicial) {
 		this.fecha_inicial = fecha_inicial;
 	}
 

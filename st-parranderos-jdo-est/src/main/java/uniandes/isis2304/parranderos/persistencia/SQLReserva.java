@@ -1,7 +1,7 @@
 package uniandes.isis2304.parranderos.persistencia;
 
 import java.sql.Date;
-
+import java.util.List;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
@@ -46,7 +46,7 @@ class SQLReserva
 		this.pp = pp;
 	}
 
-    public long adicionarReserva(PersistenceManager pm, Date fecha_inicio, long duracion, long oferta, long cliente, int numero_p, int costo_total) {
+    public long adicionarReserva(PersistenceManager pm, Date fecha_inicio, long duracion, long oferta, long cliente, int numero_p) {
         Query q = pm.newQuery(SQL, "INSERT INTO RESERVA (fecha,duracion, oferta, cliente, numero_p) values (?, ?, ?, ?, ?)");
         q.setParameters(fecha_inicio, duracion, oferta, cliente, numero_p);
         return (long) q.executeUnique();
@@ -66,4 +66,19 @@ class SQLReserva
         q.setParameters(id);
         return (Reserva) q.executeUnique();
     }
+
+    public long darId (PersistenceManager pm) 
+    {
+        Query q = pm.newQuery(SQL, "SELECT MAX(id) id FROM Reserva ");
+        q.setResultClass(long.class);
+        return (long) q.executeUnique();
+    }
+
+    public List<Reserva> darReservasPorCliente (PersistenceManager pm, long cliente)
+	{
+		Query q = pm.newQuery(SQL, "SELECT * FROM OFERTA WHERE Cliente = ?" );
+		q.setResultClass(Reserva.class);
+		q.setParameters(cliente);
+		return (List<Reserva>) q.executeList();
+	}
 }
