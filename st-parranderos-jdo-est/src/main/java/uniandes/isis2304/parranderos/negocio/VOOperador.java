@@ -16,45 +16,40 @@
 package uniandes.isis2304.parranderos.negocio;
 
 /**
- * Interfaz para los métodos get de BAR.
+ * Interfaz para los métodos get de GUSTAN.
  * Sirve para proteger la información del negocio de posibles manipulaciones desde la interfaz 
  * 
  * @author Germán Bravo
  */
-public interface VOBar 
+public interface VOOperador 
 {
 	/* ****************************************************************
-	 * 			Métodos 
+	 * 			Métodos
 	 *****************************************************************/
-     /**
-	 * @return El id del bar
+	/**
+	 * @return El idBebedor
 	 */
 	public long getId();
-	
+
 	/**
-	 * @return el nombre del bar
+	 * @return El idBebida
 	 */
 	public String getNombre();
-	
-	/**
-	 * @return la ciudad del bar
-	 */
-	public String getCiudad();
-	
-	/**
-	 * @return El presupuesto del bar
-	 */
-	public String getPresupuesto();
-	
-	/**
-	 * @return la cantSedes del bar
-	 */
-	public int getCantSedes();
 
+	
+
+
+	public String getTipo();
+
+
+
+	public String getDisponibilidad();
+
+	
+	/** 
+	 * @return Una cadena con la información básica
+	 */
 	@Override
-	/**
-	 * @return Una cadena de caracteres con todos los atributos del bar
-	 */
 	public String toString();
-
+	
 }

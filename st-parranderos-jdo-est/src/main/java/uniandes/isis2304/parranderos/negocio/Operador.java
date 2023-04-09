@@ -16,161 +16,134 @@
 package uniandes.isis2304.parranderos.negocio;
 
 /**
- * Clase para modelar el concepto BAR del negocio de los Parranderos
- *
+ * Clase para modelar la relación GUSTAN del negocio de los Parranderos:
+ * Cada objeto de esta clase representa el hecho que un bebedor gusta de una bebida y viceversa.
+ * Se modela mediante los identificadores del bebedor y de la bebida respectivamente.
+ * Debe existir un bebedor con el identificador dado
+ * Debe existir una bebida con el identificador dado 
+ * 
  * @author Germán Bravo
  */
-public class Bar implements VOBar
+public class Operador implements VOOperador
 {
 	/* ****************************************************************
 	 * 			Atributos
 	 *****************************************************************/
 	/**
-	 * El identificador ÚNICO de los bares
+	 * El identificador del bebedor que gusta de la bebida
 	 */
 	private long id;
-	
+
 	/**
-	 * El nombre del bar
+	 * El identificador de la bebida que gusta al bebedor
 	 */
 	private String nombre;
 
-	/**
-	 * La ciudad donde se encuentra el bar
-	 */
-	private String ciudad;
-	
-	/**
-	 * El presupuesto del bar (ALTO, MEDIO, BAJO)
-	 */
-	private String presupuesto;
-	
-	/**
-	 * El número de sedes del bar en la ciudad
-	 */
-	private int cantSedes;
+
+	private String disponibilidad;
+
+	private String tipo;
+
+
 
 	/* ****************************************************************
-	 * 			Métodos 
+	 * 			Métodos
 	 *****************************************************************/
-    /**
-     * Constructor por defecto
-     */
-	public Bar() 
-    {
-    	this.id = 0;
-		this.nombre = "";
-		this.ciudad = "";
-		this.presupuesto = "";
-		this.cantSedes = 0;
+	/**
+	 * Constructor por defecto
+	 */
+	public Operador() 
+	{
+		this.id= 0;
+		this.disponibilidad = "";
+		this.nombre="";
+		this.tipo="";
+
+
 	}
 
 	/**
 	 * Constructor con valores
-	 * @param id - El id del bart
-	 * @param nombre - El nombre del bar
-	 * @param ciudad - La ciudad del bar
-	 * @param presupuesto - El presupuesto del bar (ALTO, MEDIO, BAJO)
-	 * @param cantSedes - Las sedes del bar (Mayor que 0)
+	 * @param idBebedor - El identificador del bebedor. Debe exixtir un bebedor con dicho identificador
+	 * @param idBebida - El identificador de la bebida. Debe existir una bebida con dicho identificador
 	 */
-    public Bar(long id, String nombre, String ciudad, String presupuesto, int cantSedes) 
-    {
-    	this.id = id;
+	public Operador(long id, String nombre, String tipo, String disponibilidad) 
+	{
+		this.id = id;
 		this.nombre = nombre;
-		this.ciudad = ciudad;
-		this.presupuesto = presupuesto;
-		this.cantSedes = cantSedes;
+		this.tipo=tipo;
+		this.disponibilidad=disponibilidad;
+
+
 	}
 
-    /**
-	 * @return El id del bar
+	/**
+	 * @return El idBebedor
 	 */
 	public long getId() 
 	{
 		return id;
 	}
-	
+
 	/**
-	 * @param id - El nuevo id del bar
+	 * @param idBebedor - El nuevo idBebedor. Debe existir un bebedor con dicho identificador
 	 */
 	public void setId(long id) 
 	{
 		this.id = id;
 	}
-	
+
 	/**
-	 * @return el nombre del bar
+	 * @return El idBebida
 	 */
 	public String getNombre() 
 	{
 		return nombre;
 	}
-	
+
 	/**
-	 * @param nombre El nuevo nombre del bar
+	 * @param idBebida - El nuevo identificador de bebida. Debe existir una bebida con dicho identificador
 	 */
 	public void setNombre(String nombre) 
 	{
 		this.nombre = nombre;
 	}
-	
-	/**
-	 * @return la ciudad del bar
-	 */
-	public String getCiudad() 
+
+	public String getTipo() 
 	{
-		return ciudad;
+		return tipo;
+	}
+
+	/**
+	 * @param idBebida - El nuevo identificador de bebida. Debe existir una bebida con dicho identificador
+	 */
+	public void setTipo(String tipo) 
+	{
+		this.tipo = tipo;
+	}
+
+
+
+	public String getDisponibilidad() 
+	{
+		return disponibilidad;
+	}
+
+	/**
+	 * @param idBebida - El nuevo identificador de bebida. Debe existir una bebida con dicho identificador
+	 */
+	public void setDisponibilidad(String disponibilidad) 
+	{
+		this.disponibilidad = disponibilidad;
 	}
 	
-	/**
-	 * @param ciudad - La nueva ciudad del bar
+	/** 
+	 * @return Una cadena con la información básica
 	 */
-	public void setCiudad(String ciudad) 
-	{
-		this.ciudad = ciudad;
-	}
-	
-	/**
-	 * @return El presupuesto del bar
-	 */
-	public String getPresupuesto() 
-	{
-		return presupuesto;
-	}
-	
-	/**
-	 * @param presupuesto - El nuevo presupuesto del bar (ALTO, MEDIO, BAJOO)
-	 */
-	public void setPresupuesto(String presupuesto) 
-	{
-		this.presupuesto = presupuesto;
-	}
-	
-	/**
-	 * @return la cantSedes del bar
-	 */
-	public int getCantSedes() 
-	{
-		return cantSedes;
-	}
-	
-	/**
-	 * @param cantSedes - la nueva cantidad de sedes del bar
-	 */
-	public void setCantSedes(int cantSedes) 
-	{
-		this.cantSedes = cantSedes;
-	}
-	
 	@Override
-	/**
-	 * @return Una cadena de caracteres con todos los atributos del bar
-	 */
 	public String toString() 
 	{
-		return "Bar [id=" + id + ", nombre=" + nombre + ", ciudad=" + ciudad + ", presupuesto=" + presupuesto
-				+ ", cantSedes=" + cantSedes + "]";
+		return "Gustan [id=" + id + ", nombre=" + nombre + ", tipo=" + tipo + ", disponibilidad=" + disponibilidad + "]";
 	}
 	
-
 }

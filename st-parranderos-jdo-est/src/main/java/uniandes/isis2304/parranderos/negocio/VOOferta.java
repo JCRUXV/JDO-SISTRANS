@@ -16,7 +16,6 @@
 package uniandes.isis2304.parranderos.negocio;
 
 import java.sql.Timestamp;
-import java.util.List;
 
 /**
  * Interfaz para los métodos get de BEBEDOR.

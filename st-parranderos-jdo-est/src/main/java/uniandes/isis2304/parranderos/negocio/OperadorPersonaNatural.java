@@ -15,92 +15,102 @@
 
 package uniandes.isis2304.parranderos.negocio;
 
+
+
 /**
- * Clase para modelar la relación GUSTAN del negocio de los Parranderos:
- * Cada objeto de esta clase representa el hecho que un bebedor gusta de una bebida y viceversa.
- * Se modela mediante los identificadores del bebedor y de la bebida respectivamente.
- * Debe existir un bebedor con el identificador dado
- * Debe existir una bebida con el identificador dado 
- * 
+ * Clase para modelar el concepto BAR del negocio de los Parranderos
+ *
  * @author Germán Bravo
  */
-public class Gustan implements VOGustan
+public class OperadorPersonaNatural implements VOOperadorPersonaNatural
 {
 	/* ****************************************************************
 	 * 			Atributos
 	 *****************************************************************/
 	/**
-	 * El identificador del bebedor que gusta de la bebida
+	 * El identificador ÚNICO de los bares
 	 */
-	private long idBebedor;
+	private long id;
+	
+	/**
+	 * El nombre del bar
+	 */
+	private String vinculacion;
 
 	/**
-	 * El identificador de la bebida que gusta al bebedor
-	 */
-	private long idBebida;
+
 
 	/* ****************************************************************
-	 * 			Métodos
+	 * 			Métodos 
 	 *****************************************************************/
-	/**
-	 * Constructor por defecto
-	 */
-	public Gustan() 
-	{
-		this.idBebedor = 0;
-		this.idBebida = 0;
+    /**
+     * Constructor por defecto
+     */
+	public OperadorPersonaNatural() 
+    {
+    	this.id = 0;
+		this.vinculacion = "";
+	
 	}
 
 	/**
 	 * Constructor con valores
-	 * @param idBebedor - El identificador del bebedor. Debe exixtir un bebedor con dicho identificador
-	 * @param idBebida - El identificador de la bebida. Debe existir una bebida con dicho identificador
+	 * @param id - El id del bart
+	 * @param nombre - El nombre del bar
+	 * @param ciudad - La ciudad del bar
+	 * @param presupuesto - El presupuesto del bar (ALTO, MEDIO, BAJO)
+	 * @param cantSedes - Las sedes del bar (Mayor que 0)
 	 */
-	public Gustan(long idBebedor, long idBebida) 
-	{
-		this.idBebedor = idBebedor;
-		this.idBebida = idBebida;
+    public OperadorPersonaNatural(long id, String vinculacion) 
+    {
+    	this.id = id;
+		this.vinculacion = vinculacion;
+
+
 	}
 
-	/**
-	 * @return El idBebedor
+    /**
+	 * @return El id del bar
 	 */
-	public long getIdBebedor() 
+	public long getId() 
 	{
-		return idBebedor;
-	}
-
-	/**
-	 * @param idBebedor - El nuevo idBebedor. Debe existir un bebedor con dicho identificador
-	 */
-	public void setIdBebedor(long idBebedor) 
-	{
-		this.idBebedor = idBebedor;
-	}
-
-	/**
-	 * @return El idBebida
-	 */
-	public long getIdBebida() 
-	{
-		return idBebida;
-	}
-
-	/**
-	 * @param idBebida - El nuevo identificador de bebida. Debe existir una bebida con dicho identificador
-	 */
-	public void setIdBebida(long idBebida) 
-	{
-		this.idBebida = idBebida;
+		return id;
 	}
 	
-	/** 
-	 * @return Una cadena con la información básica
+	/**
+	 * @param id - El nuevo id del bar
 	 */
+	public void setId(long id) 
+	{
+		this.id = id;
+	}
+	
+	/**
+	 * @return el nombre del bar
+	 */
+	public String getVinculacion() 
+	{
+		return vinculacion;
+	}
+	
+	/**
+	 * @param nombre El nuevo nombre del bar
+	 */
+	public void setVinculacion(String vinculacion) 
+	{
+		this.vinculacion = vinculacion;
+	}
+	
+
+	
 	@Override
+	/**
+	 * @return Una cadena de caracteres con todos los atributos del bar
+	 */
 	public String toString() 
 	{
-		return "Gustan [idBebedor=" + idBebedor + ", idBebida=" + idBebida + "]";
+		return "Bar [id=" + id + ", vinculacion=" + vinculacion + " ]";
 	}
 	
+
 }
