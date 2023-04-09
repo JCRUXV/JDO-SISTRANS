@@ -15,7 +15,7 @@
 
 package uniandes.isis2304.parranderos.negocio;
 
-import java.sql.Timestamp;
+
 
 /**
  * Interfaz para los métodos get de VISITAN.
@@ -23,7 +23,7 @@ import java.sql.Timestamp;
  * 
  * @author Germán Bravo
  */
-public interface VOVisitan 
+public interface VOServicio 
 {
 	/* ****************************************************************
 	 * 			Métodos
@@ -31,22 +31,22 @@ public interface VOVisitan
 	/**
 	 * @return El idBebedor
 	 */
-	public long getIdBebedor();
+	public long getCodigo();
 
 	/**
 	 * @return El idBar
 	 */
-	public long getIdBar();
+	public String getNombre();
 
 	/**
 	 * @return La fechaVisita
 	 */
-	public Timestamp getFechaVisita();
+	
 
 	/**
 	 * @return El horario
 	 */
-	public String getHorario();
+	public String getDescripcion();
 
 	/** 
 	 * @return Una cadena con la información básica

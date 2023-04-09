@@ -15,13 +15,17 @@
 
 package uniandes.isis2304.parranderos.negocio;
 
+
+
+
+
 /**
  * Interfaz para los métodos get de BEBIDA.
  * Sirve para proteger la información del negocio de posibles manipulaciones desde la interfaz 
  * 
  * @author Germán Bravo
  */
-public interface VOBebida 
+public interface VOReserva 
 {
 	/**
 	 * @return El id de la bebida
@@ -31,17 +35,24 @@ public interface VOBebida
 	/**
 	 * @return El nombre de la bebida
 	 */
-	public String getNombre();
+	public long getCosto();
 
 	/**
 	 * @return El id del Tipo de Bebida
 	 */
-	public long getIdTipoBebida();
+	public java.sql.Timestamp getFecha();
 
 	/**
 	 * @return El gradoAlcohol de la bebida
 	 */
-	public int getGradoAlcohol();
+	public int getDuracion();
+
+	public int getNumero_p();
+
+	public int getOferta();
+
+
+	public int getCliente();
 
 	/**
 	 * @return Una cadena con la información básica de la bebida

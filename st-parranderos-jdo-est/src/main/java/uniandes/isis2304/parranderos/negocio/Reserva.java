@@ -15,12 +15,14 @@
 
 package uniandes.isis2304.parranderos.negocio;
 
+import java.sql.Timestamp;
+
 /**
  * Clase para modelar el concepto BEBIDA del negocio de los Parranderos
  *
  * @author Germán Bravo
  */
-public class Bebida implements VOBebida
+public class Reserva implements VOReserva
 {
 	/* ****************************************************************
 	 * 			Atributos
@@ -33,17 +35,28 @@ public class Bebida implements VOBebida
 	/**
 	 * El nombre de la bebida
 	 */
-	private String nombre;
+	private long costo;
 	
 	/**
 	 * El identificador del tipo de bebida de la bebida. Debe existir en la tabla de tipoBebida
 	 */
-	private long idTipoBebida;
+	private Timestamp fecha;
+
+	
 	
 	/**
 	 * El grado de alcohol de la bebida (Mayor que 0)
 	 */
-	private int gradoAlcohol;
+	private int duracion;
+
+
+	private int numero_p;
+
+
+	private int oferta;
+
+
+	private int cliente;
 
 	/* ****************************************************************
 	 * 			Métodos
@@ -51,12 +64,16 @@ public class Bebida implements VOBebida
 	/**
 	 * Constructor por defecto
 	 */
-	public Bebida() 
+	public Reserva() 
 	{
 		this.id = 0;
-		this.nombre = "";
-		this.idTipoBebida = 0;
-		this.gradoAlcohol = 0;
+		this.costo = 0;
+		this.fecha = new Timestamp(0);
+		this.duracion = 0;
+		this.numero_p = 0;
+		this.oferta=0;
+		this.cliente=0;
+
 	}
 
 	/**
@@ -66,12 +83,15 @@ public class Bebida implements VOBebida
 	 * @param tipo - El identificador del tipo de bebida
 	 * @param gradoAlcohol - El graddo de alcohol de la bebida (Mayor que 0)
 	 */
-	public Bebida(long id, String nombre, long tipo, int gradoAlcohol) 
+	public Reserva(long id, long costo, Timestamp fecha, int duracion, int numero_p, int oferta, int cliente) 
 	{
 		this.id = id;
-		this.nombre = nombre;
-		this.idTipoBebida = tipo;
-		this.gradoAlcohol = gradoAlcohol;
+		this.costo = costo;
+		this.fecha = fecha;
+		this.duracion = duracion;
+		this.numero_p= numero_p;
+		this.oferta = oferta;
+		this.cliente = oferta;
 	}
 
 	/**
@@ -93,50 +113,88 @@ public class Bebida implements VOBebida
 	/**
 	 * @return El nombre de la bebida
 	 */
-	public String getNombre() 
+	public long getCosto() 
 	{
-		return nombre;
+		return costo;
 	}
 
 	/**
 	 * @param nombre - El nuevo nombre de la bebida
 	 */
-	public void setNombre(String nombre) 
+	public void setCosto(long costo) 
 	{
-		this.nombre = nombre;
+		this.costo = costo;
 	}
 
 	/**
 	 * @return El id del Tipo de Bebida
 	 */
-	public long getIdTipoBebida() 
+	public Timestamp getFecha() 
 	{
-		return idTipoBebida;
+		return fecha;
 	}
 
 	/**
 	 * @param tipoBebida El nuevo identificador de tipo de bebida
 	 */
-	public void setIdTipoBebida(long tipoBebida) 
+	public void setFecha(Timestamp fecha) 
 	{
-		this.idTipoBebida = tipoBebida;
+		this.fecha = fecha;
+	}
+
+
+	public int getDuracion()
+	{
+		return duracion;
+	}
+
+
+	public void setDuracion(int duracion)
+	{
+		this.duracion = duracion;
+	}
+
+
+	public int getNumero_p()
+	{
+		return numero_p;
+	}
+
+
+	public void setNumero_p(int numero_p)
+	{
+		this.numero_p = numero_p;
+	}
+
+
+
+	public int getOferta()
+	{
+		return oferta;
+	}
+
+
+	public void setOferta(int oferta)
+	{
+		this.oferta = oferta;
+	}
+
+
+	public int getCliente()
+	{
+		return cliente;
+	}
+
+
+	public void setCliente(int cliente)
+	{
+		this.cliente = cliente;
 	}
 
 	/**
 	 * @return El gradoAlcohol de la bebida
 	 */
-	public int getGradoAlcohol() 
-	{
-		return gradoAlcohol;
-	}
-
-	/**
-	 * @param gradoAlcohol El nuevo grado de alcohol de la bebida
-	 */
-	public void setGradoAlcohol(int gradoAlcohol) 
-	{
-		this.gradoAlcohol = gradoAlcohol;
-	}
+ 
 
 	/**
 	 * @return Una cadena con la información básica de la bebida
@@ -144,7 +202,7 @@ public class Bebida implements VOBebida
 	@Override
 	public String toString() 
 	{
-		return "Bebida [id=" + id + ", nombre=" + nombre + ", idTipoBebida=" + idTipoBebida + ", gradoAlcohol=" + gradoAlcohol + "]";
+		return "Bebida [id=" + id + ", costo=" + costo + ", fecha=" + fecha + ", duracion=" + duracion + ", numero_p=" + numero_p + ", oferta=" + oferta + ", cliente=" + cliente + "]";
 	}
 
 }
