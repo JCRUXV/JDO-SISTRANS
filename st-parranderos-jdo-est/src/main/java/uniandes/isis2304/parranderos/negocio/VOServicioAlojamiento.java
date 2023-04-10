@@ -34,7 +34,15 @@ public interface VOServicioAlojamiento
 	/**
 	 * @return El nombre del tipo de bebida
 	 */
-	public String getNombre();
+	public long getOferta();
+
+
+	public long getPrecio();
+
+
+	public long getDisponibilidad();
+
+	public long getServicio();
 
 	/**
 	 * @return Una cadena de caracteres con la información del tipo de bebida
@@ -42,11 +50,5 @@ public interface VOServicioAlojamiento
 	@Override
 	public String toString(); 
 
-	/**
-	 * Define la igualdad dos Tipos de bebida
-	 * @param tb - El tipo de bebida a comparar
-	 * @return true si tienen el mismo identificador y el mismo nombre
-	 */
-	@Override
-	public boolean equals (Object tb); 
+
 }

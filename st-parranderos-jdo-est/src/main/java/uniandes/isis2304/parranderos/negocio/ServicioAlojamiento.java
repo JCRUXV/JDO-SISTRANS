@@ -15,6 +15,8 @@
 
 package uniandes.isis2304.parranderos.negocio;
 
+
+
 /**
  * Clase para modelar el concepto BAR del negocio de los Parranderos
  *
@@ -33,7 +35,16 @@ public class ServicioAlojamiento implements VOServicioAlojamiento
 	/**
 	 * El nombre del tipo de bebida
 	 */
-	private String nombre;
+	private long oferta;
+
+
+	private long precio;
+
+
+	private long disponibilidad;
+	
+
+	private long servicio;
 
 	/* ****************************************************************
 	 * 			Métodos
@@ -44,7 +55,10 @@ public class ServicioAlojamiento implements VOServicioAlojamiento
 	public ServicioAlojamiento() 
 	{
 		this.id = 0;
-		this.nombre = "Default";
+		this.oferta = 0;
+		this.precio=0;
+		this.disponibilidad=0;
+		this.servicio=0;
 	}
 
 	/**
@@ -52,10 +66,13 @@ public class ServicioAlojamiento implements VOServicioAlojamiento
 	 * @param id - El identificador del tipo de bebida
 	 * @param nombre - El nombre del tipo de bebida
 	 */
-	public ServicioAlojamiento(long id, String nombre) 
+	public ServicioAlojamiento(long id, long oferta, long precio, long disponibilidad, long servicio) 
 	{
 		this.id = id;
-		this.nombre = nombre;
+		this.oferta = oferta;
+		this.precio = precio;
+		this.disponibilidad = disponibilidad;
+		this.servicio = servicio;
 	}
 
 	/**
@@ -77,18 +94,63 @@ public class ServicioAlojamiento implements VOServicioAlojamiento
 	/**
 	 * @return El nombre del tipo de bebida
 	 */
-	public String getNombre() 
+	public long getOferta() 
 	{
-		return nombre;
+		return oferta;
 	}
 
 	/**
 	 * @param nombre - El nuevo nombre del tipo de bebida
 	 */
-	public void setNombre(String nombre) 
+	public void setOferta(long oferta) 
 	{
-		this.nombre = nombre;
+		this.oferta = oferta;
 	}
+
+	public long getPrecio() 
+	{
+		return precio;
+	}
+
+	/**
+	 * @param nombre - El nuevo nombre del tipo de bebida
+	 */
+	public void setPrecio(long precio) 
+	{
+		this.precio = precio;
+	}
+
+
+	public long getDisponibilidad() 
+	{
+		return disponibilidad;
+	}
+
+	/**
+	 * @param nombre - El nuevo nombre del tipo de bebida
+	 */
+	public void setDisponibilidad(long disponibilidad) 
+	{
+		this.disponibilidad = disponibilidad;
+	}
+
+
+	public long getServicio() 
+	{
+		return servicio;
+	}
+
+	/**
+	 * @param nombre - El nuevo nombre del tipo de bebida
+	 */
+	public void setServicio(long servicio) 
+	{
+		this.servicio = servicio;
+	}
+
+
+
+
 
 
 	/**
@@ -97,17 +159,9 @@ public class ServicioAlojamiento implements VOServicioAlojamiento
 	@Override
 	public String toString() 
 	{
-		return "TipoBebida [id=" + id + ", nombre=" + nombre + "]";
+		return "TipoBebida [id=" + id + ", oferta=" + oferta + ", precio=" + precio + ", disponibilidad=" + disponibilidad + ", servicio=" + servicio + "]";
 	}
 
-	/**
-	 * @param tipo - El TipoBebida a comparar
-	 * @return True si tienen el mismo nombre
-	 */
-	public boolean equals(Object tipo) 
-	{
-		ServicioAlojamiento tb = (ServicioAlojamiento) tipo;
-		return id == tb.id && nombre.equalsIgnoreCase (tb.nombre);
-	}
+
 
 }
