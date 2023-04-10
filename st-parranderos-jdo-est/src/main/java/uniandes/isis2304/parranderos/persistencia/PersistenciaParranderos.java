@@ -971,7 +971,7 @@ public class PersistenciaParranderos
             tx.commit();
 
             
-            return new 
+            return new ServicioAlojamiento(this.darServicioAlojamientoPorOfertaServicio(oferta, servicio).getId(),disponibilidad,servicio);
         }
         catch (Exception e)
         {
