@@ -16,6 +16,7 @@
 package uniandes.isis2304.parranderos.negocio;
 
 import java.sql.Timestamp;
+import java.sql.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -76,96 +77,37 @@ public class Parranderos
 	}
 	
 	/* ****************************************************************
-	 * 			Métodos para manejar los TIPOS DE BEBIDA
+	 * 			Métodos para manejar los CLIENTES
 	 *****************************************************************/
-	/**
-	 * Adiciona de manera persistente un tipo de bebida 
-	 * Adiciona entradas al log de la aplicación
-	 * @param nombre - El nombre del tipo de bebida
-	 * @return El objeto TipoBebida adicionado. null si ocurre alguna Excepción
-	 */
-	public TipoBebida adicionarTipoBebida (String nombre)
+	
+	public Cliente adicionarCliente (long codigo, String vinculacion)
 	{
-        log.info ("Adicionando Tipo de bebida: " + nombre);
-        TipoBebida tipoBebida = pp.adicionarTipoBebida (nombre);		
-        log.info ("Adicionando Tipo de bebida: " + tipoBebida);
-        return tipoBebida;
+        log.info ("Adicionando Cliente con codigo : " + codigo);
+        Cliente Cliente = pp.adicionarCliente(codigo,vinculacion);		
+        log.info ("Adicionando Cliente con codigo : " + codigo);
+        return Cliente;
 	}
 	
-	/**
-	 * Elimina un tipo de bebida por su nombre
-	 * Adiciona entradas al log de la aplicación
-	 * @param nombre - El nombre del tipo de bebida a eliminar
-	 * @return El número de tuplas eliminadas
-	 */
-	public long eliminarTipoBebidaPorNombre (String nombre)
+	
+	public long eliminarClientePorCodigo (long codigo)
 	{
-		log.info ("Eliminando Tipo de bebida por nombre: " + nombre);
-        long resp = pp.eliminarTipoBebidaPorNombre (nombre);		
-        log.info ("Eliminando Tipo de bebida por nombre: " + resp + " tuplas eliminadas");
+		log.info ("Eliminando Cliente por codigo: " + codigo);
+        long resp = pp.eliminarClientePorCodigo(codigo);		
+        log.info ("Eliminando Cliente por codigo: " + resp + " tuplas eliminadas");
         return resp;
 	}
 	
-	/**
-	 * Elimina un tipo de bebida por su identificador
-	 * Adiciona entradas al log de la aplicación
-	 * @param idTipoBebida - El id del tipo de bebida a eliminar
-	 * @return El número de tuplas eliminadas
-	 */
-	public long eliminarTipoBebidaPorId (long idTipoBebida)
-	{
-		log.info ("Eliminando Tipo de bebida por id: " + idTipoBebida);
-        long resp = pp.eliminarTipoBebidaPorId (idTipoBebida);		
-        log.info ("Eliminando Tipo de bebida por id: " + resp + " tuplas eliminadas");
-        return resp;
-	}
 	
-	/**
-	 * Encuentra todos los tipos de bebida en Parranderos
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos TipoBebida con todos los tipos de bebida que conoce la aplicación, llenos con su información básica
-	 */
-	public List<TipoBebida> darTiposBebida ()
+	public Cliente darClientePorCodigo (long codigo)
 	{
-		log.info ("Consultando Tipos de bebida");
-        List<TipoBebida> tiposBebida = pp.darTiposBebida ();	
-        log.info ("Consultando Tipos de bebida: " + tiposBebida.size() + " existentes");
-        return tiposBebida;
-	}
-
-	/**
-	 * Encuentra todos los tipos de bebida en Parranderos y los devuelve como una lista de VOTipoBebida
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos VOTipoBebida con todos los tipos de bebida que conoce la aplicación, llenos con su información básica
-	 */
-	public List<VOTipoBebida> darVOTiposBebida ()
-	{
-		log.info ("Generando los VO de Tipos de bebida");        
-        List<VOTipoBebida> voTipos = new LinkedList<VOTipoBebida> ();
-        for (TipoBebida tb : pp.darTiposBebida ())
-        {
-        	voTipos.add (tb);
-        }
-        log.info ("Generando los VO de Tipos de bebida: " + voTipos.size() + " existentes");
-        return voTipos;
-	}
-
-	/**
-	 * Encuentra el tipos de bebida en Parranderos con el nombre solicitado
-	 * Adiciona entradas al log de la aplicación
-	 * @param nombre - El nombre de la bebida
-	 * @return Un objeto TipoBebida con el tipos de bebida de ese nombre que conoce la aplicación, 
-	 * lleno con su información básica
-	 */
-	public TipoBebida darTipoBebidaPorNombre (String nombre)
-	{
-		log.info ("Buscando Tipo de bebida por nombre: " + nombre);
-		List<TipoBebida> tb = pp.darTipoBebidaPorNombre (nombre);
-		return !tb.isEmpty () ? tb.get (0) : null;
+		log.info ("Buscando cliente con codigo: " + codigo);
+		Cliente tb = pp.darClientePorCodigo(codigo);
+		log.info ("Buscando cliente por codigo: " + tb != null ? tb : "NO EXISTE");
+        return tb;
 	}
 
 	/* ****************************************************************
-	 * 			Métodos para manejar las BEBIDAS
+	 * 			Métodos para manejar las Ofertas
 	 *****************************************************************/
 	/**
 	 * Adiciona de manera persistente una bebida 
@@ -175,83 +117,84 @@ public class Parranderos
 	 * @param gradoAlcohol - El grado de alcohol de la bebida (Mayor que 0)
 	 * @return El objeto Bebida adicionado. null si ocurre alguna Excepción
 	 */
-	public Bebida adicionarBebida (String nombre, long idTipoBebida, int gradoAlcohol)
+	public Oferta adicionarOferta (String tipo, long capacidad,String ubicacion,long vivienda, String disponibilidad,Date fecha,long cant_dias,long precio, long operador) 
 	{
-		log.info ("Adicionando bebida " + nombre);
-		Bebida bebida = pp.adicionarBebida (nombre, idTipoBebida, gradoAlcohol);
-        log.info ("Adicionando bebida: " + bebida);
-        return bebida;
+		log.info ("Adicionando oferta " + tipo);
+		Oferta oferta = pp.adicionarOferta(tipo, capacidad, ubicacion, vivienda, disponibilidad, fecha, cant_dias, precio, operador);
+        log.info ("Adicionando oferta: " + tipo);
+        return oferta;
 	}
 	
-	/**
-	 * Elimina una bebida por su nombre
-	 * Adiciona entradas al log de la aplicación
-	 * @param nombre - El nombre de la bebida a eliminar
-	 * @return El número de tuplas eliminadas
-	 */
-	public long eliminarBebidaPorNombre (String nombre)
+	
+	public long eliminarOfertasPorPropietario (long propietario)
 	{
-        log.info ("Eliminando bebida por nombre: " + nombre);
-        long resp = pp.eliminarBebidaPorNombre (nombre);
-        log.info ("Eliminando bebida por nombre: " + resp + " tuplas eliminadas");
+        log.info ("Eliminando oferta de operador : " + propietario);
+        long resp = pp.eliminarOfertasPorPropietario(propietario);
+        log.info ("Eliminando ofertas de deoperador: " + resp + " tuplas eliminadas");
         return resp;
 	}
 	
-	/**
-	 * Elimina una bebida por su identificador
-	 * Adiciona entradas al log de la aplicación
-	 * @param idBebida - El identificador de la bebida a eliminar
-	 * @return El número de tuplas eliminadas (1 o 0)
-	 */
-	public long eliminarBebidaPorId (long idBebida)
+	
+	public long eliminarOfertaPorId (long id)
 	{
-        log.info ("Eliminando bebida por id: " + idBebida);
-        long resp = pp.eliminarBebidaPorId (idBebida);
-        log.info ("Eliminando bebida por id: " + resp + " tuplas eliminadas");
+        log.info ("Eliminando oferta por id: " + id);
+        long resp = pp.eliminarOfertaPorId(id);
+        log.info ("Eliminando oferta por id: " + resp + " tuplas eliminadas");
         return resp;
 	}
 	
-	/**
-	 * Encuentra todas las bebida en Parranderos
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos Bebida con todos las bebidas que conoce la aplicación, llenos con su información básica
-	 */
-	public List<Bebida> darBebidas ()
+	
+	public List<Oferta> darOfertas ()
 	{
-        log.info ("Consultando Bebidas");
-        List<Bebida> bebidas = pp.darBebidas ();	
-        log.info ("Consultando Bebidas: " + bebidas.size() + " bebidas existentes");
+        log.info ("Consultando Ofertas");
+        List<Oferta> bebidas = pp.darOfertas();	
+        log.info ("Consultando Ofertas: " + bebidas.size() + " ofertas existentes");
         return bebidas;
 	}
 
-	/**
-	 * Encuentra todos los tipos de bebida en Parranderos y los devuelve como una lista de VOTipoBebida
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos VOBebida con todos las bebidas que conoce la aplicación, llenos con su información básica
-	 */
-	public List<VOBebida> darVOBebidas ()
+	
+	public List<VOOferta> darVOOfertas ()
 	{
-		log.info ("Generando los VO de las bebidas");       
-        List<VOBebida> voBebidas = new LinkedList<VOBebida> ();
-        for (Bebida beb : pp.darBebidas ())
+		log.info ("Generando los VO de las ofertas");       
+        List<VOOferta> voBebidas = new LinkedList<VOOferta> ();
+        for (Oferta beb : pp.darOfertas())
         {
         	voBebidas.add (beb);
         }
-        log.info ("Generando los VO de las bebidas: " + voBebidas.size() + " existentes");
+        log.info ("Generando los VO de las ofertas disponibles: " + voBebidas.size() + " existentes");
         return voBebidas;
 	}
 
-	/**
-	 * Elimina las bebidas que no son servidas en ningún bar (No son referenciadas en ninguna tupla de SIRVEN)
-	 * Adiciona entradas al log de la aplicación
-	 * @return El número de bebidas eliminadas
-	 */
-	public long eliminarBebidasNoServidas ()
+	public List<Oferta> darOfertasPorCosto (long costo)
 	{
-        log.info ("Borrando bebidas no servidas");
-        long resp = pp.eliminarBebidasNoServidas ();
-        log.info ("Borrando bebidas no servidas: " + resp + " bebidas eliminadas");
-        return resp;
+        log.info ("Consultando Ofertas por costo");
+        List<Oferta> bebidas = pp.darOfertasPorCosto(costo);	
+        log.info ("Consultando Ofertas: " + bebidas.size() + " ofertas existentes");
+        return bebidas;
+	}
+
+	public List<Oferta> darOfertasPorPropietario (long propietario)
+	{
+        log.info ("Consultando Ofertas por propietario");
+        List<Oferta> bebidas = pp.darOfertasPorPropietario(propietario);	
+        log.info ("Consultando Ofertas: " + bebidas.size() + " ofertas existentes");
+        return bebidas;
+	}
+
+	public List<Oferta> darOfertasPopulares ()
+	{
+        log.info ("Consultando Ofertas por costo");
+        List<Oferta> bebidas = pp.darOfertasPopulares();
+        log.info ("Consultando Ofertas: " + bebidas.size() + " ofertas existentes");
+        return bebidas;
+	}
+
+	public Oferta darOfertaPorId (long id)
+	{
+		log.info ("Buscando oferta con id: " + id);
+		Oferta tb = pp.darOfertaPorid(id);
+		log.info ("Buscando oferta por id: " + tb != null ? tb : "NO EXISTE");
+        return tb;
 	}
 
 	/* ****************************************************************

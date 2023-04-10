@@ -970,8 +970,8 @@ public class PersistenciaParranderos
             long tuplasInsertadas = sqlServicioAlojamiento.adicionarServicioAlojamiento(pm, oferta, precio, disponibilidad, servicio);
             tx.commit();
 
-            
-            return new ServicioAlojamiento(this.darServicioAlojamientoPorOfertaServicio(oferta, servicio).getId(),disponibilidad,servicio);
+            long id =this.darServicioAlojamientoPorOfertaServicio(oferta, servicio).getId();
+            return new ServicioAlojamiento(id, oferta, precio, disponibilidad, servicio);
         }
         catch (Exception e)
         {
@@ -996,14 +996,14 @@ public class PersistenciaParranderos
 	 * @param idBar - El identificador del bar
 	 * @return El número de tuplas eliminadas. -1 si ocurre alguna Excepción
 	 */
-	public long eliminarVisitan (long idBebedor, long idBar) 
+	public long eliminarServicioAlojamientoPorOfertaServicio (long oferta, long servicio) 
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
         try
         {
             tx.begin();
-            long resp = sqlVisitan.eliminarVisitan(pm, idBebedor, idBar);
+            long resp = this.sqlServicioAlojamiento.eliminarServicioAlojamientoPorOfertaServicio(pm, oferta, servicio);
             tx.commit();
 
             return resp;
@@ -1025,79 +1025,12 @@ public class PersistenciaParranderos
 	}
 
 	/**
-	 * Método que elimina, de manera transaccional, una tupla en la tabla VISITAN, dados el identificador del bebedor
-	 * @param idBebedor - El identificador del bebedor
-	 * @return El número de tuplas eliminadas. -1 si ocurre alguna Excepción
-	 */
-	public long eliminarVisitanPorIdBebedor (long idBebedor) 
-	{
-		PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx=pm.currentTransaction();
-        try
-        {
-            tx.begin();
-            long visitasEliminadas = sqlVisitan.eliminarVisitanPorIdBebedor (pm, idBebedor);
-            tx.commit();
-
-            return visitasEliminadas;
-        }
-        catch (Exception e)
-        {
-//        	e.printStackTrace();
-        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-            return -1;
-        }
-        finally
-        {
-            if (tx.isActive())
-            {
-                tx.rollback();
-            }
-            pm.close();
-        }
-	}
-	
-
-	/**
-	 * Método que elimina, de manera transaccional, una tupla en la tabla VISITAN, dados el identificador del bar
-	 * @param idBar - El identificador del bar
-	 * @return El número de tuplas eliminadas. -1 si ocurre alguna Excepción
-	 */
-	public long eliminarVisitanPorIdBar (long idBar) 
-	{
-		PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx=pm.currentTransaction();
-        try
-        {
-            tx.begin();
-            long visitasEliminadas = sqlVisitan.eliminarVisitanPorIdBar (pm, idBar);
-            tx.commit();
-
-            return visitasEliminadas;
-        }
-        catch (Exception e)
-        {
-//        	e.printStackTrace();
-        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-            return -1;
-        }
-        finally
-        {
-            if (tx.isActive())
-            {
-                tx.rollback();
-            }
-            pm.close();
-        }
-	}
-
-	/**
 	 * Método que consulta todas las tuplas en la tabla VISITAN
 	 * @return La lista de objetos VISITAN, construidos con base en las tuplas de la tabla VISITAN
 	 */
-	public List<Visitan> darVisitan ()
+	public List<ServicioAlojamiento> darVisitan (long oferta)
 	{
-		return sqlVisitan.darVisitan (pmf.getPersistenceManager());
+		return this.sqlServicioAlojamiento.darserviciodeoferta(pmf.getPersistenceManager(), oferta);
 	}	
 
 	/**

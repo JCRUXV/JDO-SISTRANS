@@ -61,10 +61,10 @@ class SQLServicioAlojamiento
 	 * @param id - El id del servicio alojamiento
 	 * @return El número de tuplas eliminadas
 	 */
-	public long eliminarServicioAlojamientoPorId (PersistenceManager pm, long id)
+	public long eliminarServicioAlojamientoPorOfertaServicio (PersistenceManager pm, long oferta, long servicio)
 	{
-		Query q = pm.newQuery(SQL, "DELETE FROM SERVICIO_ALOJAMIENTO WHERE ID = ?");
-		q.setParameters(id);
+		Query q = pm.newQuery(SQL, "DELETE FROM SERVICIO_ALOJAMIENTO WHERE OFERTA =? AND SERVICIO = ?");
+		q.setParameters(oferta,servicio);
 		return (long) q.executeUnique();
 	}
 
