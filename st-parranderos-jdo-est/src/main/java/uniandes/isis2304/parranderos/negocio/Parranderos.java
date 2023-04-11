@@ -15,7 +15,7 @@
 
 package uniandes.isis2304.parranderos.negocio;
 
-import java.sql.Timestamp;
+
 import java.sql.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -389,117 +389,77 @@ public class Parranderos
         log.info ("Adicionando servicio: " + resp + " tuplas insertadas");
         return resp;
 	}
-	
-	/**
-	 * Elimina de manera persistente el hecho que una bebida es servida por un bar
-	 * Adiciona entradas al log de la aplicación
-	 * @param idBar - El identificador del bar
-	 * @param idBebida - El identificador de la bebida
-	 * @return El número de tuplas eliminadas
-	 */
-	public long eliminarSirven (long idBar, long idBebida)
+
+
+
+	public long eliminarServicioPorCodigo (long codigo)
 	{
-        log.info ("Eliminando sirven");
-        long resp = pp.eliminarSirven (idBar, idBebida);
-        log.info ("Eliminando sirven: " + resp + "tuplas eliminadas");
-        return resp;
-	}
-	
-	/**
-	 * Encuentra todos los SIRVEN en Parranderos
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos SIRVEN con todos los GUSTAN que conoce la aplicación, llenos con su información básica
-	 */
-	public List<Sirven> darSirven ()
-	{
-        log.info ("Listando Sirven");
-        List<Sirven> sirven = pp.darSirven ();	
-        log.info ("Listando Sirven: " + sirven.size() + " sirven existentes");
-        return sirven;
+		log.info ("eliminando servicio" );
+		long respu = pp.eliminarServicioPorCodigo(codigo);
+		log.info ("eliminando servicio: " + respu + "tuplas eliminadas");
+		return respu;
+
 	}
 
-	/**
-	 * Encuentra todos los sirven en Parranderos y los devuelve como VO
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos SIRVEN con todos los SIRVEN que conoce la aplicación, llenos con su información básica
-	 */
-	public List<VOSirven> darVOSirven ()
+
+	public List<Servicio> darServicios ()
 	{
-		log.info ("Generando los VO de Sirven");
-		List<VOSirven> voGustan = new LinkedList<VOSirven> ();
-		for (VOSirven sirven: pp.darSirven ())
-		{
-			voGustan.add (sirven);
-		}
-		log.info ("Generando los VO de Sirven: " + voGustan.size () + " Sirven existentes");
-		return voGustan;
+        log.info ("Consultando Servicios");
+        List<Servicio> services = pp.darServicios();	
+        log.info ("Consultando Servicios: " + services.size() + " servicios existentes");
+        return services;
+	}
+
+
+	public Servicio darServicioPorCodigo (long codigo)
+	{
+		log.info ("Buscando servicios con codigo: " + codigo);
+		Servicio sv = pp.darServicioPorCodigo(codigo);
+		log.info ("Buscando servicio por codigo: " + sv != null ? sv : "NO EXISTE");
+        return sv;
 	}
 
 	/* ****************************************************************
-	 * 			Métodos para manejar la relación VISITAN
+	 * 			Métodos para manejar la relación ServicioAlojamiento
 	 *****************************************************************/
 
-	/**
-	 * Adiciona de manera persistente el hecho que un bebedor visita un bar
-	 * Adiciona entradas al log de la aplicación
-	 * @param idBebedor - El identificador del bebedor
-	 * @param idBar - El identificador del bar
-	 * @param fecha - La fecha en la que se realizó la visita
-	 * @param horario - El horario en el que se sirve la bebida (DIURNO, NOCTURNO, TODOS)
-	 * @return Un objeto Visitan con los valores dados
-	 */
-	public Visitan adicionarVisitan (long idBebedor, long idBar, Timestamp fecha, String horario)
-	{
-        log.info ("Adicionando visitan [" + idBebedor + ", " + idBar + "]");
-        Visitan resp = pp.adicionarVisitan (idBebedor, idBar, fecha, horario);
-        log.info ("Adicionando visitan: " + resp + " tuplas insertadas");
-        return resp;
-	}
-	
-	/**
-	 * Elimina de manera persistente el hecho que un bebedor visita un bar
-	 * Adiciona entradas al log de la aplicación
-	 * @param idBebedor - El identificador del bebedor
-	 * @param idBar - El identificador del bar
-	 * @return El número de tuplas eliminadas
-	 */
-	public long eliminarVisitan (long idBebedor, long idBar)
-	{
-        log.info ("Eliminando visitan");
-        long resp = pp.eliminarVisitan (idBebedor, idBar);
-        log.info ("Eliminando visitan: " + resp + " tuplas eliminadas");
-        return resp;
-	}
-	
-	/**
-	 * Encuentra todos los VISITAN en Parranderos
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos VISITAN con todos los GUSTAN que conoce la aplicación, llenos con su información básica
-	 */
-	public List<Visitan> darVisitan ()
-	{
-        log.info ("Listando Visitan");
-        List<Visitan> visitan = pp.darVisitan ();	
-        log.info ("Listando Visitan: Listo!");
-        return visitan;
-	}
+	 public ServicioAlojamiento darServicioAlojamientoPorOfertaServicio (long oferta,long servicio)
+	 {
+		 log.info ("Buscando servicios de alojamiento con oferta: " + oferta + "y servicio:" + servicio );
+		 ServicioAlojamiento sva = pp.darServicioAlojamientoPorOfertaServicio(oferta, servicio);
+		 log.info ("Buscando servicio alojamiento por oferta y servicio: " + sva != null ? sva : "NO EXISTE" );
+		 return sva;
+	 }
 
-	/**
-	 * Encuentra todos los visitan en Parranderos y los devuelve como VO
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos Visitan con todos los Visitan que conoce la aplicación, llenos con su información básica
-	 */
-	public List<VOVisitan> darVOVisitan ()
-	{
-		log.info ("Generando los VO de Visitan");
-		List<VOVisitan> voGustan = new LinkedList<VOVisitan> ();
-		for (VOVisitan vis: pp.darVisitan ())
-		{
-			voGustan.add (vis);
-		}
-		log.info ("Generando los VO de Visitan: " + voGustan.size () + " Visitan existentes");
-		return voGustan;
-	}
+
+	 public ServicioAlojamiento adicionarServicioAlojamiento(long oferta, long servicio,long precio,int disponibilidad) 
+	 {
+		log.info("adicionar servicioAlojamiento" + servicio);
+		ServicioAlojamiento sval = pp.adicionarServicioAlojamiento(oferta, servicio, precio, disponibilidad);
+		log.info("adicionando servicio alojamiento: " + sval + "tuplas insertadas" );
+		return sval;
+	 }
+
+
+	 public long eliminarServicioAlojamientoPorOfertaServicio (long oferta, long servicio) 
+	 {
+		log.info ("eliminando servicioalojamiento" );
+		long respue = pp.eliminarServicioAlojamientoPorOfertaServicio(oferta, servicio);
+		log.info ("eliminando servicioAlojamiento: " + respue + "tuplas eliminadas");
+		return respue;
+	 }
+
+
+	 public List<ServicioAlojamiento> darVisitan (long oferta)
+	 {
+		log.info ("Consultando Servicios de oferta");
+        List<ServicioAlojamiento> servicesa = pp.darVisitan(oferta);	
+        log.info ("Consultando Servicios de oferta: " + servicesa.size() + " servicios existentes");
+        return servicesa;
+	 }
+
+	
+
 
 	/* ****************************************************************
 	 * 			Métodos para administración
