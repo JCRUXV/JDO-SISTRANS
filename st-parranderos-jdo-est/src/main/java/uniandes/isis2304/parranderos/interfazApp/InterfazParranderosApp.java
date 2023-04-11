@@ -26,7 +26,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.sql.Date;
+
 import java.text.SimpleDateFormat;
 import java.util.List;
 
@@ -48,6 +48,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
+import uniandes.isis2304.parranderos.negocio.Oferta;
 import uniandes.isis2304.parranderos.negocio.Parranderos;
 import uniandes.isis2304.parranderos.negocio.VOCliente;
 import uniandes.isis2304.parranderos.negocio.VOOferta;
@@ -508,22 +509,46 @@ public void adicionarServicio_alojamiento() {
 		}
     }
 
-    /**
-     * Borra de la base de datos el tipo de bebida con el identificador dado po el usuario
-     * Cuando dicho tipo de bebida no existe, se indica que se borraron 0 registros de la base de datos
-     */
-    public void eliminarTipoBebidaPorId( )
+    public void eliminarOfertaPorId( )
     {
     	try 
     	{
-    		String idTipoStr = JOptionPane.showInputDialog (this, "Id del tipo de bedida?", "Borrar tipo de bebida por Id", JOptionPane.QUESTION_MESSAGE);
+    		String idTipoStr = JOptionPane.showInputDialog (this, "Id de reserva?", "Borrar reserva por Id", JOptionPane.QUESTION_MESSAGE);
     		if (idTipoStr != null)
     		{
     			long idTipo = Long.valueOf (idTipoStr);
-    			long tbEliminados = parranderos.eliminarTipoBebidaPorId (idTipo);
+    			long tbEliminados = parranderos.eliminarOfertaPorId(idTipo);
 
-    			String resultado = "En eliminar TipoBebida\n\n";
-    			resultado += tbEliminados + " Tipos de bebida eliminados\n";
+    			String resultado = "En eliminar Oferta\n\n";
+    			resultado += tbEliminados + " Ofertas						 eliminados\n";
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+
+    public void eliminarReservaPorId( )
+    {
+    	try 
+    	{
+    		String idTipoStr = JOptionPane.showInputDialog (this, "Id de reserva?", "Borrar reserva por Id", JOptionPane.QUESTION_MESSAGE);
+    		if (idTipoStr != null)
+    		{
+    			long idTipo = Long.valueOf (idTipoStr);
+    			long tbEliminados = parranderos.eliminarReservaPorId(idTipo);
+
+    			String resultado = "En eliminar Reserva\n\n";
+    			resultado += tbEliminados + " Reservas eliminados\n";
     			resultado += "\n Operación terminada";
     			panelDatos.actualizarInterfaz(resultado);
     		}
@@ -543,30 +568,80 @@ public void adicionarServicio_alojamiento() {
     /**
      * Busca el tipo de bebida con el nombre indicado por el usuario y lo muestra en el panel de datos
      */
-    public void buscarTipoBebidaPorNombre( )
+    public void rfc1( )
     {
     	try 
     	{
-    		String nombreTb = JOptionPane.showInputDialog (this, "Nombre del tipo de bedida?", "Buscar tipo de bebida por nombre", JOptionPane.QUESTION_MESSAGE);
-    		if (nombreTb != null)
-    		{
-    			VOTipoBebida tipoBebida = parranderos.darTipoBebidaPorNombre (nombreTb);
-    			String resultado = "En buscar Tipo Bebida por nombre\n\n";
-    			if (tipoBebida != null)
+    		
+    			List<Object[]> lista = parranderos.darDineroPropietario();
+    			String resultado = "En dinero recibido por cada provietario\n\n";
+    			if (lista != null)
     			{
-        			resultado += "El tipo de bebida es: " + tipoBebida;
+        			resultado += lista;
     			}
     			else
     			{
-        			resultado += "Un tipo de bebida con nombre: " + nombreTb + " NO EXISTE\n";    				
+        			resultado += "no se pudo hacer la consulta\n";    				
     			}
     			resultado += "\n Operación terminada";
     			panelDatos.actualizarInterfaz(resultado);
-    		}
-    		else
-    		{
-    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
-    		}
+    		
+    		
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+	public void rfc2( )
+    {
+    	try 
+    	{
+    		
+    			List<Oferta> lista = parranderos.darOfertasPopulares();
+    			String resultado = "ofertas mas populares\n\n";
+    			if (lista != null)
+    			{
+        			resultado += lista;
+    			}
+    			else
+    			{
+        			resultado += "no se pudo hacer la consulta\n";    				
+    			}
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		
+    		
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+
+	public void rfc3( )
+    {
+    	try 
+    	{
+    		
+    			List<Object[]> lista = parranderos.darIndiceOcupacion();
+    			String resultado = "ofertas mas populares\n\n";
+    			if (lista != null)
+    			{
+        			resultado += lista;
+    			}
+    			else
+    			{
+        			resultado += "no se pudo hacer la consulta\n";    				
+    			}
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		
+    		
 		} 
     	catch (Exception e) 
     	{
