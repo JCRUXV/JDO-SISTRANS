@@ -48,6 +48,21 @@
 				{
 					"label": "eliminar reserva por id",
 					"event": "eliminarReservaPorId"
+				},
+				
+				{
+					"label": "dar dinero recibido por propietario",
+					"event": "rfc1"
+				},
+				
+				{
+					"label": "dar ofertas mas populares",
+					"event": "rfc2"
+				},
+				
+				{
+					"label": "dar indice de ocupacion",
+					"event": "rfc3"
 				}
 
 				
