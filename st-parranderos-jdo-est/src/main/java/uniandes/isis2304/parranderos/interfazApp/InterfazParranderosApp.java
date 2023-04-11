@@ -14,7 +14,7 @@
  */
 
 package uniandes.isis2304.parranderos.interfazApp;
-
+import java.util.Date;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Desktop;
@@ -26,6 +26,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.jdo.JDODataStoreException;
@@ -47,7 +49,14 @@ import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
 import uniandes.isis2304.parranderos.negocio.Parranderos;
-import uniandes.isis2304.parranderos.negocio.VOTipoBebida;
+import uniandes.isis2304.parranderos.negocio.VOCliente;
+import uniandes.isis2304.parranderos.negocio.VOOferta;
+import uniandes.isis2304.parranderos.negocio.VOOperador;
+import uniandes.isis2304.parranderos.negocio.VOOperadorPersonaNatural;
+import uniandes.isis2304.parranderos.negocio.VOReserva;
+import uniandes.isis2304.parranderos.negocio.VOServicio;
+import uniandes.isis2304.parranderos.negocio.VOServicioAlojamiento;
+
 
 /**
  * Clase principal de la interfaz
@@ -237,26 +246,29 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     }
     
 	/* ****************************************************************
-	 * 			CRUD de TipoBebida
+	 * 			CRUD de Cliente
 	 *****************************************************************/
     /**
      * Adiciona un tipo de bebida con la información dada por el usuario
      * Se crea una nueva tupla de tipoBebida en la base de datos, si un tipo de bebida con ese nombre no existía
      */
-    public void adicionarTipoBebida( )
+    public void adicionarCLiente( )
     {
     	try 
     	{
-    		String nombreTipo = JOptionPane.showInputDialog (this, "Nombre del tipo de bedida?", "Adicionar tipo de bebida", JOptionPane.QUESTION_MESSAGE);
-    		if (nombreTipo != null)
+    		String codigo = JOptionPane.showInputDialog (this, "codigo?", "Adicionar cliente", JOptionPane.QUESTION_MESSAGE);
+    		String vinculacion = JOptionPane.showInputDialog (this, "vinculacion?", "Adicionar cliente", JOptionPane.QUESTION_MESSAGE);
+    		
+			if (codigo != null && vinculacion != null)
     		{
-        		VOTipoBebida tb = parranderos.adicionarTipoBebida (nombreTipo);
+				long valorCodigo = Long.parseLong(codigo);
+        		VOCliente tb = parranderos.adicionarCliente(valorCodigo, vinculacion);
         		if (tb == null)
         		{
-        			throw new Exception ("No se pudo crear un tipo de bebida con nombre: " + nombreTipo);
+        			throw new Exception ("No se pudo crear un cliente con codigo: " + codigo);
         		}
-        		String resultado = "En adicionarTipoBebida\n\n";
-        		resultado += "Tipo de bebida adicionado exitosamente: " + tb;
+        		String resultado = "En adicionarCliente\n\n";
+        		resultado += "Cliente adicionado exitosamente: " + tb;
     			resultado += "\n Operación terminada";
     			panelDatos.actualizarInterfaz(resultado);
     		}
@@ -273,17 +285,218 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 		}
     }
 
+	public void adicionarOferta() {
+		try {
+			String tipo = JOptionPane.showInputDialog(this, "Tipo?", "Adicionar oferta", JOptionPane.QUESTION_MESSAGE);
+			String capacidadStr = JOptionPane.showInputDialog(this, "Capacidad?", "Adicionar oferta", JOptionPane.QUESTION_MESSAGE);
+			String ubicacion = JOptionPane.showInputDialog(this, "Ubicación?", "Adicionar oferta", JOptionPane.QUESTION_MESSAGE);
+			String viviendaStr = JOptionPane.showInputDialog(this, "Vivienda?", "Adicionar oferta", JOptionPane.QUESTION_MESSAGE);
+			String disponibilidad = JOptionPane.showInputDialog(this, "Disponibilidad?", "Adicionar oferta", JOptionPane.QUESTION_MESSAGE);
+			String fechaStr = JOptionPane.showInputDialog(this, "Fecha?", "Adicionar oferta", JOptionPane.QUESTION_MESSAGE);
+			String cantDiasStr = JOptionPane.showInputDialog(this, "Cantidad de días?", "Adicionar oferta", JOptionPane.QUESTION_MESSAGE);
+			String precioStr = JOptionPane.showInputDialog(this, "Precio?", "Adicionar oferta", JOptionPane.QUESTION_MESSAGE);
+			String operadorStr = JOptionPane.showInputDialog(this, "Operador?", "Adicionar oferta", JOptionPane.QUESTION_MESSAGE);
+	
+			if (tipo != null && capacidadStr != null && ubicacion != null && viviendaStr != null && disponibilidad != null
+					&& fechaStr != null && cantDiasStr != null && precioStr != null && operadorStr != null) {
+				
+				// Convertir los valores de cadena a los tipos de datos adecuados
+				long capacidad = Long.parseLong(capacidadStr);
+				long vivienda = Long.parseLong(viviendaStr);
+				Date utilDate = new SimpleDateFormat("yyyy-MM-dd").parse(fechaStr);
+                long time = utilDate.getTime();
+				java.sql.Date fecha = new java.sql.Date(time);
+				long cantDias = Long.parseLong(cantDiasStr);
+				long precio = Long.parseLong(precioStr);
+				long operador = Long.parseLong(operadorStr);
+	
+				// Añadir la oferta
+				VOOferta oferta = parranderos.adicionarOferta(tipo, capacidad, ubicacion, vivienda, disponibilidad, fecha, cantDias, precio, operador);
+	
+				if (oferta == null) {
+					throw new Exception("No se pudo crear una oferta con los datos proporcionados.");
+				}
+	
+				String resultado = "En adicionarOferta\n\n";
+				resultado += "Oferta adicionada exitosamente: " + oferta;
+				resultado += "\nOperación terminada.";
+				panelDatos.actualizarInterfaz(resultado);
+			} else {
+				panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+			}
+		} catch (Exception e) {
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
+
+	public void adicionarReserva() {
+		try {
+			String fechaStr = JOptionPane.showInputDialog(this, "Fecha?", "Adicionar reserva", JOptionPane.QUESTION_MESSAGE);
+			String duracionStr = JOptionPane.showInputDialog(this, "Duración?", "Adicionar reserva", JOptionPane.QUESTION_MESSAGE);
+			String numero_pStr = JOptionPane.showInputDialog(this, "Número de personas?", "Adicionar reserva", JOptionPane.QUESTION_MESSAGE);
+			String ofertaStr = JOptionPane.showInputDialog(this, "Oferta?", "Adicionar reserva", JOptionPane.QUESTION_MESSAGE);
+			String clienteStr = JOptionPane.showInputDialog(this, "Cliente?", "Adicionar reserva", JOptionPane.QUESTION_MESSAGE);
+	
+			if (fechaStr != null && duracionStr != null && numero_pStr != null && ofertaStr != null && clienteStr != null) {
+				// Convertir los valores de cadena a los tipos de datos adecuados
+				Date utilDate = new SimpleDateFormat("yyyy-MM-dd").parse(fechaStr);
+				long time = utilDate.getTime();
+				java.sql.Date fecha = new java.sql.Date(time);
+				long duracion = Long.parseLong(duracionStr);
+				int numero_p = Integer.parseInt(numero_pStr);
+				long oferta = Long.parseLong(ofertaStr);
+				long cliente = Long.parseLong(clienteStr);
+	
+				// Añadir la reserva
+				VOReserva reserva = parranderos.adicionarReserva(fecha, duracion, numero_p, oferta, cliente);
+	
+				if (reserva == null) {
+					throw new Exception("No se pudo crear una reserva con los datos proporcionados.");
+				}
+	
+				String resultado = "En adicionarReserva\n\n";
+				resultado += "Reserva adicionada exitosamente: " + reserva;
+				resultado += "\nOperación terminada.";
+				panelDatos.actualizarInterfaz(resultado);
+			} else {
+				panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+			}
+		} catch (Exception e) {
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
+
+
+	public void adicionarServicio() {
+		try {
+		String nombre = JOptionPane.showInputDialog(this, "Nombre?", "Adicionar servicio", JOptionPane.QUESTION_MESSAGE);
+		String descripcion = JOptionPane.showInputDialog(this, "Descripción?", "Adicionar servicio", JOptionPane.QUESTION_MESSAGE);
+		if (nombre != null && descripcion != null) {
+			// Añadir el servicio
+			VOServicio servicio = parranderos.adicionarServicio(nombre, descripcion);
+	
+			if (servicio == null) {
+				throw new Exception("No se pudo crear un servicio con los datos proporcionados.");
+			}
+	
+			String resultado = "En adicionarServicio\n\n";
+			resultado += "Servicio adicionado exitosamente: " + servicio;
+			resultado += "\nOperación terminada.";
+			panelDatos.actualizarInterfaz(resultado);
+		} else {
+			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+		}
+	} catch (Exception e) {
+		String resultado = generarMensajeError(e);
+		panelDatos.actualizarInterfaz(resultado);
+	}
+}
+
+public void adicionarServicio_alojamiento() {
+    try {
+        String ofertaStr = JOptionPane.showInputDialog(this, "ID de la oferta?", "Adicionar servicio de alojamiento", JOptionPane.QUESTION_MESSAGE);
+        String servicioStr = JOptionPane.showInputDialog(this, "ID del servicio?", "Adicionar servicio de alojamiento", JOptionPane.QUESTION_MESSAGE);
+        String precioStr = JOptionPane.showInputDialog(this, "Precio?", "Adicionar servicio de alojamiento", JOptionPane.QUESTION_MESSAGE);
+        String disponibilidadStr = JOptionPane.showInputDialog(this, "Disponibilidad?", "Adicionar servicio de alojamiento", JOptionPane.QUESTION_MESSAGE);
+
+        if (ofertaStr != null && servicioStr != null && precioStr != null && disponibilidadStr != null) {
+            long oferta = Long.parseLong(ofertaStr);
+            long servicio = Long.parseLong(servicioStr);
+            int precio = Integer.parseInt(precioStr);
+            int disponibilidad = Integer.parseInt(disponibilidadStr);
+
+            // Añadir el servicio de alojamiento
+            VOServicioAlojamiento servicio_alojamiento = parranderos.adicionarServicioAlojamiento(oferta, servicio, precio, disponibilidad);
+
+            if (servicio_alojamiento == null) {
+                throw new Exception("No se pudo crear un servicio de alojamiento con los datos proporcionados.");
+            }
+
+            String resultado = "En adicionarServicio_alojamiento\n\n";
+            resultado += "Servicio de alojamiento adicionado exitosamente: " + servicio_alojamiento;
+            resultado += "\nOperación terminada.";
+            panelDatos.actualizarInterfaz(resultado);
+        } else {
+            panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+        }
+    } catch (Exception e) {
+        String resultado = generarMensajeError(e);
+        panelDatos.actualizarInterfaz(resultado);
+    }
+}
+
+	
+	
+
+	public void adicionarOperador() {
+		try {
+			String nombre = JOptionPane.showInputDialog(this, "Nombre?", "Adicionar operador", JOptionPane.QUESTION_MESSAGE);
+			String tipo = JOptionPane.showInputDialog(this, "Tipo?", "Adicionar operador", JOptionPane.QUESTION_MESSAGE);
+			String disponibilidad = JOptionPane.showInputDialog(this, "Disponibilidad?", "Adicionar operador", JOptionPane.QUESTION_MESSAGE);
+	
+			if (nombre != null && tipo != null && disponibilidad != null) {
+				// Añadir el operador
+				VOOperador operador = parranderos.adicionarOperador(nombre, tipo, disponibilidad);
+	
+				if (operador == null) {
+					throw new Exception("No se pudo crear un operador con los datos proporcionados.");
+				}
+	
+				String resultado = "En adicionarOperador\n\n";
+				resultado += "Operador adicionado exitosamente: " + operador;
+				resultado += "\nOperación terminada.";
+				panelDatos.actualizarInterfaz(resultado);
+			} else {
+				panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+			}
+		} catch (Exception e) {
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
+	
+	public void adicionarOperadorPN() {
+		try {
+			String vinculacion = JOptionPane.showInputDialog(this, "Vinculación?", "Adicionar operador", JOptionPane.QUESTION_MESSAGE);
+			String idStr = JOptionPane.showInputDialog(this, "ID?", "Adicionar operador", JOptionPane.QUESTION_MESSAGE);
+	
+			if (vinculacion != null && idStr != null) {
+				long id = Long.parseLong(idStr);
+				// Añadir el operador
+				VOOperadorPersonaNatural operador = parranderos.adicionarOperadorPN(vinculacion, id);
+	
+				if (operador == null) {
+					throw new Exception("No se pudo crear un operador con los datos proporcionados.");
+				}
+	
+				String resultado = "En adicionarOperador\n\n";
+				resultado += "Operador adicionado exitosamente: " + operador;
+				resultado += "\nOperación terminada.";
+				panelDatos.actualizarInterfaz(resultado);
+			} else {
+				panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+			}
+		} catch (Exception e) {
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
+	
+	
+
     /**
      * Consulta en la base de datos los tipos de bebida existentes y los muestra en el panel de datos de la aplicación
      */
-    public void listarTipoBebida( )
+    public void listarOferta( )
     {
     	try 
     	{
-			List <VOTipoBebida> lista = parranderos.darVOTiposBebida();
+			List <VOOferta> lista = parranderos.darVOOfertas();
 
-			String resultado = "En listarTipoBebida";
-			resultado +=  "\n" + listarTiposBebida (lista);
+			String resultado = "En listarOferta";
+			resultado +=  "\n" + listarOferta(lista);
 			panelDatos.actualizarInterfaz(resultado);
 			resultado += "\n Operación terminada";
 		} 
@@ -528,11 +741,11 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
      * @param lista - La lista con los tipos de bebida
      * @return La cadena con una líea para cada tipo de bebida recibido
      */
-    private String listarTiposBebida(List<VOTipoBebida> lista) 
+    private String listarOferta(List<VOOferta> lista) 
     {
-    	String resp = "Los tipos de bebida existentes son:\n";
+    	String resp = "Las ofertas son:\n";
     	int i = 1;
-        for (VOTipoBebida tb : lista)
+        for (VOOferta tb : lista)
         {
         	resp += i++ + ". " + tb.toString() + "\n";
         }

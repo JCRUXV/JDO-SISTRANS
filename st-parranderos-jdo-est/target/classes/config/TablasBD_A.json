@@ -1,15 +1,14 @@
 {
 	"title": "Nombres de las tablas de Parranderos Uniandes para la aplicación A",
-	"unidadPersistencia": "Parranderos",
+	"unidadPersistencia": "sistemas transaccionales",
 	"tablas":
 	[
-		"Parranderos_sequence",
-		"A_TIPOBEBIDA",
-		"A_BEBIDA",
-		"A_BAR",
-		"A_BEBEDOR",
-		"A_GUSTAN",
-		"A_SIRVEN",
-		"A_VISITAN"
+		"A_CLIENTE",
+		"A_OFERTA",
+		"A_OPERADOR",
+		"A_OPERADOR_PN",
+		"A_RESERVA",
+		"A_SERVICIO",
+		"A_SERVICIO_ALOJAMIENTO"
 	]
 }
