@@ -34,13 +34,23 @@
 					"event": "adicionarOperador"
 				},
 				{
-					"label": "listar oferta",
-					"event": "listarOferta"
+					"label": "adicionar operador pn",
+					"event": "adicionarOperadorPN"
 				},
 				{
 					"label": "listar oferta",
 					"event": "listarOferta"
+				},
+				{
+					"label": "eliminar oferta por id",
+					"event": "eliminarOfertaPorId"
+				},
+				{
+					"label": "eliminar reserva por id",
+					"event": "eliminarReservaPorId"
 				}
+
+				
 			]
 		},
 		{ "menuTitle": "Mantenimiento",
