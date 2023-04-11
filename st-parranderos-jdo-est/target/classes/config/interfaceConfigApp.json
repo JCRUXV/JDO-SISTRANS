@@ -1,28 +1,45 @@
 {
-	"title": "Aplicación transaccional de Parranderos Uniandes",
+	"title": "Aplicación transaccional de Aforandes Uniandes",
 	"frameH": 600,
 	"frameW": 800,
 	"bannerPath": "./src/main/resources/config/logo.png",
 	"menuBar":
 	[
-		{ "menuTitle": "TipoBebida",
+		{ "menuTitle": "requerimientos funcionales",
 		  "options":
 			[
 				{
-					"label": "Adicionar",
-					"event": "adicionarTipoBebida"
+					"label": "Adicionar cliente",
+					"event": "adicionarCLiente"
 				},
 				{
-					"label": "Listar",
-					"event": "listarTipoBebida"
+					"label": "adicionar oferta",
+					"event": "adicionarOferta"
 				},
 				{
-					"label": "Borrar por Id",
-					"event": "eliminarTipoBebidaPorId"
+					"label": "adicionar reserva",
+					"event": "adicionarReserva"
 				},
 				{
-					"label": "Buscar por Nombre",
-					"event": "buscarTipoBebidaPorNombre"
+					"label": "Adicionar servicio",
+					"event": "adicionarServicio"
+				},
+
+				{
+					"label": "Adicionar servicio alojamiento",
+					"event": "adicionarServicio_alojamiento"
+				},
+				{
+					"label": "Adicionar operador",
+					"event": "adicionarOperador"
+				},
+				{
+					"label": "listar oferta",
+					"event": "listarOferta"
+				},
+				{
+					"label": "listar oferta",
+					"event": "listarOferta"
 				}
 			]
 		},
