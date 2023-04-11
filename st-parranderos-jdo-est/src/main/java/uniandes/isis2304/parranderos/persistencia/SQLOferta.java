@@ -61,8 +61,8 @@ class SQLOferta
 	 */
 	public long adicionarOferta (PersistenceManager pm, long idOferta, String tipo,long capacidad,String ubicacion ,long vivienda, String disponibilidad , long precio, Date fechainicio, double tiempo, long propietario) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO OFERTA (tipo,capacidad,ubicacion,vivienda,disponibilidad,fecha_inicial,cant_dias,precio,operador) values (?, ?, ?, ?, ?)");
-        q.setParameters(tipo,capacidad,ubicacion,vivienda,disponibilidad,precio,fechainicio,tiempo,propietario);
+        Query q = pm.newQuery(SQL, "INSERT INTO OFERTA (tipo,capacidad,ubicacion,vivienda,disponibilidad,fecha_inicial,cant_dias,precio,operador) values (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        q.setParameters(tipo,capacidad,ubicacion,vivienda,disponibilidad,fechainicio,tiempo,precio,propietario);
         return (long) q.executeUnique();
 	}
 
