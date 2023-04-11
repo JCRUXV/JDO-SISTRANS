@@ -136,11 +136,7 @@ public List<Oferta> darOfertas (PersistenceManager pm)
 
 	public List<Oferta> darOfertasMasPopulares (PersistenceManager pm)
 	{
-		Query q = pm.newQuery(SQL, "select * from (SELECT o.id, o.tipo, o.capacidad, o.ubicacion, o.vivienda, o.disponibilidad, o.precio, COUNT(*) AS num_reservas "+
-		"FROM OFERTA o JOIN RESERVA r ON o.id = r.oferta "+
-		"GROUP BY o.id, o.tipo, o.capacidad, o.ubicacion, o.vivienda, o.disponibilidad, o.precio "+
-		"ORDER BY num_reservas DESC) "+
-		"where rownum<=20" );
+		Query q = pm.newQuery(SQL, "select id,tipo,ubicacion,vivienda,disponibilidad,precio from (SELECT o.id, o.tipo, o.capacidad, o.ubicacion, o.vivienda, o.disponibilidad, o.precio, COUNT(*) AS num_reservas  FROM OFERTA o JOIN RESERVA r ON o.id = r.oferta GROUP BY o.id, o.tipo, o.capacidad, o.ubicacion, o.vivienda, o.disponibilidad, o.precio ORDER BY num_reservas DESC) where rownum<=20 ");
 		q.setResultClass(Oferta.class);
 		return (List<Oferta>) q.executeList();
 	}

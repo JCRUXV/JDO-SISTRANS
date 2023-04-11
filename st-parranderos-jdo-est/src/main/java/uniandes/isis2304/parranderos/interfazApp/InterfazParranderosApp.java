@@ -597,23 +597,14 @@ public void adicionarServicio_alojamiento() {
     }
 	public void rfc2( )
     {
-    	try 
+		try 
     	{
-    		
-    			List<Oferta> lista = parranderos.darOfertasPopulares();
-    			String resultado = "ofertas mas populares\n\n";
-    			if (lista != null)
-    			{
-        			resultado += lista;
-    			}
-    			else
-    			{
-        			resultado += "no se pudo hacer la consulta\n";    				
-    			}
-    			resultado += "\n Operación terminada";
-    			panelDatos.actualizarInterfaz(resultado);
-    		
-    		
+			List <VOOferta> lista = parranderos.darVOOfertasPopulares();
+
+			String resultado = "En listarOferta";
+			resultado +=  "\n" + listarOferta(lista);
+			panelDatos.actualizarInterfaz(resultado);
+			resultado += "\n Operación terminada";
 		} 
     	catch (Exception e) 
     	{

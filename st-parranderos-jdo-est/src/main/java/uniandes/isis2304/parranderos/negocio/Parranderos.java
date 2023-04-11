@@ -164,6 +164,18 @@ public class Parranderos
         log.info ("Generando los VO de las ofertas disponibles: " + voBebidas.size() + " existentes");
         return voBebidas;
 	}
+	
+	public List<VOOferta> darVOOfertasPopulares ()
+	{
+		log.info ("Generando los VO de las ofertas");       
+        List<VOOferta> voBebidas = new LinkedList<VOOferta> ();
+        for (Oferta beb : pp.darOfertasPopulares())
+        {
+        	voBebidas.add (beb);
+        }
+        log.info ("Generando los VO de las ofertas populares: " + voBebidas.size() + " existentes");
+        return voBebidas;
+	}
 
 	public List<Oferta> darOfertasPorCosto (long costo)
 	{
