@@ -385,7 +385,7 @@ public class PersistenciaParranderos
 
 	public long darMaxIdOferta ()
 	{
-		return this.sqlOferta.darId(pmf.getPersistenceManager());
+		return (long) this.sqlOferta.darId(pmf.getPersistenceManager()).toBigInteger().intValueExact();
 	}
  
 	/* ****************************************************************
@@ -623,7 +623,7 @@ public class PersistenciaParranderos
 	
 	 public long darMaxIdOperador ()
 	 {
-		 return this.sqlOperador.darId(pmf.getPersistenceManager());
+		 return (long) this.sqlOperador.darId(pmf.getPersistenceManager()).toBigInteger().intValueExact();
 	 }
 	public Operador adicionarOperador(String nombre, String tipo, String disponibilidad) 
 	{
@@ -794,7 +794,7 @@ public class PersistenciaParranderos
 	
 	 public long darMaxIdReserva ()
 	 {
-		 return this.sqlReserva.darId(pmf.getPersistenceManager());
+		 return (long) this.sqlReserva.darId(pmf.getPersistenceManager()).toBigInteger().intValueExact();
 	 }
 	public Reserva adicionarReserva(Date fecha, long duracion, int numero_p, long oferta, long cliente) 
 	{
@@ -880,7 +880,8 @@ public class PersistenciaParranderos
 	 *****************************************************************/
 	public long darMaxIdServicio()
 	 {
-		 return this.sqlServicio.darId(pmf.getPersistenceManager());
+		
+		 return (long) this.sqlServicio.darId(pmf.getPersistenceManager()).toBigInteger().intValueExact();
 	 }
 	
 	public Servicio adicionarServicio(String nombre, String descripcion) {

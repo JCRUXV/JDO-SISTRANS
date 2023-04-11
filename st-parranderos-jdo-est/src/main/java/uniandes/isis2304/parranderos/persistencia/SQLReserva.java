@@ -1,5 +1,6 @@
 package uniandes.isis2304.parranderos.persistencia;
 
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.List;
 
@@ -67,11 +68,11 @@ class SQLReserva
         return (Reserva) q.executeUnique();
     }
 
-    public long darId (PersistenceManager pm) 
+    public BigDecimal darId (PersistenceManager pm) 
     {
         Query q = pm.newQuery(SQL, "SELECT MAX(id) id FROM Reserva ");
-        q.setResultClass(long.class);
-        return (long) q.executeUnique();
+        q.setResultClass(BigDecimal.class);
+        return (BigDecimal) q.executeUnique();
     }
 
     public List<Reserva> darReservasPorCliente (PersistenceManager pm, long cliente)

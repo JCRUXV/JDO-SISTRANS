@@ -1,5 +1,6 @@
 package uniandes.isis2304.parranderos.persistencia;
 
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.List;
 
@@ -89,12 +90,13 @@ public Oferta darOfertaPorId (PersistenceManager pm, long idOferta)
 	return (Oferta) q.executeUnique();
 }
 
-public long darId (PersistenceManager pm) 
+public BigDecimal darId (PersistenceManager pm) 
 {
 	Query q = pm.newQuery(SQL, "SELECT MAX(id) id FROM OFERTA ");
-	q.setResultClass(long.class);
-	return (long) q.executeUnique();
+	q.setResultClass(BigDecimal.class);
+    return (BigDecimal) q.executeUnique();
 }
+
 
 public void actualizarFechaInicial(PersistenceManager pm, long idOferta, Date nuevaFechaInicial) {
     Query q = pm.newQuery(SQL, "UPDATE OFERTA SET fecha_inicial = ? WHERE id = ?");

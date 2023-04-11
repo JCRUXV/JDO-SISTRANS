@@ -1,6 +1,8 @@
 package uniandes.isis2304.parranderos.persistencia;
 
 
+import java.math.BigDecimal;
+
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
@@ -67,11 +69,11 @@ class SQLOperador
         return (Operador) q.executeUnique();
     }
 
-    public long darId (PersistenceManager pm) 
+    public BigDecimal darId (PersistenceManager pm) 
 {
 	Query q = pm.newQuery(SQL, "SELECT MAX(id) id FROM Operador ");
-	q.setResultClass(long.class);
-	return (long) q.executeUnique();
+	 q.setResultClass(BigDecimal.class);
+     return (BigDecimal) q.executeUnique();
 }
     
 
