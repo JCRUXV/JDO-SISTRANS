@@ -500,6 +500,11 @@ public class PersistenciaParranderos
 	{
 		return this.sqlOferta.darOfertas(pmf.getPersistenceManager());
 	}
+	
+	public List<Oferta> darOfertasServicio (String servicio)
+	{
+		return this.sqlOferta.darOfertasServicio(pmf.getPersistenceManager(), servicio);
+	}
 
 	public List<Oferta> darOfertasPorCosto (long costo)
 	{

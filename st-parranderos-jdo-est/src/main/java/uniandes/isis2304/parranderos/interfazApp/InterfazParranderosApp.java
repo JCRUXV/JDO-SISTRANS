@@ -508,6 +508,7 @@ public void adicionarServicio_alojamiento() {
 			panelDatos.actualizarInterfaz(resultado);
 		}
     }
+    
 
     public void eliminarOfertaPorId( )
     {
@@ -600,6 +601,27 @@ public void adicionarServicio_alojamiento() {
 		try 
     	{
 			List <VOOferta> lista = parranderos.darVOOfertasPopulares();
+
+			String resultado = "En listarOferta";
+			resultado +=  "\n" + listarOferta(lista);
+			panelDatos.actualizarInterfaz(resultado);
+			resultado += "\n Operación terminada";
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+	
+	public void rfc4( )
+    {
+		String servicio = JOptionPane.showInputDialog(this, "servicio?", "consultar ofertas de servicio", JOptionPane.QUESTION_MESSAGE);
+		
+		try 
+    	{
+			List <VOOferta> lista = parranderos.darVOOfertasServicio(servicio);
 
 			String resultado = "En listarOferta";
 			resultado +=  "\n" + listarOferta(lista);
