@@ -48,7 +48,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
-import uniandes.isis2304.parranderos.negocio.Oferta;
 import uniandes.isis2304.parranderos.negocio.Parranderos;
 import uniandes.isis2304.parranderos.negocio.VOCliente;
 import uniandes.isis2304.parranderos.negocio.VOOferta;
