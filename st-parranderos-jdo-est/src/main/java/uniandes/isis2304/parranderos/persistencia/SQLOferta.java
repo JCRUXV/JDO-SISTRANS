@@ -129,7 +129,7 @@ public List<Oferta> darOfertas (PersistenceManager pm)
 public List<Oferta> darOfertasServicio (PersistenceManager pm, String servicio)
 {
 	Query q = pm.newQuery(SQL, "select o.* from oferta o inner join servicio_alojamiento s on o.id = s.oferta inner join servicio sv on s.servicio=sv.codigo\r\n"
-			+ "where = ? ;   " );
+			+ "where sv.nombre = ? ;   " );
 	q.setResultClass(Oferta.class);
 	q.setParameters(servicio);
 	return (List<Oferta>) q.executeList();
