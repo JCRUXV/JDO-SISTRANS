@@ -68,6 +68,8 @@ class SQLReserva
         return (Reserva) q.executeUnique();
     }
 
+	
+
     public BigDecimal darId (PersistenceManager pm) 
     {
         Query q = pm.newQuery(SQL, "SELECT MAX(id) id FROM Reserva ");
@@ -80,6 +82,14 @@ class SQLReserva
 		Query q = pm.newQuery(SQL, "SELECT * FROM OFERTA WHERE Cliente = ?" );
 		q.setResultClass(Reserva.class);
 		q.setParameters(cliente);
+		return (List<Reserva>) q.executeList();
+	}
+
+	public List<Reserva> darReservasPorOferta (PersistenceManager pm, long oferta)
+	{
+		Query q = pm.newQuery(SQL, "SELECT * FROM OFERTA WHERE Cliente = ?" );
+		q.setResultClass(Reserva.class);
+		q.setParameters(oferta);
 		return (List<Reserva>) q.executeList();
 	}
 }

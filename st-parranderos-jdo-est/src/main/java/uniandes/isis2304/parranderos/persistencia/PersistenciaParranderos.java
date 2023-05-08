@@ -490,7 +490,27 @@ public class PersistenciaParranderos
         }
 	}
 
-	
+	public String RF9 (long id){
+		this.actulizarDisponibilidad1(id);
+		Oferta oferta = this.darOfertaPorid(id);
+		List<Oferta> ofertas =this.darOfertaPorTipo(oferta.getTipo());
+		List<Reserva> reservas = this.darReservasPorOferta(id);
+		for (int i=0;i<reservas.size();i++){
+		Reserva reserva = reservas.get(i);
+		this.eliminarReservaPorId(reserva.getId());
+		if(ofertas.size()>= reservas.size()){
+			this.adicionarReserva(reserva.getFecha(),reserva.getDuracion(),(int)reserva.getNumero_p(),ofertas.get(i).getId(),reserva.getCliente());
+		}
+		else{
+			return "no hay oferta parecida";
+		}
+		}
+		return "se logro exitosamente";
+	}
+
+	public void RF10 (long id){
+		this.actulizarDisponibilidad2(id);
+	}
  
 	/**
 	 * Método que consulta todas las tuplas en la tabla Bebida
@@ -529,6 +549,11 @@ public class PersistenciaParranderos
 	public Oferta darOfertaPorid (long id)
 	{
 		return this.sqlOferta.darOfertaPorId(pmf.getPersistenceManager(), id);
+	}
+
+	public List<Oferta>  darOfertaPorTipo (String tipo)
+	{
+		return this.sqlOferta.darOfertasPorTipo(pmf.getPersistenceManager(), tipo);
 	}
 
 	public List<Oferta> darOfertasPorPropietario( long id )
@@ -877,6 +902,11 @@ public class PersistenciaParranderos
 	public Reserva darReservasPorid (long id)
 	{
 		return this.sqlReserva.darReservaPorId(pmf.getPersistenceManager(),id);
+	}
+
+	public List<Reserva> darReservasPorOferta (long id)
+	{
+		return this.sqlReserva.darReservasPorOferta(pmf.getPersistenceManager(),id);
 	}
  
  

@@ -143,6 +143,14 @@ public List<Oferta> darOfertasServicio (PersistenceManager pm, String servicio)
 		return (List<Oferta>) q.executeList();
 	}
 
+	public List<Oferta> darOfertasPorTipo (PersistenceManager pm, String tipo)
+	{
+		Query q = pm.newQuery(SQL, "SELECT * FROM OFERTA WHERE TIPO = ?" );
+		q.setResultClass(Oferta.class);
+		q.setParameters(tipo);
+		return (List<Oferta>) q.executeList();
+	}
+
 	public List<Oferta> darOfertasMasPopulares (PersistenceManager pm)
 	{
 		Query q = pm.newQuery(SQL, "select id,tipo,ubicacion,vivienda,disponibilidad,precio from (SELECT o.id, o.tipo, o.capacidad, o.ubicacion, o.vivienda, o.disponibilidad, o.precio, COUNT(*) AS num_reservas  FROM OFERTA o JOIN RESERVA r ON o.id = r.oferta GROUP BY o.id, o.tipo, o.capacidad, o.ubicacion, o.vivienda, o.disponibilidad, o.precio ORDER BY num_reservas DESC) where rownum<=20 ");
@@ -171,6 +179,15 @@ public List<Object[]> darDineroRecibidoProcadaProvedor (PersistenceManager pm)
 	"group by operador,EXTRACT(YEAR FROM reserva.fecha)";
 	
 	Query q = pm.newQuery(SQL, sql);
+	return q.executeList();
+}
+
+public List<Object[]> RFC8 (PersistenceManager pm,String tipo)
+{
+	String sql = "select *  from (select tipo,fecha fecha_max from(SELECT tipo,fecha, count(*) cant FROM oferta inner join reserva on oferta.id = reserva.oferta WHERE tipo = ? GROUP BY tipo,fecha order by count(*) desc ) where rownum = 1)natural join (select tipo, fecha fecha_menos_o from (select tipo,numero_p,fecha from oferta inner join reserva on oferta.id = reserva.oferta group by tipo,numero_p,fecha order by numero_p) where rownum = 1) natural join (select tipo,fecha fecha_ganancia from(SELECT tipo,fecha, sum(precio) ganancia FROM oferta inner join reserva on oferta.id = reserva.oferta WHERE tipo = ? GROUP BY tipo,fecha order by sum(precio) desc ) where rownum = 1)";
+	
+	Query q = pm.newQuery(SQL, sql);
+	q.setParameters(tipo,tipo);
 	return q.executeList();
 }
 
