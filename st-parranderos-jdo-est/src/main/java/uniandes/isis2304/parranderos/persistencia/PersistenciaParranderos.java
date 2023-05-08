@@ -801,6 +801,7 @@ public class PersistenciaParranderos
 	 {
 		 return (long) this.sqlReserva.darId(pmf.getPersistenceManager()).toBigInteger().intValueExact();
 	 }
+	 
 	public Reserva adicionarReserva(Date fecha, long duracion, int numero_p, long oferta, long cliente) 
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
