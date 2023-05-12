@@ -198,6 +198,18 @@ public class Parranderos
         return voBebidas;
 	}
 
+	public List<VOCliente> darVOCliente ()
+	{
+		log.info ("Generando los VO de los clientes de RC9");       
+        List<VOCliente> voBebidas = new LinkedList<VOCliente> ();
+        for (Cliente beb : pp.RFC9())
+        {
+        	voBebidas.add (beb);
+        }
+        log.info ("Generando los VO de los clientes de RFC9: " + voBebidas.size() + " existentes");
+        return voBebidas;
+	}
+
 	public List<VOOferta> darVOOfertasRFC10 (String duracion)
 	{
 		log.info ("Generando los VO de las ofertas");       

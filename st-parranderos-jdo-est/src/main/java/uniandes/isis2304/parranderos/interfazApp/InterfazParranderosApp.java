@@ -489,14 +489,37 @@ public void adicionarServicio_alojamiento() {
     /**
      * Consulta en la base de datos los tipos de bebida existentes y los muestra en el panel de datos de la aplicación
      */
-    public void listarOferta( )
+    public void RFC10( )
     {
     	try 
     	{
-			List <VOOferta> lista = parranderos.darVOOfertas();
+			String duracion = JOptionPane.showInputDialog(this, "ID?", "duracion", JOptionPane.QUESTION_MESSAGE);
+	
+			List <VOOferta> lista = parranderos.darVOOfertasRFC10(duracion);
 
 			String resultado = "En listarOferta";
 			resultado +=  "\n" + listarOferta(lista);
+			panelDatos.actualizarInterfaz(resultado);
+			resultado += "\n Operación terminada";
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+
+	
+
+	public void RFC9( )
+    {
+    	try 
+    	{
+			List <VOCliente> lista = parranderos.darVOCliente();
+
+			String resultado = "En listarOferta";
+			resultado +=  "\n" + listarCliente(lista);
 			panelDatos.actualizarInterfaz(resultado);
 			resultado += "\n Operación terminada";
 		} 
@@ -719,6 +742,36 @@ public void adicionarServicio_alojamiento() {
 		}
     }
 
+	public void rfc8( )
+    {
+    	try 
+    	{
+			String tipo = JOptionPane.showInputDialog(this, "servicio?", "tipo de RFC8", JOptionPane.QUESTION_MESSAGE);
+		
+    		
+    			List<Object[]> lista = parranderos.RFC8(tipo);
+    			String resultado = "RFC8\n\n";
+    			if (lista != null)
+    			{
+        			resultado += lista;
+    			}
+    			else
+    			{
+        			resultado += "no se pudo hacer la consulta\n";    				
+    			}
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		
+    		
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+
 
 	/* ****************************************************************
 	 * 			Métodos administrativos
@@ -889,6 +942,17 @@ public void adicionarServicio_alojamiento() {
     	String resp = "Las ofertas son:\n";
     	int i = 1;
         for (VOOferta tb : lista)
+        {
+        	resp += i++ + ". " + tb.toString() + "\n";
+        }
+        return resp;
+	}
+
+	private String listarCliente(List<VOCliente> lista) 
+    {
+    	String resp = "Las clientes son:\n";
+    	int i = 1;
+        for (VOCliente tb : lista)
         {
         	resp += i++ + ". " + tb.toString() + "\n";
         }
