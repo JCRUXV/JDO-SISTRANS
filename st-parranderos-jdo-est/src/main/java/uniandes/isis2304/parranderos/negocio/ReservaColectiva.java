@@ -58,6 +58,7 @@ public class ReservaColectiva implements VOReservaColectiva
 	
 	private long numero_hab;
 
+	private long costo;
 	/* ****************************************************************
 	 * 			Métodos
 	 *****************************************************************/
@@ -73,7 +74,7 @@ public class ReservaColectiva implements VOReservaColectiva
 		this.oferta=0;
 		this.cliente=0;
 		this.numero_hab = 0;
-		
+		this.costo=0;
 
 	}
 
@@ -93,7 +94,7 @@ public class ReservaColectiva implements VOReservaColectiva
 		this.oferta = oferta;
 		this.cliente = cliente;
 		this.numero_hab = numero_hab;
-		
+		this.costo= costo;
 	}
 
 	/**
@@ -110,6 +111,22 @@ public class ReservaColectiva implements VOReservaColectiva
 	public void setId(long id) 
 	{
 		this.id = id;
+	}
+	
+	/**
+	 * @return El costo 
+	 */
+	public long getCosto() 
+	{
+		return costo;
+	}
+
+	/**
+	 * @param costo - El nuevo costo
+	 */
+	public void setCosto(long costo ) 
+	{
+		this.costo = costo;
 	}
 
 	

@@ -149,7 +149,7 @@ public class PersistenciaParranderos
 		tablas.add ("RESERVA");
 		tablas.add ("SERVICIO");
 		tablas.add ("SERVICIO_ALOJAMIENTO");
-		tablas.add ("RESERVA:COLECTIVA");
+		tablas.add ("RESERVA_COLECTIVA");
 }
 
 	/**
@@ -160,6 +160,7 @@ public class PersistenciaParranderos
 	{
 		crearClasesSQL ();
 		tablas = leerNombresTablas (tableConfig);
+		System.out.println(tablas);
 		
 		String unidadPersistencia = tableConfig.get ("unidadPersistencia").getAsString ();
 		log.trace ("Accediendo unidad de persistencia: " + unidadPersistencia);
@@ -230,7 +231,8 @@ public class PersistenciaParranderos
 		this.sqlOperadorpn = new SQLOperadorPN(this);
 		this.sqlReserva = new SQLReserva(this);
 		this.sqlServicio = new SQLServicio (this);
-		this.sqlServicioAlojamiento = new SQLServicioAlojamiento(this);		
+		this.sqlServicioAlojamiento = new SQLServicioAlojamiento(this);	
+		this.sqlReservaColectiva = new SQLReservaColectiva(this);
 		sqlUtil = new SQLUtil(this);
 	}
 
@@ -289,6 +291,14 @@ public class PersistenciaParranderos
 	public String darTablaServicioAlojamiento ()
 	{
 		return tablas.get (6);
+	}
+	
+	/**
+	 * @return La cadena de caracteres con el nombre de la tabla de Visitan de parranderos
+	 */
+	public String darTablaReservaColectiva ()
+	{
+		return tablas.get (7);
 	}
 	
 	
@@ -938,14 +948,15 @@ public class PersistenciaParranderos
 	 * 			Métodos para manejar la relación Reserva colectiva
 	 *****************************************************************/
 	
-	public ReservaColectiva adicionarReservaColectiva(Date fecha, long duracion, int numero_p, long oferta, long cliente, long numero_hab) 
+	public ReservaColectiva adicionarReservaColectiva(Date fecha, long duracion, long numero_p, long oferta, long cliente, long numero_hab, long costo) 
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
         try
         {
             tx.begin();
-            long tuplasInsertadas = this.sqlReservaColectiva.adicionarReservaColectiva(pm, fecha, duracion, oferta, cliente, numero_p, numero_hab);
+       
+            long tuplasInsertadas = this.sqlReservaColectiva.adicionarReservaColectiva(pm, fecha, duracion, oferta, cliente, numero_p, numero_hab, costo);
             tx.commit();
 
             log.trace ("Inserción de reserva: [" + cliente + ", " + oferta + "]. " + tuplasInsertadas + " tuplas insertadas");

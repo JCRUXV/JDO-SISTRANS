@@ -446,10 +446,10 @@ public class Parranderos
 	}
 	
 
-	public ReservaColectiva adicionarReservaColectiva (Date fecha, long duracion, int numero_p, long oferta, long cliente, long numero_hab) 
+	public ReservaColectiva adicionarReservaColectiva (Date fecha, long duracion,long numero_p, long oferta, long cliente, long numero_hab, long costo) 
 	{
         log.info ("Adicionando Reserva colectiva [" + oferta + ", " + cliente + "]");
-        ReservaColectiva respuesta = pp.adicionarReservaColectiva(fecha, duracion, numero_p, oferta, cliente, numero_hab);
+        ReservaColectiva respuesta = pp.adicionarReservaColectiva(fecha, duracion, numero_p, oferta, cliente, numero_hab, costo);
         log.info ("Adicionando Reserva: " + respuesta + " tuplas insertadas");
         return respuesta;
 	}

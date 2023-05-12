@@ -161,6 +161,7 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     	JsonObject config = null;
 		try 
 		{
+			
 			Gson gson = new Gson( );
 			FileReader file = new FileReader (archConfig);
 			JsonReader reader = new JsonReader ( file );
@@ -380,8 +381,9 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 			String ofertaStr = JOptionPane.showInputDialog(this, "Oferta?", "Adicionar reserva colectiva", JOptionPane.QUESTION_MESSAGE);
 			String clienteStr = JOptionPane.showInputDialog(this, "Cliente?", "Adicionar reserva colectiva", JOptionPane.QUESTION_MESSAGE);
 			String numero_habStr = JOptionPane.showInputDialog(this, "Número de habitaciones?", "Adicionar reserva colectiva", JOptionPane.QUESTION_MESSAGE);
-	
-			if (fechaStr != null && duracionStr != null && numero_pStr != null && ofertaStr != null && clienteStr != null && numero_habStr != null) {
+			String costoStr = JOptionPane.showInputDialog(this, "costo?", "Adicionar costo", JOptionPane.QUESTION_MESSAGE);
+			
+			if (fechaStr != null && duracionStr != null && numero_pStr != null && ofertaStr != null && clienteStr != null && numero_habStr != null && costoStr != null) {
 				// Convertir los valores de cadena a los tipos de datos adecuados
 				Date utilDate = new SimpleDateFormat("yyyy-MM-dd").parse(fechaStr);
 				long time = utilDate.getTime();
@@ -391,9 +393,10 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 				long oferta = Long.parseLong(ofertaStr);
 				long cliente = Long.parseLong(clienteStr);
 				long numero_hab = Long.parseLong(numero_habStr);
+				long costo = Long.parseLong(costoStr);
 	
 				// Añadir la reserva
-				VOReservaColectiva reservaColectiva = parranderos.adicionarReservaColectiva(fecha, duracion, numero_p, oferta, cliente, numero_hab);
+				VOReservaColectiva reservaColectiva = parranderos.adicionarReservaColectiva(fecha, duracion, numero_p, oferta, cliente, numero_hab, costo);
 				if (reservaColectiva == null) {
 					throw new Exception("No se pudo crear una reserva con los datos proporcionados.");
 				}
@@ -667,6 +670,36 @@ public void adicionarServicio_alojamiento() {
     		{
     			long idTipo = Long.valueOf (idTipoStr);
     			long tbEliminados = parranderos.eliminarReservaPorId(idTipo);
+
+    			String resultado = "En eliminar Reserva\n\n";
+    			resultado += tbEliminados + " Reservas eliminados\n";
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    
+    
+    
+    public void eliminarReservaColectivaPorId( )
+    {
+    	try 
+    	{
+    		String idTipoStr = JOptionPane.showInputDialog (this, "Id de reserva?", "Borrar reserva por Id", JOptionPane.QUESTION_MESSAGE);
+    		if (idTipoStr != null)
+    		{
+    			long idTipo = Long.valueOf (idTipoStr);
+    			long tbEliminados = parranderos.eliminarReservaColectivaPorId(idTipo);
 
     			String resultado = "En eliminar Reserva\n\n";
     			resultado += tbEliminados + " Reservas eliminados\n";

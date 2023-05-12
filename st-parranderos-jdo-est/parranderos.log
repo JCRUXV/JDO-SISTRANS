@@ -49,3 +49,100 @@
 09:06:42,923 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
 09:06:42,924 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
 09:06:42,945 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+09:08:40,809 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+09:08:40,810 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+09:08:40,837 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+09:11:35,061 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando Reserva colectiva [1, 1]
+09:11:35,108 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Cannot invoke "uniandes.isis2304.parranderos.persistencia.SQLReservaColectiva.adicionarReservaColectiva(javax.jdo.PersistenceManager, java.sql.Date, long, long, long, int, long)" because "this.sqlReservaColectiva" is null
+
+09:11:35,114 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando Reserva: null tuplas insertadas
+09:15:48,253 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando Reserva colectiva [2, 1]
+09:15:48,255 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Cannot invoke "uniandes.isis2304.parranderos.persistencia.SQLReservaColectiva.adicionarReservaColectiva(javax.jdo.PersistenceManager, java.sql.Date, long, long, long, intss, long)" because "this.sqlReservaColectiva" is null
+
+09:15:48,255 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando Reserva: null tuplas insertadas
+09:19:46,979 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+09:19:46,980 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+09:19:47,029 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+09:20:09,774 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando Reserva colectiva [2, 1]
+09:20:09,798 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Cannot invoke "uniandes.isis2304.parranderos.persistencia.SQLReservaColectiva.adicionarReservaColectiva(javax.jdo.PersistenceManager, java.sql.Date, long, long, long, long, long)" because "this.sqlReservaColectiva" is null
+
+09:20:09,800 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando Reserva: null tuplas insertadas
+09:29:55,177 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+09:29:55,178 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+09:29:55,222 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+09:32:04,978 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+09:32:04,978 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+09:32:05,008 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+09:32:31,162 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando Reserva colectiva [2, 1]
+09:32:31,189 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Cannot invoke "uniandes.isis2304.parranderos.persistencia.SQLReservaColectiva.adicionarReservaColectiva(javax.jdo.PersistenceManager, java.sql.Date, long, long, long, long, long)" because "this.sqlReservaColectiva" is null
+
+09:32:31,191 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando Reserva: null tuplas insertadas
+09:35:07,861 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+09:35:07,861 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+09:35:07,886 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+09:35:27,325 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando Reserva colectiva [1, 1]
+09:35:27,362 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Cannot invoke "uniandes.isis2304.parranderos.persistencia.SQLReservaColectiva.adicionarReservaColectiva(javax.jdo.PersistenceManager, java.sql.Date, long, long, long, long, long)" because "this.sqlReservaColectiva" is null
+
+09:35:27,364 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando Reserva: null tuplas insertadas
+09:37:35,638 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+09:37:35,639 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+09:37:35,664 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+09:37:53,178 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando Reserva colectiva [2, 2]
+09:37:53,214 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Cannot invoke "uniandes.isis2304.parranderos.persistencia.SQLReservaColectiva.adicionarReservaColectiva(javax.jdo.PersistenceManager, java.sql.Date, long, long, long, long, long)" because "this.sqlReservaColectiva" is null
+
+09:37:53,219 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando Reserva: null tuplas insertadas
+09:39:58,325 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+09:39:58,326 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+09:39:58,356 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+09:40:17,450 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando Reserva colectiva [2, 1]
+09:40:17,687 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO RESERVA_COLECTIVA (fecha,duracion, oferta, cliente, numero_p,numero,numero_hab) values (?, ?, ?, ?, ?, ?)".
+ORA-00947: no hay suficientes valores
+
+09:40:17,701 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando Reserva: null tuplas insertadas
+09:42:14,090 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+09:42:14,091 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+09:42:14,117 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+09:42:34,246 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando Reserva colectiva [2, 1]
+09:42:34,444 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO RESERVA_COLECTIVA (fecha,duracion, oferta, cliente, numero_p,numero_hab) values (?, ?, ?, ?, ?, ?)".
+ORA-01400: no se puede realizar una inserción NULL en ("ISIS2304D15202310"."RESERVA_COLECTIVA"."COSTO")
+
+09:42:34,462 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando Reserva: null tuplas insertadas
+09:49:11,951 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+09:49:11,952 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+09:49:11,983 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+09:50:11,134 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando Reserva colectiva [2, 1]
+09:50:11,179 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : SQL query tiene parametro "7" pero no existe en el query : INSERT INTO RESERVA_COLECTIVA (fecha,duracion, oferta, cliente, numero_p,numero_hab) values (?, ?, ?, ?, ?, ?, ?)
+
+09:50:11,182 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando Reserva: null tuplas insertadas
+09:51:19,649 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+09:51:19,650 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+09:51:19,677 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+09:51:40,381 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando Reserva colectiva [2, 1]
+09:51:40,414 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : SQL query tiene parametro "7" pero no existe en el query : INSERT INTO RESERVA_COLECTIVA (fecha,duracion, oferta, cliente, numero_p,numero_hab,costo) values (?, ?, ?, ?, ?, ?, ?)
+
+09:51:40,416 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando Reserva: null tuplas insertadas
+09:54:23,045 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando Reserva [2, 1]
+09:54:23,309 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "UPDATE OFERTA SET fecha_inicial = ? WHERE id = ?".
+ORA-01858: se ha encontrado un carácter no numérico donde se esperaba uno numérico
+
+09:54:23,410 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando Reserva: Bebida [id=21, fecha=2023-02-02, duracion=1, numero_p=1, oferta=1, cliente=1] tuplas insertadas
+10:03:23,857 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+10:03:23,858 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+10:03:23,902 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+10:03:44,874 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando Reserva colectiva [2, 1]
+10:03:44,946 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : SQL query tiene parametro "7" pero no existe en el query : INSERT INTO RESERVA_COLECTIVA (fecha,duracion, oferta, cliente, numero_p,numero_hab,costo) values (?, ?, ?, ?, ?, ?, ?)
+
+10:03:44,952 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando Reserva: null tuplas insertadas
+10:08:37,249 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+10:08:37,250 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+10:08:37,291 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+10:09:02,714 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando Reserva colectiva [2, 1]
+10:09:02,991 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "UPDATE OFERTA SET fecha_inicial = ? WHERE id = ?".
+ORA-01858: se ha encontrado un carácter no numérico donde se esperaba uno numérico
+
+10:09:03,073 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando Reserva: Bebida [id=21, fecha=2023-10-10, duracion=12, numero_p=12, oferta=12, cliente=12, numero_hab=23] tuplas insertadas
+10:16:50,790 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+10:16:50,791 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+10:16:50,827 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+10:17:07,660 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Eliminando reserva colectiva
+10:17:07,864 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Eliminando reserva colectiva: 1 tuplas eliminadas

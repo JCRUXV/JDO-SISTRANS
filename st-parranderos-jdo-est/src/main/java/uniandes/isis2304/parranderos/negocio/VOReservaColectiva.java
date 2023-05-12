@@ -50,6 +50,9 @@ public interface VOReservaColectiva
 	public long  getCliente();
 	
 	public long getNumero_hab();
+	
+	public long getCosto();
+
 
 	/**
 	 * @return Una cadena con la información básica de la bebida
