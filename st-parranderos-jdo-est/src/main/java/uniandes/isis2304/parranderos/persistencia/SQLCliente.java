@@ -2,6 +2,8 @@ package uniandes.isis2304.parranderos.persistencia;
 
 
 
+import java.util.List;
+
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
@@ -78,6 +80,13 @@ class SQLCliente
 	q.setResultClass(Cliente.class);
 	q.setParameters(CODIGO);
 	return (Cliente) q.executeUnique();
+}
+
+public List<Cliente> RFC9 (PersistenceManager pm)
+{
+	String sql = "select codigo,vinculacion from (select codigo,count(*)cant from cliente inner join reserva on  cliente.codigo = reserva.cliente group by codigo having count(*)>=3) natural inner join cliente";
+	Query q = pm.newQuery(SQL, sql);
+	return (List<Cliente>) q.executeList();
 }
 
 public long Uso (PersistenceManager pm, long CODIGO) 

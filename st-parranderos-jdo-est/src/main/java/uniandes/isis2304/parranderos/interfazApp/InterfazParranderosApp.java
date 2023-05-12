@@ -537,6 +537,62 @@ public void adicionarServicio_alojamiento() {
 		}
     }
 
+	public void RF9( )
+    {
+    	try 
+    	{
+    		String idOfertaStr = JOptionPane.showInputDialog (this, "Id de reserva?", "Borrar reserva por Id", JOptionPane.QUESTION_MESSAGE);
+    		if (idOfertaStr != null)
+    		{
+    			long idTipo = Long.valueOf (idOfertaStr);
+    			String tbEliminados = parranderos.RF9(idTipo);
+
+    			String resultado = "cambiando disponibilidad de  Oferta\n\n";
+    			resultado += tbEliminados ;
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+
+	public void RF10( )
+    {
+    	try 
+    	{
+    		String idOfertaStr = JOptionPane.showInputDialog (this, "Id de reserva?", "Borrar reserva por Id", JOptionPane.QUESTION_MESSAGE);
+    		if (idOfertaStr != null)
+    		{
+    			long idTipo = Long.valueOf (idOfertaStr);
+    			String tbEliminados = parranderos.RF10(idTipo);
+
+    			String resultado = "cambiando disponibilidad de  Oferta\n\n";
+    			resultado += tbEliminados ;
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+
     public void eliminarReservaPorId( )
     {
     	try 

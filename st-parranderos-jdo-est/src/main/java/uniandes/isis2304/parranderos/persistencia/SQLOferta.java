@@ -167,6 +167,23 @@ public List<Oferta> darOfertasPorCosto (PersistenceManager pm, double costo)
 	return (List<Oferta>) q.executeList();
 }
 
+public List<Oferta> RF10 (PersistenceManager pm, String duracion) 
+{
+	if (duracion == "mes"){
+	Query q = pm.newQuery(SQL, "SELECT o.ID, o.TIPO, o.CAPACIDAD, o.UBICACION, o.VIVIENDA, o.DISPONIBILIDAD, o.FECHA_INICIAL, o.CANT_DIAS, o.PRECIO, o.OPERADOR FROM OFERTA o WHERE NOT EXISTS ( SELECT 1 FROM RESERVA r WHERE r.OFERTA = o.ID AND r.FECHA >= ADD_MONTHS(o.FECHA_INICIAL, 1) ) AND o.FECHA_INICIAL <= SYSDATE - INTERVAL '1' MONTH");
+	q.setResultClass(Oferta.class);
+	return (List<Oferta>) q.executeList();
+	
+	}
+	else {
+	Query q = pm.newQuery(SQL, "SELECT o.ID, o.TIPO, o.CAPACIDAD, o.UBICACION, o.VIVIENDA, o.DISPONIBILIDAD, o.FECHA_INICIAL, o.CANT_DIAS, o.PRECIO, o.OPERADOR FROM OFERTA o WHERE NOT EXISTS ( SELECT 1 FROM RESERVA r WHERE r.OFERTA = o.ID AND r.FECHA >= ADD_MONTHS(o.FECHA_INICIAL, 1) ) AND o.FECHA_INICIAL <= SYSDATE - INTERVAL '7' DAY ");
+	q.setResultClass(Oferta.class);
+	q.setParameters(duracion);
+	return (List<Oferta>) q.executeList();
+	}
+	
+}
+
 /**
  * Crea y ejecuta la sentencia SQL para encontrar la información de LOS TRES PRODUCTOS MÁS POPULARES de la 
  * base de datos de Parranderos, ordenados por número de veces que han sido consumidos en planes de consumo
@@ -190,6 +207,8 @@ public List<Object[]> RFC8 (PersistenceManager pm,String tipo)
 	q.setParameters(tipo,tipo);
 	return q.executeList();
 }
+
+
 
 public List<Object[]> darIndiceOcupacion (PersistenceManager pm)
 {
