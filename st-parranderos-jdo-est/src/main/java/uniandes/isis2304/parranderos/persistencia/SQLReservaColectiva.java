@@ -55,7 +55,7 @@ class SQLReservaColectiva
 
     public long eliminarReservaColectivaPorId (PersistenceManager pm, long idReserva)
 	{
-        Query q = pm.newQuery(SQL, "DELETE FROM Reserva WHERE id = ?");
+        Query q = pm.newQuery(SQL, "DELETE FROM Reserva_Colectiva WHERE id = ?");
         q.setParameters(idReserva);
         return (long) q.executeUnique();
 	}

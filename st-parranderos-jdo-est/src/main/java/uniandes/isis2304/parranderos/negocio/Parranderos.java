@@ -453,6 +453,15 @@ public class Parranderos
         log.info ("Adicionando Reserva: " + respuesta + " tuplas insertadas");
         return respuesta;
 	}
+
+
+	public long eliminarReservaColectivaPorId (long id)
+	{
+        log.info ("Eliminando reserva colectiva");
+        long resp = pp.eliminarReservaColectivaPorId(id);
+        log.info ("Eliminando reserva colectiva: " + resp + " tuplas eliminadas");
+        return resp;
+	}
 	/**
 	 * Encuentra todos los gustan en Parranderos
 	 * Adiciona entradas al log de la aplicación

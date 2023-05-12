@@ -968,6 +968,35 @@ public class PersistenciaParranderos
         }
 	}
 
+
+	public long eliminarReservaColectivaPorId( long id) 
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long resp = this.sqlReservaColectiva.eliminarReservaColectivaPorId(pm, id) ;    
+            tx.commit();
+
+            return resp;
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return -1;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+
  
  
 	/* ****************************************************************

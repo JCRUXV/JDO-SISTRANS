@@ -73,8 +73,41 @@
 				{
 					"label": "adicionar reserva colectiva",
 					"event": "adicionarReservaColectiva"
-				}
+				},
+				{
 
+					"label": "eliminar reserva colectiva",
+					"event": "eliminarReservaColectivaPorId"
+				}
+				,
+				{
+
+					"label": "rf9",
+					"event": "RF9"
+				}
+				,
+				{
+
+					"label": "rf10 ",
+					"event": "RF10"
+				},
+				{
+
+					"label": "rfc8 ",
+					"event": "RFC8"
+				}
+				,
+				{
+
+					"label": "rfc9 ",
+					"event": "RFC9"
+				}
+				,
+				{
+
+					"label": "rfc10 ",
+					"event": "RF10"
+				}
 				
 			]
 		},
