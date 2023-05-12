@@ -538,7 +538,7 @@ public void adicionarServicio_alojamiento() {
     {
     	try 
     	{
-			String duracion = JOptionPane.showInputDialog(this, "ID?", "duracion", JOptionPane.QUESTION_MESSAGE);
+			String duracion = JOptionPane.showInputDialog(this, "Duracion?", "duracion", JOptionPane.QUESTION_MESSAGE);
 	
 			List <VOOferta> lista = parranderos.darVOOfertasRFC10(duracion);
 
@@ -609,7 +609,7 @@ public void adicionarServicio_alojamiento() {
     {
     	try 
     	{
-    		String idOfertaStr = JOptionPane.showInputDialog (this, "Id de reserva?", "Borrar reserva por Id", JOptionPane.QUESTION_MESSAGE);
+    		String idOfertaStr = JOptionPane.showInputDialog (this, "Id de oferta?", "Borrar reserva por Id", JOptionPane.QUESTION_MESSAGE);
     		if (idOfertaStr != null)
     		{
     			long idTipo = Long.valueOf (idOfertaStr);
@@ -637,7 +637,7 @@ public void adicionarServicio_alojamiento() {
     {
     	try 
     	{
-    		String idOfertaStr = JOptionPane.showInputDialog (this, "Id de reserva?", "Borrar reserva por Id", JOptionPane.QUESTION_MESSAGE);
+    		String idOfertaStr = JOptionPane.showInputDialog (this, "Id de oferta?", "Borrar reserva por Id", JOptionPane.QUESTION_MESSAGE);
     		if (idOfertaStr != null)
     		{
     			long idTipo = Long.valueOf (idOfertaStr);
@@ -817,11 +817,11 @@ public void adicionarServicio_alojamiento() {
 		}
     }
 
-	public void rfc8( )
+	public void RFC8( )
     {
     	try 
     	{
-			String tipo = JOptionPane.showInputDialog(this, "servicio?", "tipo de RFC8", JOptionPane.QUESTION_MESSAGE);
+			String tipo = JOptionPane.showInputDialog(this, "tipo de alojamiento?", "tipo de RFC8", JOptionPane.QUESTION_MESSAGE);
 		
     		
     			List<Object[]> lista = parranderos.RFC8(tipo);

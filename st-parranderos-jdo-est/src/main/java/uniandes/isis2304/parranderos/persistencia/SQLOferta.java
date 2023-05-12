@@ -105,13 +105,13 @@ public void actualizarFechaInicial(PersistenceManager pm, long idOferta, Date nu
 }
 
 public void actualizarDisponibilidad1(PersistenceManager pm, long idOferta) {
-    Query q = pm.newQuery(SQL, "UPDATE OFERTA SET fecha_inicial = ? WHERE id = ?");
+    Query q = pm.newQuery(SQL, "UPDATE OFERTA SET DISPONIBILIDAD = ? WHERE id = ?");
     q.setParameters("NO DISPONIBLE", idOferta);
     q.executeUnique();
 }
 
 public void actualizarDisponibilidad2(PersistenceManager pm, long idOferta) {
-    Query q = pm.newQuery(SQL, "UPDATE OFERTA SET fecha_inicial = ? WHERE id = ?");
+    Query q = pm.newQuery(SQL, "UPDATE OFERTA SET DISPONIBILIDAD = ? WHERE id = ?");
     q.setParameters("DISPONIBLE ", idOferta);
     q.executeUnique();
 }
@@ -145,9 +145,9 @@ public List<Oferta> darOfertasServicio (PersistenceManager pm, String servicio)
 
 	public List<Oferta> darOfertasPorTipo (PersistenceManager pm, String tipo)
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM OFERTA WHERE TIPO = ?" );
+		Query q = pm.newQuery(SQL, "SELECT * FROM OFERTA WHERE TIPO = ? AND DISPONIBILIDAD = ?" );
 		q.setResultClass(Oferta.class);
-		q.setParameters(tipo);
+		q.setParameters(tipo,"DISPONIBLE ");
 		return (List<Oferta>) q.executeList();
 	}
 

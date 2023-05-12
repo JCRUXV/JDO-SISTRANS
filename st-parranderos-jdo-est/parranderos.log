@@ -146,3 +146,161 @@ ORA-01858: se ha encontrado un carácter no numérico donde se esperaba uno num�
 10:16:50,827 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
 10:17:07,660 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Eliminando reserva colectiva
 10:17:07,864 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Eliminando reserva colectiva: 1 tuplas eliminadas
+10:35:26,553 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+10:35:26,554 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+10:35:26,578 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+10:38:04,309 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - actulizando disponibilidad de oferta con id: 3
+10:38:09,190 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - vuelve a estar disponible la oferta
+10:38:55,777 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - actulizando disponibilidad de oferta con id: 2
+10:38:56,575 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "UPDATE OFERTA SET fecha_inicial = ? WHERE id = ?".
+ORA-01858: se ha encontrado un carácter no numérico donde se esperaba uno numérico
+
+10:38:57,265 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - vuelve a estar disponible la oferta
+10:39:16,769 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de las ofertas
+10:39:17,284 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de las ofertas populares: 1 existentes
+10:39:24,202 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - actulizando disponibilidad de oferta con id: 2
+10:39:24,287 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "UPDATE OFERTA SET fecha_inicial = ? WHERE id = ?".
+ORA-01858: se ha encontrado un carácter no numérico donde se esperaba uno numérico
+
+10:40:47,298 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - actulizando disponibilidad de oferta con id: 1
+10:41:04,431 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - actulizando disponibilidad de oferta con id: 1
+10:41:04,665 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - vuelve a estar disponible la oferta
+10:41:26,199 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - actulizando disponibilidad de oferta con id: 3
+10:41:26,476 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - vuelve a estar disponible la oferta
+10:41:53,355 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los clientes de RC9
+10:41:53,510 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los clientes de RFC9: 0 existentes
+10:41:57,278 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los clientes de RC9
+10:41:58,117 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los clientes de RFC9: 0 existentes
+10:42:12,783 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - actulizando disponibilidad de oferta con id: 3
+10:43:37,328 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - actulizando disponibilidad de oferta con id: 2
+10:43:37,604 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "UPDATE OFERTA SET fecha_inicial = ? WHERE id = ?".
+ORA-01858: se ha encontrado un carácter no numérico donde se esperaba uno numérico
+
+10:46:05,405 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - actulizando disponibilidad de oferta con id: 2
+10:46:05,517 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "UPDATE OFERTA SET fecha_inicial = ? WHERE id = ?".
+ORA-01858: se ha encontrado un carácter no numérico donde se esperaba uno numérico
+
+10:46:12,116 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - actulizando disponibilidad de oferta con id: 2
+10:46:12,294 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "UPDATE OFERTA SET fecha_inicial = ? WHERE id = ?".
+ORA-01858: se ha encontrado un carácter no numérico donde se esperaba uno numérico
+
+10:46:12,485 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - vuelve a estar disponible la oferta
+10:47:48,561 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los clientes de RC9
+10:47:48,673 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de los clientes de RFC9: 0 existentes
+10:48:35,277 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - actulizando disponibilidad de oferta con id: 1
+10:48:35,462 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - vuelve a estar disponible la oferta
+10:49:09,494 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - actulizando disponibilidad de oferta con id: 2
+10:49:09,584 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "UPDATE OFERTA SET fecha_inicial = ? WHERE id = ?".
+ORA-01858: se ha encontrado un carácter no numérico donde se esperaba uno numérico
+
+10:51:07,391 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+10:51:07,391 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+10:51:07,414 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+10:51:21,539 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - actulizando disponibilidad de oferta con id: 2
+10:51:24,844 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "UPDATE OFERTA SET fecha_inicial = ? WHERE id = ?".
+ORA-01858: se ha encontrado un carácter no numérico donde se esperaba uno numérico
+
+10:51:25,828 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - no hay oferta parecida
+10:54:33,963 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando oferta Suit
+10:54:34,475 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando oferta: Suit
+10:55:46,127 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+10:55:46,127 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+10:55:46,150 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+10:56:00,984 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - actulizando disponibilidad de oferta con id: 2
+10:56:02,884 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO RESERVA (fecha,duracion, oferta, cliente, numero_p) values (?, ?, ?, ?, ?)".
+ORA-01400: no se puede realizar una inserción NULL en ("ISIS2304D15202310"."RESERVA"."FECHA")
+
+10:56:03,139 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "UPDATE OFERTA SET fecha_inicial = ? WHERE id = ?".
+ORA-01858: se ha encontrado un carácter no numérico donde se esperaba uno numérico
+
+10:56:03,300 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - se logro exitosamente
+10:56:54,257 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando Reserva [2, 1]
+10:56:54,634 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "UPDATE OFERTA SET fecha_inicial = ? WHERE id = ?".
+ORA-01858: se ha encontrado un carácter no numérico donde se esperaba uno numérico
+
+10:56:55,039 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando Reserva: Bebida [id=23, fecha=0020-11-12, duracion=4, numero_p=4, oferta=4, cliente=4] tuplas insertadas
+10:57:24,419 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - actulizando disponibilidad de oferta con id: 2
+10:57:25,611 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO RESERVA (fecha,duracion, oferta, cliente, numero_p) values (?, ?, ?, ?, ?)".
+ORA-01400: no se puede realizar una inserción NULL en ("ISIS2304D15202310"."RESERVA"."FECHA")
+
+10:57:26,003 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "UPDATE OFERTA SET fecha_inicial = ? WHERE id = ?".
+ORA-01858: se ha encontrado un carácter no numérico donde se esperaba uno numérico
+
+10:57:26,157 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - se logro exitosamente
+10:58:55,892 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+10:58:55,892 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+10:58:55,918 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+10:59:04,220 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - actulizando disponibilidad de oferta con id: 2
+10:59:04,958 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - se logro exitosamente
+10:59:24,212 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+10:59:24,212 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+10:59:24,234 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+10:59:44,973 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando Reserva [2, 1]
+10:59:46,248 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "UPDATE OFERTA SET fecha_inicial = ? WHERE id = ?".
+ORA-01858: se ha encontrado un carácter no numérico donde se esperaba uno numérico
+
+10:59:46,750 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando Reserva: Bebida [id=25, fecha=0020-12-11, duracion=5, numero_p=5, oferta=5, cliente=5] tuplas insertadas
+10:59:51,384 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - actulizando disponibilidad de oferta con id: 2
+11:03:14,366 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO RESERVA (fecha,duracion, oferta, cliente, numero_p) values (?, ?, ?, ?, ?)".
+ORA-01400: no se puede realizar una inserción NULL en ("ISIS2304D15202310"."RESERVA"."FECHA")
+
+11:03:32,151 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "UPDATE OFERTA SET fecha_inicial = ? WHERE id = ?".
+ORA-01858: se ha encontrado un carácter no numérico donde se esperaba uno numérico
+
+11:07:14,494 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+11:07:14,495 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+11:07:14,517 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+11:07:22,725 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - actulizando disponibilidad de oferta con id: 2
+11:07:23,521 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - vuelve a estar disponible la oferta
+11:07:30,434 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - actulizando disponibilidad de oferta con id: 2
+11:08:07,853 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+11:08:07,854 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+11:08:07,879 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+11:08:27,578 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando Reserva [2, 1]
+11:08:28,610 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando Reserva: Bebida [id=27, fecha=0020-12-10, duracion=3, numero_p=3, oferta=3, cliente=3] tuplas insertadas
+11:08:33,011 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - actulizando disponibilidad de oferta con id: 2
+11:11:36,788 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+11:11:36,789 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+11:11:36,811 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+11:12:05,638 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - actulizando disponibilidad de oferta con id: 2
+11:12:50,193 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO RESERVA (fecha,duracion, oferta, cliente, numero_p) values (?, ?, ?, ?, ?)".
+ORA-01400: no se puede realizar una inserción NULL en ("ISIS2304D15202310"."RESERVA"."FECHA")
+
+11:18:16,546 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+11:18:16,547 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+11:18:16,576 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+11:18:53,194 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando Reserva [2, 1]
+11:18:54,676 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando Reserva: Bebida [id=29, fecha=0020-12-12, duracion=2, numero_p=2, oferta=2, cliente=2] tuplas insertadas
+11:18:58,060 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - actulizando disponibilidad de oferta con id: 2
+11:20:47,533 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+11:20:47,534 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+11:20:47,556 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+11:20:55,012 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - actulizando disponibilidad de oferta con id: 2
+11:20:55,771 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - vuelve a estar disponible la oferta
+11:21:22,225 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - actulizando disponibilidad de oferta con id: 21
+11:21:22,385 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - vuelve a estar disponible la oferta
+11:21:45,503 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - actulizando disponibilidad de oferta con id: 21
+11:21:46,592 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - se logro exitosamente
+11:27:04,228 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+11:27:04,229 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+11:27:04,255 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+11:27:41,217 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+11:27:41,217 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+11:27:41,244 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+11:27:50,454 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - consulta 8
+11:27:50,774 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - consulta 8
+11:31:02,852 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+11:31:02,853 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+11:31:02,887 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+11:33:10,309 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+11:33:10,310 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+11:33:10,337 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+11:33:18,678 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de las ofertas
+11:33:18,679 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Consultando Ofertas
+11:33:18,920 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Consultando Ofertas: 2 ofertas existentes
+11:33:18,920 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Generando los VO de las ofertas disponibles: 2 existentes
+11:34:15,813 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+11:34:15,813 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+11:34:15,840 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+11:34:41,814 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando Reserva colectiva [2, 1]
+11:34:43,428 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Adicionando Reserva: Bebida [id=31, fecha=0020-12-11, duracion=5, numero_p=5, oferta=5, cliente=5, numero_hab=2] tuplas insertadas

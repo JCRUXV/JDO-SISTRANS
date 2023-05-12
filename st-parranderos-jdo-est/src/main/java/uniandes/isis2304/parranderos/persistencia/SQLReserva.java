@@ -79,7 +79,7 @@ class SQLReserva
 
     public List<Reserva> darReservasPorCliente (PersistenceManager pm, long cliente)
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM OFERTA WHERE Cliente = ?" );
+		Query q = pm.newQuery(SQL, "SELECT * FROM RESERVA WHERE Cliente = ?" );
 		q.setResultClass(Reserva.class);
 		q.setParameters(cliente);
 		return (List<Reserva>) q.executeList();
@@ -87,7 +87,7 @@ class SQLReserva
 
 	public List<Reserva> darReservasPorOferta (PersistenceManager pm, long oferta)
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM OFERTA WHERE Cliente = ?" );
+		Query q = pm.newQuery(SQL, "SELECT * FROM RESERVA WHERE oferta = ?" );
 		q.setResultClass(Reserva.class);
 		q.setParameters(oferta);
 		return (List<Reserva>) q.executeList();

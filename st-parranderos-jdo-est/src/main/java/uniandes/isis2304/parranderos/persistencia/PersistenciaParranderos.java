@@ -19,6 +19,9 @@ package uniandes.isis2304.parranderos.persistencia;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -505,20 +508,26 @@ public class PersistenciaParranderos
 	}
 
 	public String RF9 (long id){
-		this.actulizarDisponibilidad1(id);
 		Oferta oferta = this.darOfertaPorid(id);
+		this.actulizarDisponibilidad1(id);
 		List<Oferta> ofertas =this.darOfertaPorTipo(oferta.getTipo());
 		List<Reserva> reservas = this.darReservasPorOferta(id);
 		for (int i=0;i<reservas.size();i++){
 		Reserva reserva = reservas.get(i);
 		this.eliminarReservaPorId(reserva.getId());
-		if(ofertas.size()>= reservas.size()){
-			this.adicionarReserva(reserva.getFecha(),reserva.getDuracion(),(int)reserva.getNumero_p(),ofertas.get(i).getId(),reserva.getCliente());
+		
+		if(ofertas.size()>= reservas.size() ){
+			LocalDateTime localDateTime = LocalDateTime.parse("2019-11-15T13:15:30");
+			Instant instant = localDateTime.atZone(ZoneId.systemDefault()).toInstant();
+			java.util.Date date = Date.from(instant);
+			java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+			this.adicionarReserva(sqlDate,reserva.getDuracion(),(int)reserva.getNumero_p(),ofertas.get(i).getId(),reserva.getCliente());
 		}
 		else{
 			return "no hay oferta parecida";
 		}
 		}
+		
 		return "se logro exitosamente";
 	}
 
@@ -867,7 +876,7 @@ public class PersistenciaParranderos
             tx.commit();
 
             log.trace ("Inserción de reserva: [" + cliente + ", " + oferta + "]. " + tuplasInsertadas + " tuplas insertadas");
-			this.actulizarDisponibilidad1(oferta);
+			this.actulizarDisponibilidad2(oferta);
             return new Reserva(this.darMaxIdReserva(), tuplasInsertadas, fecha, numero_p, numero_p, numero_p, numero_p);
         }
         catch (Exception e)
