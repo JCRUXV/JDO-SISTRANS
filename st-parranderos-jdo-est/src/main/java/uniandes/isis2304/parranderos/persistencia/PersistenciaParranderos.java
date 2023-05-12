@@ -515,6 +515,11 @@ public class PersistenciaParranderos
 	public void RF10 (long id){
 		this.actulizarDisponibilidad2(id);
 	}
+
+	public List<Cliente> RFC9 ()
+	{
+		return this.sqlCliente.RFC9(pmf.getPersistenceManager());
+	}
  
 	/**
 	 * Método que consulta todas las tuplas en la tabla Bebida
@@ -523,6 +528,11 @@ public class PersistenciaParranderos
 	public List<Oferta> darOfertas ()
 	{
 		return this.sqlOferta.darOfertas(pmf.getPersistenceManager());
+	}
+
+	public List<Oferta> RFC10 (String duracion)
+	{
+		return this.sqlOferta.RF10(pmf.getPersistenceManager(),duracion);
 	}
 	
 	public List<Oferta> darOfertasServicio (String servicio)
@@ -543,6 +553,11 @@ public class PersistenciaParranderos
 	public List<Object[]> darIndiceOcupacion ()
 	{
 		return this.sqlOferta.darIndiceOcupacion(pmf.getPersistenceManager());
+	}
+
+	public List<Object[]> RFC8 (String tipo)
+	{
+		return this.sqlOferta.RFC8(pmf.getPersistenceManager(),tipo);
 	}
 
 	public List<Oferta> darOfertasPopulares ()

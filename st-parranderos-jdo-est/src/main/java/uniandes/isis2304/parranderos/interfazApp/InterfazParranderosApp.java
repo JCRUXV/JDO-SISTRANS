@@ -531,14 +531,37 @@ public void adicionarServicio_alojamiento() {
     /**
      * Consulta en la base de datos los tipos de bebida existentes y los muestra en el panel de datos de la aplicación
      */
-    public void listarOferta( )
+    public void RFC10( )
     {
     	try 
     	{
-			List <VOOferta> lista = parranderos.darVOOfertas();
+			String duracion = JOptionPane.showInputDialog(this, "ID?", "duracion", JOptionPane.QUESTION_MESSAGE);
+	
+			List <VOOferta> lista = parranderos.darVOOfertasRFC10(duracion);
 
 			String resultado = "En listarOferta";
 			resultado +=  "\n" + listarOferta(lista);
+			panelDatos.actualizarInterfaz(resultado);
+			resultado += "\n Operación terminada";
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+
+	
+
+	public void RFC9( )
+    {
+    	try 
+    	{
+			List <VOCliente> lista = parranderos.darVOCliente();
+
+			String resultado = "En listarOferta";
+			resultado +=  "\n" + listarCliente(lista);
 			panelDatos.actualizarInterfaz(resultado);
 			resultado += "\n Operación terminada";
 		} 
@@ -563,6 +586,62 @@ public void adicionarServicio_alojamiento() {
 
     			String resultado = "En eliminar Oferta\n\n";
     			resultado += tbEliminados + " Ofertas						 eliminados\n";
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+
+	public void RF9( )
+    {
+    	try 
+    	{
+    		String idOfertaStr = JOptionPane.showInputDialog (this, "Id de reserva?", "Borrar reserva por Id", JOptionPane.QUESTION_MESSAGE);
+    		if (idOfertaStr != null)
+    		{
+    			long idTipo = Long.valueOf (idOfertaStr);
+    			String tbEliminados = parranderos.RF9(idTipo);
+
+    			String resultado = "cambiando disponibilidad de  Oferta\n\n";
+    			resultado += tbEliminados ;
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+
+	public void RF10( )
+    {
+    	try 
+    	{
+    		String idOfertaStr = JOptionPane.showInputDialog (this, "Id de reserva?", "Borrar reserva por Id", JOptionPane.QUESTION_MESSAGE);
+    		if (idOfertaStr != null)
+    		{
+    			long idTipo = Long.valueOf (idOfertaStr);
+    			String tbEliminados = parranderos.RF10(idTipo);
+
+    			String resultado = "cambiando disponibilidad de  Oferta\n\n";
+    			resultado += tbEliminados ;
     			resultado += "\n Operación terminada";
     			panelDatos.actualizarInterfaz(resultado);
     		}
@@ -684,6 +763,36 @@ public void adicionarServicio_alojamiento() {
     		
     			List<Object[]> lista = parranderos.darIndiceOcupacion();
     			String resultado = "ofertas mas populares\n\n";
+    			if (lista != null)
+    			{
+        			resultado += lista;
+    			}
+    			else
+    			{
+        			resultado += "no se pudo hacer la consulta\n";    				
+    			}
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		
+    		
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+
+	public void rfc8( )
+    {
+    	try 
+    	{
+			String tipo = JOptionPane.showInputDialog(this, "servicio?", "tipo de RFC8", JOptionPane.QUESTION_MESSAGE);
+		
+    		
+    			List<Object[]> lista = parranderos.RFC8(tipo);
+    			String resultado = "RFC8\n\n";
     			if (lista != null)
     			{
         			resultado += lista;
@@ -875,6 +984,17 @@ public void adicionarServicio_alojamiento() {
     	String resp = "Las ofertas son:\n";
     	int i = 1;
         for (VOOferta tb : lista)
+        {
+        	resp += i++ + ". " + tb.toString() + "\n";
+        }
+        return resp;
+	}
+
+	private String listarCliente(List<VOCliente> lista) 
+    {
+    	String resp = "Las clientes son:\n";
+    	int i = 1;
+        for (VOCliente tb : lista)
         {
         	resp += i++ + ". " + tb.toString() + "\n";
         }

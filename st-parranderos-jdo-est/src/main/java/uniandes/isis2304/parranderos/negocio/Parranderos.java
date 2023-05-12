@@ -106,6 +106,16 @@ public class Parranderos
         return tb;
 	}
 
+	public List<Cliente> RFC9 ()
+	{
+		log.info ("consulta de clientes: ");
+		List<Cliente> tb = pp.RFC9();
+		log.info ("consulta de cliente: " + tb != null ? tb : "NO EXISTE");
+        return tb;
+	}
+
+	
+
 	/* ****************************************************************
 	 * 			Métodos para manejar las Ofertas
 	 *****************************************************************/
@@ -143,11 +153,34 @@ public class Parranderos
         return resp;
 	}
 	
+	public String RF9 (long id)
+	{
+        log.info ("actulizando disponibilidad de oferta con id: " + id);
+        String resp = pp.RF9(id);
+        log.info (resp);
+        return resp;
+	}
+
+	public String RF10 (long id)
+	{
+        log.info ("actulizando disponibilidad de oferta con id: " + id);
+        pp.RF10(id);
+        log.info ("vuelve a estar disponible la oferta");
+        return "vuelve a estar disponible la oferta";
+	}
 	
 	public List<Oferta> darOfertas ()
 	{
         log.info ("Consultando Ofertas");
         List<Oferta> bebidas = pp.darOfertas();	
+        log.info ("Consultando Ofertas: " + bebidas.size() + " ofertas existentes");
+        return bebidas;
+	}
+
+	public List<Oferta> rfc10 (String duracion)
+	{
+        log.info ("Consultando Ofertas");
+        List<Oferta> bebidas = pp.RFC10(duracion);	
         log.info ("Consultando Ofertas: " + bebidas.size() + " ofertas existentes");
         return bebidas;
 	}
@@ -158,6 +191,30 @@ public class Parranderos
 		log.info ("Generando los VO de las ofertas");       
         List<VOOferta> voBebidas = new LinkedList<VOOferta> ();
         for (Oferta beb : pp.darOfertas())
+        {
+        	voBebidas.add (beb);
+        }
+        log.info ("Generando los VO de las ofertas disponibles: " + voBebidas.size() + " existentes");
+        return voBebidas;
+	}
+
+	public List<VOCliente> darVOCliente ()
+	{
+		log.info ("Generando los VO de los clientes de RC9");       
+        List<VOCliente> voBebidas = new LinkedList<VOCliente> ();
+        for (Cliente beb : pp.RFC9())
+        {
+        	voBebidas.add (beb);
+        }
+        log.info ("Generando los VO de los clientes de RFC9: " + voBebidas.size() + " existentes");
+        return voBebidas;
+	}
+
+	public List<VOOferta> darVOOfertasRFC10 (String duracion)
+	{
+		log.info ("Generando los VO de las ofertas");       
+        List<VOOferta> voBebidas = new LinkedList<VOOferta> ();
+        for (Oferta beb : rfc10(duracion))
         {
         	voBebidas.add (beb);
         }
@@ -226,6 +283,14 @@ public class Parranderos
         log.info ("Dinero recaudado por cada propietario");
         List<Object []> tuplas = pp.dardineroPropietario();
         log.info ("Dinero recaudado por cada propietario");
+        return tuplas;
+	}
+
+	public List<Object []> RFC8 (String tipo)
+	{
+        log.info ("consulta 8");
+        List<Object []> tuplas = pp.RFC8(tipo);
+        log.info ("consulta 8");
         return tuplas;
 	}
 
