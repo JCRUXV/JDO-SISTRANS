@@ -56,6 +56,7 @@ import uniandes.isis2304.parranderos.negocio.VOOperadorPersonaNatural;
 import uniandes.isis2304.parranderos.negocio.VOReserva;
 import uniandes.isis2304.parranderos.negocio.VOServicio;
 import uniandes.isis2304.parranderos.negocio.VOServicioAlojamiento;
+import uniandes.isis2304.parranderos.negocio.VOReservaColectiva;
 
 
 /**
@@ -368,6 +369,47 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 		}
 	}
 
+	
+	
+	
+	public void adicionarReservaColectiva() {
+		try {
+			String fechaStr = JOptionPane.showInputDialog(this, "Fecha?", "Adicionar reserva colectiva", JOptionPane.QUESTION_MESSAGE);
+			String duracionStr = JOptionPane.showInputDialog(this, "Duración?", "Adicionar reserva colectiva", JOptionPane.QUESTION_MESSAGE);
+			String numero_pStr = JOptionPane.showInputDialog(this, "Número de personas?", "Adicionar reserva colectiva", JOptionPane.QUESTION_MESSAGE);
+			String ofertaStr = JOptionPane.showInputDialog(this, "Oferta?", "Adicionar reserva colectiva", JOptionPane.QUESTION_MESSAGE);
+			String clienteStr = JOptionPane.showInputDialog(this, "Cliente?", "Adicionar reserva colectiva", JOptionPane.QUESTION_MESSAGE);
+			String numero_habStr = JOptionPane.showInputDialog(this, "Número de habitaciones?", "Adicionar reserva colectiva", JOptionPane.QUESTION_MESSAGE);
+	
+			if (fechaStr != null && duracionStr != null && numero_pStr != null && ofertaStr != null && clienteStr != null && numero_habStr != null) {
+				// Convertir los valores de cadena a los tipos de datos adecuados
+				Date utilDate = new SimpleDateFormat("yyyy-MM-dd").parse(fechaStr);
+				long time = utilDate.getTime();
+				java.sql.Date fecha = new java.sql.Date(time);
+				long duracion = Long.parseLong(duracionStr);
+				int numero_p = Integer.parseInt(numero_pStr);
+				long oferta = Long.parseLong(ofertaStr);
+				long cliente = Long.parseLong(clienteStr);
+				long numero_hab = Long.parseLong(numero_habStr);
+	
+				// Añadir la reserva
+				VOReservaColectiva reservaColectiva = parranderos.adicionarReservaColectiva(fecha, duracion, numero_p, oferta, cliente, numero_hab);
+				if (reservaColectiva == null) {
+					throw new Exception("No se pudo crear una reserva con los datos proporcionados.");
+				}
+	
+				String resultado = "En adicionarReserva\n\n";
+				resultado += "Reserva colectiva adicionada exitosamente: " + reservaColectiva;
+				resultado += "\nOperación terminada.";
+				panelDatos.actualizarInterfaz(resultado);
+			} else {
+				panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+			}
+		} catch (Exception e) {
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
 
 	public void adicionarServicio() {
 		try {

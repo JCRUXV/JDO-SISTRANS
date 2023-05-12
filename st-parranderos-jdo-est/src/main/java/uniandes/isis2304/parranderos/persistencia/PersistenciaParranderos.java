@@ -40,7 +40,7 @@ import uniandes.isis2304.parranderos.negocio.Parranderos;
 import uniandes.isis2304.parranderos.negocio.Reserva;
 import uniandes.isis2304.parranderos.negocio.Servicio;
 import uniandes.isis2304.parranderos.negocio.ServicioAlojamiento;
-
+import uniandes.isis2304.parranderos.negocio.ReservaColectiva;
 /**
  * Clase para el manejador de persistencia del proyecto Parranderos
  * Traduce la información entre objetos Java y tuplas de la base de datos, en ambos sentidos
@@ -125,6 +125,9 @@ public class PersistenciaParranderos
 	 */
 	private SQLServicioAlojamiento sqlServicioAlojamiento;
 	
+	
+	private SQLReservaColectiva sqlReservaColectiva;
+	
 	/* ****************************************************************
 	 * 			Métodos del MANEJADOR DE PERSISTENCIA
 	 *****************************************************************/
@@ -146,6 +149,7 @@ public class PersistenciaParranderos
 		tablas.add ("RESERVA");
 		tablas.add ("SERVICIO");
 		tablas.add ("SERVICIO_ALOJAMIENTO");
+		tablas.add ("RESERVA:COLECTIVA");
 }
 
 	/**
@@ -856,6 +860,10 @@ public class PersistenciaParranderos
             pm.close();
         }
 	}
+	
+	
+	
+
 
 	/**
 	 * Método que elimina, de manera transaccional, una tupla en la tabla GUSTAN, dados los identificadores de bebedor y bebida
@@ -909,6 +917,42 @@ public class PersistenciaParranderos
 	{
 		return this.sqlReserva.darReservasPorOferta(pmf.getPersistenceManager(),id);
 	}
+	
+	
+	/* ****************************************************************
+	 * 			Métodos para manejar la relación Reserva colectiva
+	 *****************************************************************/
+	
+	public ReservaColectiva adicionarReservaColectiva(Date fecha, long duracion, int numero_p, long oferta, long cliente, long numero_hab) 
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long tuplasInsertadas = this.sqlReservaColectiva.adicionarReservaColectiva(pm, fecha, duracion, oferta, cliente, numero_p, numero_hab);
+            tx.commit();
+
+            log.trace ("Inserción de reserva: [" + cliente + ", " + oferta + "]. " + tuplasInsertadas + " tuplas insertadas");
+			this.actulizarDisponibilidad1(oferta);
+            return new ReservaColectiva(this.darMaxIdReserva(), tuplasInsertadas, fecha, numero_p, numero_p, numero_p, numero_p, numero_hab);
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+
  
  
 	/* ****************************************************************

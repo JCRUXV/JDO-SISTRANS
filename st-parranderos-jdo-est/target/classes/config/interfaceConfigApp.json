@@ -68,6 +68,11 @@
 				{
 					"label": "dar ofertas de servicio",
 					"event": "rfc4"
+				},
+
+				{
+					"label": "adicionar reserva colectiva",
+					"event": "adicionarReservaColectiva"
 				}
 
 				

@@ -23,7 +23,7 @@ import java.sql.Date;
  * 
  * @author Germán Bravo
  */
-public interface VOReservaColectiva
+public interface VOReservaColectiva 
 {
 	/**
 	 * @return El id de la bebida
@@ -35,14 +35,25 @@ public interface VOReservaColectiva
 	/**
 	 * @return El id del Tipo de Bebida
 	 */
+	public Date getFecha();
+
+	/**
+	 * @return El gradoAlcohol de la bebida
+	 */
+	public long  getDuracion();
+
+	public long getNumero_p();
+
+	public long  getOferta();
 
 
 	public long  getCliente();
+	
+	public long getNumero_hab();
 
 	/**
 	 * @return Una cadena con la información básica de la bebida
 	 */
 	@Override
 	public String toString();
-
-}
+	}

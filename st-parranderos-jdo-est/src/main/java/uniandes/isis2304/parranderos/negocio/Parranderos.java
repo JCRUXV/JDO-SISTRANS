@@ -380,6 +380,14 @@ public class Parranderos
         return resp;
 	}
 	
+
+	public ReservaColectiva adicionarReservaColectiva (Date fecha, long duracion, int numero_p, long oferta, long cliente, long numero_hab) 
+	{
+        log.info ("Adicionando Reserva colectiva [" + oferta + ", " + cliente + "]");
+        ReservaColectiva respuesta = pp.adicionarReservaColectiva(fecha, duracion, numero_p, oferta, cliente, numero_hab);
+        log.info ("Adicionando Reserva: " + respuesta + " tuplas insertadas");
+        return respuesta;
+	}
 	/**
 	 * Encuentra todos los gustan en Parranderos
 	 * Adiciona entradas al log de la aplicación
