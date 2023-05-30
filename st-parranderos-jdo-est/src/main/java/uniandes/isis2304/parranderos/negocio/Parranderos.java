@@ -114,6 +114,88 @@ public class Parranderos
         return tb;
 	}
 
+
+	public List<OfertaAlojamiento> RFC12_1 ()
+	{
+		log.info ("consulta de ofertas: ");
+		List<OfertaAlojamiento> tb = pp.RFC12_1();
+		log.info ("consulta de ofertas: " + tb != null ? tb : "");
+        return tb;
+	}
+
+	public List<OfertaAlojamiento> RFC12_2 ()
+	{
+		log.info ("consulta de ofertas: ");
+		List<OfertaAlojamiento> tb = pp.RFC12_2();
+		log.info ("consulta de ofertas: " + tb != null ? tb : "");
+        return tb;
+	}
+
+	public List<Consulta> RFC12_3 ()
+	{
+		log.info ("consulta de ofertas: ");
+		List<Consulta> tb = pp.RFC12_3();
+		log.info ("consulta de ofertas: " + tb != null ? tb : "");
+        return tb;
+	}
+
+	public List<Consulta> RFC12_4 ()
+	{
+		log.info ("consulta de ofertas: ");
+		List<Consulta> tb = pp.RFC12_4();
+		log.info ("consulta de ofertas: " + tb != null ? tb : "");
+        return tb;
+	}
+
+	public List<VOOfertaAlojamiento> darVOOfertasRFC12_1 ()
+	{
+		log.info ("Generando los VO de las ofertas");       
+        List<VOOfertaAlojamiento> voBebidas = new LinkedList<VOOfertaAlojamiento> ();
+        for (OfertaAlojamiento beb : RFC12_1())
+        {
+        	voBebidas.add (beb);
+        }
+        log.info ("Generando los VO de las ofertas disponibles: " + voBebidas.size() + " existentes");
+        return voBebidas;
+	}
+
+	public List<VOOfertaAlojamiento> darVOOfertasRFC12_2 ()
+	{
+		log.info ("Generando los VO de las ofertas");       
+        List<VOOfertaAlojamiento> voBebidas = new LinkedList<VOOfertaAlojamiento> ();
+        for (OfertaAlojamiento beb : RFC12_2())
+        {
+        	voBebidas.add (beb);
+        }
+        log.info ("Generando los VO de las ofertas disponibles: " + voBebidas.size() + " existentes");
+        return voBebidas;
+	}
+
+	public List<VOConsulta> darVOOfertasRFC12_3 ()
+	{
+		log.info ("Generando los VO de las ofertas");       
+        List<VOConsulta> voBebidas = new LinkedList<VOConsulta> ();
+        for (Consulta beb : RFC12_3())
+        {
+        	voBebidas.add (beb);
+        }
+        log.info ("Generando los VO de las ofertas disponibles: " + voBebidas.size() + " existentes");
+        return voBebidas;
+	}
+
+	public List<VOConsulta> darVOOfertasRFC12_4 ()
+	{
+		log.info ("Generando los VO de las ofertas");       
+        List<VOConsulta> voBebidas = new LinkedList<VOConsulta> ();
+        for (Consulta beb : RFC12_4())
+        {
+        	voBebidas.add (beb);
+        }
+        log.info ("Generando los VO de las ofertas disponibles: " + voBebidas.size() + " existentes");
+        return voBebidas;
+	}
+
+
 	
 
 	/* ****************************************************************
@@ -185,6 +267,30 @@ public class Parranderos
         return bebidas;
 	}
 
+	public List<Cliente> rfc10_1 (long oferta,Date fechainc, Date fechafin,String criterio)
+	{
+        log.info ("Consultando clientes");
+        List<Cliente> bebidas = pp.clientesofertasyfecha(oferta, fechainc, fechafin, criterio);
+        log.info ("Consultando clientes: " + bebidas.size() + " ofertas existentes");
+        return bebidas;
+	}
+
+	public List<Cliente> rfc13 ()
+	{
+        log.info ("Consultando clientes");
+        List<Cliente> bebidas = pp.RFC13();
+        log.info ("Consultando clientes: " + bebidas.size() + " ofertas existentes");
+        return bebidas;
+	}
+
+	public List<Cliente> rfc11 (long oferta,Date fechainc, Date fechafin,String criterio)
+	{
+        log.info ("Consultando clientes");
+        List<Cliente> bebidas = pp.clientesnoofertasyfecha(oferta, fechainc, fechafin, criterio);
+        log.info ("Consultando clientes: " + bebidas.size() + " ofertas existentes");
+        return bebidas;
+	}
+
 	
 	public List<VOOferta> darVOOfertas ()
 	{
@@ -206,7 +312,7 @@ public class Parranderos
         {
         	voBebidas.add (beb);
         }
-        log.info ("Generando los VO de los clientes de RFC9: " + voBebidas.size() + " existentes");
+        log.info ("Generando los VO de los clientes de RFC11: " + voBebidas.size() + " existentes");
         return voBebidas;
 	}
 
@@ -219,6 +325,43 @@ public class Parranderos
         	voBebidas.add (beb);
         }
         log.info ("Generando los VO de las ofertas disponibles: " + voBebidas.size() + " existentes");
+        return voBebidas;
+	}
+
+
+	public List<VOCliente> darVOOfertasRFC10_1 (long oferta,Date fechainc, Date fechafin,String criterio)
+	{
+		log.info ("Generando los VO de las ofertas");       
+        List<VOCliente> voBebidas = new LinkedList<VOCliente> ();
+        for (Cliente beb : rfc10_1(oferta,fechainc,fechafin,criterio))
+        {
+        	voBebidas.add (beb);
+        }
+        log.info ("Generando los VO de los clientes : " + voBebidas.size() + " existentes");
+        return voBebidas;
+	}
+
+	public List<VOCliente> darVOOfertasRFC13 ()
+	{
+		log.info ("Generando los VO de las ofertas");       
+        List<VOCliente> voBebidas = new LinkedList<VOCliente> ();
+        for (Cliente beb : rfc13())
+        {
+        	voBebidas.add (beb);
+        }
+        log.info ("Generando los VO de los clientes : " + voBebidas.size() + " existentes");
+        return voBebidas;
+	}
+
+	public List<VOCliente> darVOOfertasRFC11 (long oferta,Date fechainc, Date fechafin,String criterio)
+	{
+		log.info ("Generando los VO de las ofertas");       
+        List<VOCliente> voBebidas = new LinkedList<VOCliente> ();
+        for (Cliente beb : rfc11(oferta,fechainc,fechafin,criterio))
+        {
+        	voBebidas.add (beb);
+        }
+        log.info ("Generando los VO de los clientes: " + voBebidas.size() + " existentes");
         return voBebidas;
 	}
 	

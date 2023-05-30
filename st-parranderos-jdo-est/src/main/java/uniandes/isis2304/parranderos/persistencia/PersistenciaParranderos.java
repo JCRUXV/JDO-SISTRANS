@@ -36,7 +36,9 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import uniandes.isis2304.parranderos.negocio.Cliente;
+import uniandes.isis2304.parranderos.negocio.Consulta;
 import uniandes.isis2304.parranderos.negocio.Oferta;
+import uniandes.isis2304.parranderos.negocio.OfertaAlojamiento;
 import uniandes.isis2304.parranderos.negocio.Operador;
 import uniandes.isis2304.parranderos.negocio.OperadorPersonaNatural;
 import uniandes.isis2304.parranderos.negocio.Parranderos;
@@ -539,6 +541,31 @@ public class PersistenciaParranderos
 	{
 		return this.sqlCliente.RFC9(pmf.getPersistenceManager());
 	}
+
+	public List<Cliente> RFC13 ()
+	{
+		return this.sqlCliente.RFC13(pmf.getPersistenceManager());
+	}
+
+	public List<Consulta> RFC12_3 ()
+	{
+		return this.sqlCliente.consultaRFC12_3(pmf.getPersistenceManager());
+	}
+
+	public List<Consulta> RFC12_4 ()
+	{
+		return this.sqlCliente.consultaRFC12_4(pmf.getPersistenceManager());
+	}
+
+	public List<Cliente> clientesofertasyfecha (long oferta,Date fechainc, Date fechafin,String criterio)
+	{
+		return this.sqlCliente.obtenerClientesPorOfertaYFechas(pmf.getPersistenceManager(),oferta,fechainc,fechafin,criterio);
+	}
+
+	public List<Cliente> clientesnoofertasyfecha (long oferta,Date fechainc, Date fechafin,String criterio)
+	{
+		return this.sqlCliente.obtenerClientesSinReservaPorOfertaYFechas(pmf.getPersistenceManager(),oferta,fechainc,fechafin,criterio);
+	}
  
 	/**
 	 * Método que consulta todas las tuplas en la tabla Bebida
@@ -547,6 +574,16 @@ public class PersistenciaParranderos
 	public List<Oferta> darOfertas ()
 	{
 		return this.sqlOferta.darOfertas(pmf.getPersistenceManager());
+	}
+
+	public List<OfertaAlojamiento> RFC12_1 ()
+	{
+		return this.sqlOferta.consultaRFC12_1(pmf.getPersistenceManager());
+	}
+
+	public List<OfertaAlojamiento> RFC12_2 ()
+	{
+		return this.sqlOferta.consultaRFC12_2(pmf.getPersistenceManager());
 	}
 
 	public List<Oferta> RFC10 (String duracion)

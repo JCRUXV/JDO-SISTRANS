@@ -50,7 +50,9 @@ import com.google.gson.stream.JsonReader;
 
 import uniandes.isis2304.parranderos.negocio.Parranderos;
 import uniandes.isis2304.parranderos.negocio.VOCliente;
+import uniandes.isis2304.parranderos.negocio.VOConsulta;
 import uniandes.isis2304.parranderos.negocio.VOOferta;
+import uniandes.isis2304.parranderos.negocio.VOOfertaAlojamiento;
 import uniandes.isis2304.parranderos.negocio.VOOperador;
 import uniandes.isis2304.parranderos.negocio.VOOperadorPersonaNatural;
 import uniandes.isis2304.parranderos.negocio.VOReserva;
@@ -575,6 +577,8 @@ public void adicionarServicio_alojamiento() {
 			panelDatos.actualizarInterfaz(resultado);
 		}
     }
+
+	
     
 
     public void eliminarOfertaPorId( )
@@ -781,6 +785,189 @@ public void adicionarServicio_alojamiento() {
 			panelDatos.actualizarInterfaz(resultado);
 			resultado += "\n Operación terminada";
 		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+
+	public void rfc10_1( )
+    {
+		String criterio = JOptionPane.showInputDialog(this, "criterio?", "consultar clientes de oferta", JOptionPane.QUESTION_MESSAGE);
+		String oferta = JOptionPane.showInputDialog(this, "oferta id?", "consultar clientes de oferta", JOptionPane.QUESTION_MESSAGE);
+		String fechaStr = JOptionPane.showInputDialog(this, "fecha inicial?", "consultar clientes de oferta", JOptionPane.QUESTION_MESSAGE);
+		String fechaStr2 = JOptionPane.showInputDialog(this, "fecha final?", "consultar clientes de oferta", JOptionPane.QUESTION_MESSAGE);
+		
+		try 
+    	{
+			if (fechaStr != null && criterio != null && oferta != null && fechaStr2 != null ) {
+			
+			Date utilDate = new SimpleDateFormat("yyyy-MM-dd").parse(fechaStr);
+			long time = utilDate.getTime();
+			java.sql.Date fechainc = new java.sql.Date(time);
+			Date utilDate2 = new SimpleDateFormat("yyyy-MM-dd").parse(fechaStr);
+			long time2 = utilDate.getTime();
+			java.sql.Date fechafin = new java.sql.Date(time);
+			long idoferta = Long.valueOf (oferta);
+			List <VOCliente> lista = parranderos.darVOOfertasRFC10_1(idoferta, fechainc, fechafin, criterio);
+
+			String resultado = "En listarOferta";
+			resultado +=  "\n" + listarCliente(lista);
+			panelDatos.actualizarInterfaz(resultado);
+			resultado += "\n Operación terminada";
+		} 
+	}
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+
+	public void rfc11( )
+    {
+		String criterio = JOptionPane.showInputDialog(this, "criterio?", "consultar clientes de oferta", JOptionPane.QUESTION_MESSAGE);
+		String oferta = JOptionPane.showInputDialog(this, "oferta id?", "consultar clientes de oferta", JOptionPane.QUESTION_MESSAGE);
+		String fechaStr = JOptionPane.showInputDialog(this, "fecha inicial?", "consultar clientes de oferta", JOptionPane.QUESTION_MESSAGE);
+		String fechaStr2 = JOptionPane.showInputDialog(this, "fecha final?", "consultar clientes de oferta", JOptionPane.QUESTION_MESSAGE);
+		
+		try 
+    	{
+			if (fechaStr != null && criterio != null && oferta != null && fechaStr2 != null ) {
+			
+			Date utilDate = new SimpleDateFormat("yyyy-MM-dd").parse(fechaStr);
+			long time = utilDate.getTime();
+			java.sql.Date fechainc = new java.sql.Date(time);
+			Date utilDate2 = new SimpleDateFormat("yyyy-MM-dd").parse(fechaStr);
+			long time2 = utilDate.getTime();
+			java.sql.Date fechafin = new java.sql.Date(time);
+			long idoferta = Long.valueOf (oferta);
+			List <VOCliente> lista = parranderos.darVOOfertasRFC11(idoferta, fechainc, fechafin, criterio);
+
+			String resultado = "En listarOferta";
+			resultado +=  "\n" + listarCliente(lista);
+			panelDatos.actualizarInterfaz(resultado);
+			resultado += "\n Operación terminada";
+		} 
+	}
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+
+	public void rfc13( )
+    {
+		
+		try 
+    	{
+						
+			
+			List <VOCliente> lista = parranderos.darVOOfertasRFC13();
+
+			String resultado = "En listarOferta";
+			resultado +=  "\n" + listarCliente(lista);
+			panelDatos.actualizarInterfaz(resultado);
+			resultado += "\n Operación terminada";
+		
+	}
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+
+	public void rfc12_1( )
+    {
+		
+		try 
+    	{
+						
+			
+			List <VOOfertaAlojamiento> lista = parranderos.darVOOfertasRFC12_1();
+
+			String resultado = "En listarOferta";
+			resultado +=  "\n" + listarOfertaAlojamiento(lista);
+			panelDatos.actualizarInterfaz(resultado);
+			resultado += "\n Operación terminada";
+		
+	}
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+
+	public void rfc12_2( )
+    {
+		
+		try 
+    	{
+						
+			
+			List <VOOfertaAlojamiento> lista = parranderos.darVOOfertasRFC12_2();
+
+			String resultado = "En listarOferta";
+			resultado +=  "\n" + listarOfertaAlojamiento(lista);
+			panelDatos.actualizarInterfaz(resultado);
+			resultado += "\n Operación terminada";
+		
+	}
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+
+	public void rfc12_3( )
+    {
+		
+		try 
+    	{
+						
+			
+			List <VOConsulta> lista = parranderos.darVOOfertasRFC12_3();
+
+			String resultado = "En listarOferta";
+			resultado +=  "\n" + listarConsulta(lista);
+			panelDatos.actualizarInterfaz(resultado);
+			resultado += "\n Operación terminada";
+		
+	}
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+
+	public void rfc12_4( )
+    {
+		
+		try 
+    	{
+						
+			
+			List <VOConsulta> lista = parranderos.darVOOfertasRFC12_4();
+
+			String resultado = "En listarOferta";
+			resultado +=  "\n" + listarConsulta(lista);
+			panelDatos.actualizarInterfaz(resultado);
+			resultado += "\n Operación terminada";
+		
+	}
     	catch (Exception e) 
     	{
 //			e.printStackTrace();
@@ -1017,6 +1204,28 @@ public void adicionarServicio_alojamiento() {
     	String resp = "Las ofertas son:\n";
     	int i = 1;
         for (VOOferta tb : lista)
+        {
+        	resp += i++ + ". " + tb.toString() + "\n";
+        }
+        return resp;
+	}
+
+	private String listarConsulta(List<VOConsulta> lista) 
+    {
+    	String resp = "Las ofertas son:\n";
+    	int i = 1;
+        for (VOConsulta tb : lista)
+        {
+        	resp += i++ + ". " + tb.toString() + "\n";
+        }
+        return resp;
+	}
+
+	private String listarOfertaAlojamiento(List<VOOfertaAlojamiento> lista) 
+    {
+    	String resp = "Las ofertas son:\n";
+    	int i = 1;
+        for (VOOfertaAlojamiento tb : lista)
         {
         	resp += i++ + ". " + tb.toString() + "\n";
         }

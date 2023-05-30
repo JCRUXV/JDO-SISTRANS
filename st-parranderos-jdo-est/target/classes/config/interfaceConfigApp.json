@@ -108,6 +108,48 @@
 					"label": "rfc10 ",
 					"event": "RFC10"
 				}
+				,
+				{
+
+					"label": "rfc10_1 ",
+					"event": "rfc10_1"
+				}
+				,
+				{
+
+					"label": "rfc11 ",
+					"event": "rfc11"
+				}
+				,
+				{
+
+					"label": "rfc13 ",
+					"event": "rfc13"
+				}
+				,
+				{
+
+					"label": "rfc12_1 ",
+					"event": "rfc12_1"
+				}
+				,
+				{
+
+					"label": "rfc12_2 ",
+					"event": "rfc12_2"
+				}
+				,
+				{
+
+					"label": "rfc12_3 ",
+					"event": "rfc12_3"
+				}
+				,
+				{
+
+					"label": "rfc12_4 ",
+					"event": "rfc12_4"
+				}
 				
 			]
 		},
