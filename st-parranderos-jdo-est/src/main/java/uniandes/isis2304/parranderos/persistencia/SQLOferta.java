@@ -8,6 +8,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 import uniandes.isis2304.parranderos.negocio.Oferta;
+import uniandes.isis2304.parranderos.negocio.OfertaAlojamiento;
 
 
 
@@ -184,6 +185,14 @@ public List<Oferta> RF10 (PersistenceManager pm, String duracion)
 	
 }
 
+public List<Oferta> RFC12 (PersistenceManager pm, double costo) 
+{
+	Query q = pm.newQuery(SQL, "SELECT * FROM OFERTA WHERE costo = ?");
+	q.setResultClass(Oferta.class);
+	q.setParameters(costo);
+	return (List<Oferta>) q.executeList();
+}
+
 /**
  * Crea y ejecuta la sentencia SQL para encontrar la información de LOS TRES PRODUCTOS MÁS POPULARES de la 
  * base de datos de Parranderos, ordenados por número de veces que han sido consumidos en planes de consumo
@@ -220,6 +229,50 @@ public List<Object[]> darIndiceOcupacion (PersistenceManager pm)
 	Query q = pm.newQuery(SQL, sql);
 	return q.executeList();
 }
+
+
+
+public List<OfertaAlojamiento> consultaRFC12_1(PersistenceManager pm) {
+    String sql = "SELECT TO_CHAR(r.FECHA, 'IW') AS SEMANA, o.ID AS OFERTA, COUNT(*) AS OCUPACION " +
+                 "FROM RESERVA r JOIN OFERTA o ON r.OFERTA = o.ID " +
+                 "GROUP BY TO_CHAR(r.FECHA, 'IW'), o.ID, o.TIPO, o.CAPACIDAD, o.UBICACION " +
+                 "HAVING COUNT(*) = (" +
+                 "    SELECT MAX(OCUPACION) " +
+                 "    FROM (" +
+                 "        SELECT TO_CHAR(FECHA, 'IW') AS SEMANA, OFERTA, COUNT(*) AS OCUPACION " +
+                 "        FROM RESERVA " +
+                 "        GROUP BY TO_CHAR(FECHA, 'IW'), OFERTA" +
+                 "    )" +
+                 ")";
+                 
+    Query q = pm.newQuery(sql);
+    q.setResultClass(OfertaAlojamiento.class);
+    
+    return (List<OfertaAlojamiento>) q.executeList();
+}
+
+
+
+public List<OfertaAlojamiento> consultaRFC12_2(PersistenceManager pm) {
+    String sql = "SELECT TO_CHAR(r.FECHA, 'IW') AS SEMANA, o.ID AS OFERTA, COUNT(*) AS OCUPACION " +
+                 "FROM RESERVA r JOIN OFERTA o ON r.OFERTA = o.ID " +
+                 "GROUP BY TO_CHAR(r.FECHA, 'IW'), o.ID, o.TIPO, o.CAPACIDAD, o.UBICACION " +
+                 "HAVING COUNT(*) = (" +
+                 "    SELECT MIN(OCUPACION) " +
+                 "    FROM (" +
+                 "        SELECT TO_CHAR(FECHA, 'IW') AS SEMANA, OFERTA, COUNT(*) AS OCUPACION " +
+                 "        FROM RESERVA " +
+                 "        GROUP BY TO_CHAR(FECHA, 'IW'), OFERTA" +
+                 "    )" +
+                 ")";
+                 
+    Query q = pm.newQuery(sql);
+    q.setResultClass(OfertaAlojamiento.class);
+    
+    return (List<OfertaAlojamiento>) q.executeList();
+}
+
+
 
 
 }
