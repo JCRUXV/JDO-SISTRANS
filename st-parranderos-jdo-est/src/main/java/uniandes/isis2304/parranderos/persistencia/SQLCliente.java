@@ -91,7 +91,7 @@ public List<Cliente> obtenerClientesPorOfertaYFechas(PersistenceManager pm, long
             + "WHERE o.ID = ? AND r.FECHA BETWEEN ? AND ?";
     
     if (criterioOrdenamiento.equalsIgnoreCase("cliente")) {
-        query += " ORDER BY c.NOMBRE";
+        query += " ORDER BY c.CODIGO";
     } else if (criterioOrdenamiento.equalsIgnoreCase("oferta")) {
         query += " ORDER BY o.ID";
     } else if (criterioOrdenamiento.equalsIgnoreCase("tipo")) {
@@ -114,7 +114,7 @@ public List<Cliente> obtenerClientesSinReservaPorOfertaYFechas(PersistenceManage
             + "WHERE o.ID = ? AND r.FECHA BETWEEN ? AND ?)";
     
     if (criterioOrdenamiento.equalsIgnoreCase("cliente")) {
-        query += " ORDER BY c.NOMBRE";
+        query += " ORDER BY c.CODIGO";
     } else if (criterioOrdenamiento.equalsIgnoreCase("oferta")) {
         query += " ORDER BY ?";
     } else if (criterioOrdenamiento.equalsIgnoreCase("tipo")) {
