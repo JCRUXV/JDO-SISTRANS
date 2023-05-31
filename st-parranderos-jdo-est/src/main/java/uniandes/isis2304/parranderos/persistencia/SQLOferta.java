@@ -230,8 +230,6 @@ public List<Object[]> darIndiceOcupacion (PersistenceManager pm)
 	return q.executeList();
 }
 
-
-
 public List<OfertaAlojamiento> consultaRFC12_1(PersistenceManager pm) {
     String sql = "SELECT TO_CHAR(r.FECHA, 'IW') AS SEMANA, o.ID AS OFERTA, COUNT(*) AS OCUPACION " +
                  "FROM RESERVA r JOIN OFERTA o ON r.OFERTA = o.ID " +
@@ -250,6 +248,14 @@ public List<OfertaAlojamiento> consultaRFC12_1(PersistenceManager pm) {
     
     return (List<OfertaAlojamiento>) q.executeList();
 }
+
+
+
+
+
+
+
+
 
 
 
